@@ -1,6 +1,8 @@
+package org.uva.predictions;
 
+import java.util.Iterator;
 
-Class BaseLinePredictor implements Predictor {
+class BaseLinePredictor implements Predictor {
 	
 	int nrQstns;
 	double time;
