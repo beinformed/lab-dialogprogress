@@ -14,6 +14,13 @@ Class BaseLinePredictor implements Predictor {
 	}
 
 	/**
+ 	 * Method train( Irator<Observation> data) is not needed for this
+ 	 * predictor, it predict solely based on current datapoint.
+ 	 */
+	public void train(Iterator<Observation> data){}
+	
+
+	/**
  	 * Method predict - takes the time taken to certain point
  	 * divides this time by answers given, then multiplicates with 
  	 * total questions.
