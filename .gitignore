@@ -1,0 +1,13 @@
+va specific
+*.class
+
+#eclipse ignore personal stuff 
+.metadata
+
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
