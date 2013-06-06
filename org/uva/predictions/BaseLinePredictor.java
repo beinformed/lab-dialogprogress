@@ -16,11 +16,11 @@ public class BaseLinePredictor implements Predictor {
 		int questionsSoFar = data.getNoQuestions();
 		
 		double avgPerQ = time / (double)questionsSoFar;
-		double remaining = (totalQuestions - questionsSoFar) * avgPerQ;
+		long remaining = (long) ((totalQuestions - questionsSoFar) * avgPerQ);
 		
 		return new Prediction(defaultConfidence, 
-				LongRange.fromConfidence((long) remaining, defaultConfidence), 
-				Range.fromConfidence(totalQuestions - questionsSoFar, defaultConfidence));
+				new LongRange(remaining, remaining), 
+				new Range(totalQuestions - questionsSoFar, totalQuestions - questionsSoFar));
 	}
 
 	@Override

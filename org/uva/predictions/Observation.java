@@ -12,7 +12,7 @@ import java.util.List;
 public class Observation {
 	private boolean finished;
 	private Form form;
-	private List<Question> questions;
+	private Iterable<Question> questions;
 	private Question newest;
 	private int noQuestions;
 	
@@ -29,6 +29,7 @@ public class Observation {
 	public Observation(boolean isFinished, Form form, Iterable<Question> questions) {
 		this.finished = isFinished;
 		this.form = form;
+		this.questions = questions;
 		
 		for(Question q : questions) {
 			newest = q;

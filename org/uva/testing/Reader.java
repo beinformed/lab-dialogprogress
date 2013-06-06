@@ -37,8 +37,6 @@ public class Reader {
  	 * observation has the correct form_id
  	 */ 
 	public List<Observation> getData( ){
-	
-			
 		Map<Integer, List<Question>> observations = new HashMap<Integer, List<Question>>();
 		Map<Integer, Integer>  obIdsHasForm = new HashMap<Integer, Integer>();
 		Map<Integer, Form> forms = new HashMap<Integer, Form>();
@@ -89,7 +87,7 @@ public class Reader {
 		Form form;
 		for ( Integer obId : observations.keySet() ){
 			ob = observations.get(obId);
-			form = forms.get(obId);
+			form = forms.get(obIdsHasForm.get(obId));
 			data.add( new Observation(true, form, ob));
 		}
 		return data;

@@ -1,7 +1,9 @@
 package org.uva.testing;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.uva.predictions.*;
 
@@ -15,7 +17,7 @@ public class TestFrame {
 	}
 	
 	public Iterable<TestResult> testAll(List<Observation> data) {
-		Collection<DataFold<Observation>> split = DataFold.allFromList(data, 5);
+		Collection<DataFold<Observation>> split = DataFold.allFromList(data, 3);
 		List<TestResult> results = new ArrayList<TestResult>();
 		
 		for(Predictor p : predictors)
@@ -25,49 +27,42 @@ public class TestFrame {
 	}
 	
 	private TestResult testPredictor(Predictor p, Collection<DataFold<Observation>> data) {
-		int count = 0;
-		double timeTotal = 0;
-		double stepsTotal = 0;
+		Map<Integer, Error> pathSizeToError = new HashMap<Integer, Error>();
 		
 		for(DataFold<Observation> f : data) {
-			count++;
-			Precision e = testFold(p, f);
-			timeTotal += e.getTimePrecision();
-			stepsTotal += e.getStepsPrecision();
+			Map<Integer, Error> errors = testFold(p, f);
+			
+			for(Integer key : errors.keySet()) {
+				if(!pathSizeToError.containsKey(key))
+					pathSizeToError.put(key, new Error());
+				
+				pathSizeToError.get(key).add(errors.get(key));
+			}
 		}	
 		
-		return new TestResult(p, new Precision(timeTotal / count, stepsTotal / count));
+		return new TestResult(p, pathSizeToError);
 	}
 
-	private Precision testFold(Predictor p, DataFold<Observation> f) {
-		double stepsCorrect = 0;
-		double timeCorrect = 0;
-		int total = 0;
-		
+	private Map<Integer, Error> testFold(Predictor p, DataFold<Observation> f) {
+		Map<Integer, Error> pathSizeToError = new HashMap<Integer, Error>();
 		
 		p.train(f.getTrainingSet());
 		
-		for(Observation completeObs : f.getTestSet()) {
-			for(Observation o : completeObs.getSubObservations()) {
-				Precision e = getError(p, o, completeObs);
-				stepsCorrect += e.getStepsPrecision();
-				timeCorrect += e.getTimePrecision();
-				total++;
+		for(Observation actual : f.getTestSet()) {
+			for(Observation o : actual.getSubObservations()) {
+				if(!pathSizeToError.containsKey(o.getNoQuestions()))
+					pathSizeToError.put((Integer)o.getNoQuestions(), new Error());
+				
+				Prediction predicted = p.predict(o);
+				
+				Question lastQuestion = actual.getLastAsked();
+				long timeError = predicted.getEstimatedTimeLeft().getDifference(lastQuestion.getTimestamp());				
+				int stepsError = predicted.getEstimatedStepsLeft().getDifference(actual.getNoQuestions());
+				pathSizeToError.get((Integer)o.getNoQuestions()).add(stepsError, timeError);
 			}
 		}
 		
-		return new Precision(timeCorrect / total, stepsCorrect / total);
-	}
-
-	private Precision getError(Predictor p, Observation o, Observation actual) {
-		Prediction predicted = p.predict(o);
-		
-		Question lastQuestion = actual.getLastAsked();
-		long timeError = predicted.getEstimatedTimeLeft().getDifference(lastQuestion.getTimestamp());				
-		int stepsError = predicted.getEstimatedStepsLeft().getDifference(actual.getNoQuestions());
-		
-		return new Precision((lastQuestion.getTimestamp() - timeError) / (double)lastQuestion.getTimestamp(), 
-				(actual.getNoQuestions() - stepsError) / (double)actual.getNoQuestions());
+		return pathSizeToError;
 	}
 }
 

@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-
 public class DataFold<T> {
 	private Collection<T> test;
 	private Collection<T> train;
