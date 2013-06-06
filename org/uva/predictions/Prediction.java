@@ -1,5 +1,9 @@
 package org.uva.predictions;
 
+/**
+ * Represents a prediction by an implementation of the {@link org.uva.predictions.Predictor Predictor} interface.
+ * 
+ */
 public class Prediction {
 	private double confidence;
 	private long duration;
