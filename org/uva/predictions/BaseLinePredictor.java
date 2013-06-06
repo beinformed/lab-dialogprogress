@@ -15,7 +15,6 @@ class BaseLinePredictor implements Predictor {
 
 	@Override
 	public void train(Iterable<Observation> data) {
-		// no training needed
 	}
 }
 
