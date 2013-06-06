@@ -19,64 +19,79 @@ import java.io.IOException;
 
 public class Reader {
 	
-	String textfile, formfile;
+	BufferedReader dataRdr, formfRdr;
 	// string for file location
 	public Reader (String textfile, String formfile ){
-		this.textfile = textfile;
-		this.formfile = formfile;
-	}
-	
-	// reads the textfile
-	public List<Observation> getData(String textfile, String formfile){
-		
-		Map<Integer, List<Question>> observations = new HashMap<Integer, List<Question>>();
-		List<Observation> data = new ArrayList<Observation>();
-		
 		try {
-			BufferedReader src = new BufferedReader(new FileReader(textfile));
+			BufferedReader dataRdr = new BufferedReader(new FileReader(textfile));
 			BufferedReader formfRdr = new BufferedReader(new FileReader(formfile));
-			String str = src.readLine();
-			while(str != null){
-				StringTokenizer st = new StringTokenizer(str,
-				",\n\t");
-				while (st.hasMoreTokens()) {
-					int observation_id = Integer.parseInt(st.nextToken());
-					if ( ! observations.containsKey( observation_id ) ){
-						observations.put( observation_id, new ArrayList<Question>() );
-					}
-					//int form_id = Integer.parseInt(st.nextToken());
-					long timestamp = Long.parseLong(st.nextToken().trim());
-					int question_id = Integer.parseInt(st.nextToken().trim());
-					String answer = st.nextToken();
-					observations.get(observation_id).add( new Question( question_id, answer, timestamp ));	
-					
-					//System.out.printf("observation: %d form number: %d timestamp: %f question id: %d answer: %s \n", 
-					//		observation_id, form_id, timestamp, question_id, answer);
-				}
-				//System.out.println("volgende vraag");
-				str = src.readLine();
-			}
-		
-		int form_id = -1;
-		int nrOfQuestions = -1;
-		str = formfRdr.readLine();
-		while(str != null ){
-			StringTokenizer st = new StringTokenizer(str,",\n\t");
-				while (st.hasMoreTokens()) {
-					form_id	= Integer.parseInt(st.nextToken().trim());
-					nrOfQuestions = Integer.parseInt(st.nextToken().trim());
-				}
-			str = formfRdr.readLine();
-		}
-		Form form = new Form( form_id, nrOfQuestions );		
-
-		for ( List<Question> ob : observations.values() )
-			data.add( new Observation(true, form, ob));
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	
+
+	}
+	
+	/**
+ 	 * Method getData() - reads data from bufferedreaders and makes sure every
+ 	 * observation has the correct form_id
+ 	 */ 
+	public List<Observation> getData( ){
+	
+			
+		Map<Integer, List<Question>> observations = new HashMap<Integer, List<Question>>();
+		Map<Integer, Integer>  obIdsHasForm = new HashMap<Integer, Integer>();
+		Map<Integer, Form> forms = new HashMap<Integer, Form>();
+		List<Observation> data = new ArrayList<Observation>();
+		
+		int formId = -1;
+		int nrOfQuestions = -1;
+		
+		/* Read forms and save in map: forms */
+		try{
+			String str = formfRdr.readLine();
+			while(str != null ){
+				StringTokenizer st = new StringTokenizer(str,",\n\t");
+					while (st.hasMoreTokens()) {
+						formId	= Integer.parseInt(st.nextToken().trim());
+						nrOfQuestions = Integer.parseInt(st.nextToken().trim());
+					}
+				forms.put(formId, new Form( formId, nrOfQuestions ));	
+				str = formfRdr.readLine();
+			}
+			
+			/* read data file and makes sure every observation has correct form associated */
+			str = dataRdr.readLine();
+			while(str != null){
+				StringTokenizer st = new StringTokenizer(str,",\n\t");
+				while (st.hasMoreTokens()) {
+					int form_id = Integer.parseInt(st.nextToken());
+					int observation_id = Integer.parseInt(st.nextToken());
+					if( ! obIdsHasForm.containsKey( observation_id ) )
+						obIdsHasForm.put(observation_id, form_id);
+					if ( ! observations.containsKey( observation_id ) ){
+						observations.put( observation_id, new ArrayList<Question>() );
+					}
+					long timestamp = Long.parseLong(st.nextToken().trim());
+					int question_id = Integer.parseInt(st.nextToken().trim());
+					String answer = st.nextToken();
+					observations.get(observation_id).add( new Question( question_id, answer, timestamp ));	
+					}
+					str = dataRdr.readLine();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+			
+			
+			
+		List<Question> ob = new ArrayList<Question>();
+		Form form;
+		for ( Integer obId : observations.keySet() ){
+			ob = observations.get(obId);
+			form = forms.get(obId);
+			data.add( new Observation(true, form, ob));
+		}
 		return data;
 	}
 }
