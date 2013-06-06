@@ -18,17 +18,20 @@ import java.io.IOException;
  */
 
 public class Reader {
+	
+	String textfile, formfile;
 	// string for file location
-	public static void main(String args[]){
-		String textfile, formfile;
-		textfile = args[0];
-		formfile = args[1];
-		getData(textfile, formfile);
+	public Reader (String textfile, String formfile ){
+		this.textfile = textfile;
+		this.formfile = formfile;
 	}
 	
 	// reads the textfile
-	public static void getData(String textfile, String formfile){
-		Map observations = new HashMap<Integer, List<Question>>();
+	public List<Observation> getData(String textfile, String formfile){
+		
+		Map<Integer, List<Question>> observations = new HashMap<Integer, List<Question>>();
+		List<Observation> data = new ArrayList<Observation>();
+		
 		try {
 			BufferedReader src = new BufferedReader(new FileReader(textfile));
 			BufferedReader formfRdr = new BufferedReader(new FileReader(formfile));
@@ -42,8 +45,8 @@ public class Reader {
 						observations.put( observation_id, new ArrayList<Question>() );
 					}
 					//int form_id = Integer.parseInt(st.nextToken());
-					long timestamp = Long.parseLong(st.nextToken());
-					int question_id = Integer.parseInt(st.nextToken());
+					long timestamp = Long.parseLong(st.nextToken().trim());
+					int question_id = Integer.parseInt(st.nextToken().trim());
 					String answer = st.nextToken();
 					observations.get(observation_id).add( new Question( question_id, answer, timestamp ));	
 					
@@ -54,24 +57,27 @@ public class Reader {
 				str = src.readLine();
 			}
 		
-		int form_id, nrOfQuestions;
+		int form_id = -1;
+		int nrOfQuestions = -1;
 		str = formfRdr.readLine();
 		while(str != null ){
 			StringTokenizer st = new StringTokenizer(str,",\n\t");
 				while (st.hasMoreTokens()) {
-					form_id	= Integer.parseInt(st.nextToken());
-					nrOfQuestions = Integer.parseInt(st.nextToken());
+					form_id	= Integer.parseInt(st.nextToken().trim());
+					nrOfQuestions = Integer.parseInt(st.nextToken().trim());
 				}
+			str = formfRdr.readLine();
 		}
 		Form form = new Form( form_id, nrOfQuestions );		
 
-		List<Observation> data = new ArrayList<Observation>();
-		for ( ArrayList<Question> ob : observations.values() )
+		for ( List<Question> ob : observations.values() )
 			data.add( new Observation(true, form, ob));
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	
+		return data;
 	}
 }
 
