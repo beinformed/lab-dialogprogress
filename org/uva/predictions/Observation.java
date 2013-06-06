@@ -1,6 +1,11 @@
 package org.uva.predictions;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+
+import com.sun.tools.javac.code.Attribute.Array;
 
 /**
  * Represents a (potentially incomplete) observation of a user filling a form.
@@ -68,4 +73,55 @@ public class Observation {
 	public Question getLastAsked() {
 		return newest;
 	}
+	
+	public Iterable<Observation> getSubObservations() {
+		// This is O(n*log n)
+		List<Observation> observations = new ArrayList<Observation>();
+		List<Question> part = new ArrayList<Question>();
+		for(Question q : questions) {
+			part.add(q);
+			observations.add(new Observation(false, form, copy(part)));
+		}
+		
+		return observations;
+	}
+	
+	private Iterable<Question> copy(Collection<Question> original) {
+		Question[] all = new Question[original.size()];
+		all = original.toArray(all); // guaranteed to return a new array, not the internal one
+		return Arrays.asList(all);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

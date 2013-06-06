@@ -1,6 +1,14 @@
 package org.uva.predictions;
 
-class BaseLinePredictor implements Predictor {
+public class BaseLinePredictor implements Predictor {
+	private double defaultConfidence;
+	
+	public BaseLinePredictor() {
+		this(.5);
+	}
+	public BaseLinePredictor(double defaultConfidence) {
+		this.defaultConfidence = defaultConfidence;
+	}
 	
 	public Prediction predict(Observation data){
 		long time = data.getLastAsked().getTimestamp();
@@ -10,7 +18,9 @@ class BaseLinePredictor implements Predictor {
 		double avgPerQ = time / (double)questionsSoFar;
 		double remaining = (totalQuestions - questionsSoFar) * avgPerQ;
 		
-		return new Prediction(.5, (long)remaining, totalQuestions - questionsSoFar);
+		return new Prediction(defaultConfidence, 
+				LongRange.fromConfidence((long) remaining, defaultConfidence), 
+				Range.fromConfidence(totalQuestions - questionsSoFar, defaultConfidence));
 	}
 
 	@Override
