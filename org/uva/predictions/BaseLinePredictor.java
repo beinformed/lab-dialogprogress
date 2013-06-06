@@ -1,6 +1,6 @@
 package org.uva.predictions;
 
-class BaseLinePredictor implements Predictor {
+public class BaseLinePredictor implements Predictor {
 	private double defaultConfidence;
 	
 	public BaseLinePredictor() {

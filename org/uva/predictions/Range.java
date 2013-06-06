@@ -53,11 +53,20 @@ public class Range {
 	
 	/**
 	 * {@code true} if this range contains the integer, {@code false} otherwise.
-	 * @param a
+	 * @param i
 	 * The value to check.
 	 * @return
 	 */
-	public boolean contains(int a) {
-		return a >= lower && a <= upper;
+	public boolean contains(int i) {
+		return i >= lower && i <= upper;
+	}
+
+	public int getDifference(int i) {
+		if(contains(i))
+			return 0;
+		else if(i < lower)
+			return lower - i;
+		else
+			return i - upper;
 	}
 }

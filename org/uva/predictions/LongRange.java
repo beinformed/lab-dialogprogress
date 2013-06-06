@@ -53,11 +53,47 @@ public class LongRange {
 	
 	/**
 	 * {@code true} if this range contains the integer, {@code false} otherwise.
-	 * @param a
+	 * @param l
 	 * The value to check.
 	 * @return
 	 */
-	public boolean contains(int a) {
-		return a >= lower && a <= upper;
+	public boolean contains(long l) {
+		return l >= lower && l <= upper;
+	}
+
+	public long getDifference(long l) {
+		if(contains(l))
+			return 0;
+		else if(l < lower)
+			return lower - l;
+		else
+			return l - upper;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
