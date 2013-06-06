@@ -1,11 +1,6 @@
 package org.uva.predictions;
-import java.util.Iterator;
 
-/**
- * 
- *
- */
 public interface Predictor {
-	void train(Iterator<Observation> data);
+	void train(Iterable<Observation> data);
 	Prediction predict(Observation data);
 }
