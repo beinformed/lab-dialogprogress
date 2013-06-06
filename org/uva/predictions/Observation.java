@@ -5,8 +5,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import com.sun.tools.javac.code.Attribute.Array;
-
 /**
  * Represents a (potentially incomplete) observation of a user filling a form.
  *

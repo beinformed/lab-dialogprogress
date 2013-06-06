@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.uva.predictions.*;
+import org.uva.testing.*;
 
 
 public class PredictorTester {
@@ -10,7 +11,7 @@ public class PredictorTester {
 		predictors.add(new BaseLinePredictor());
 		
 		TestFrame frame = new TestFrame(predictors);
-		List<Observation> data = new Reader().getData("test.csv", "forms.csv");
+		List<Observation> data = new Reader("test.csv", "forms.csv").getData();
 		
 		Iterable<TestResult> result = frame.testAll(data);
 		
