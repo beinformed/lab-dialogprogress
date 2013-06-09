@@ -1,29 +1,33 @@
 package org.uva.testing;
 
+import org.uva.predictions.PredictionUnit;
+
 public class Error {
-	private long time = 0;
-	private int steps = 0;
 	private int total = 0;
+	private int count = 0;
+	private PredictionUnit unit;
 	
-	public void add(int steps, long time) {
-		this.total++;
-		this.steps += steps;
-		this.time += time;
+	public Error(PredictionUnit unit) {
+				this.unit = unit;
+	}
+	
+	public void add(int error) {
+		this.count++;
+		this.total += error;
 	}
 	public void add(Error e) {
-		this.time += e.time;
-		this.steps += e.steps;
 		this.total += e.total;
+		this.count += e.count;
 	}
 	
-	public double getTimeError() {
-		return time / (double)total;
+	public double getError() {
+		return total / (double)count;
 	}
-	public double getStepsError() {
-		return steps / (double)total;
+	public PredictionUnit getUnit() {
+		return unit;
 	}
 	
 	public String toString() {
-		return Double.toString(getStepsError()) + " (steps), " + Double.toString(getTimeError()) + " (time)";
+		return Double.toString(getError()) + " (" + unit.toString() + ").";
 	}
 }

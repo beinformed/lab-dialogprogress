@@ -5,7 +5,7 @@ package org.uva.predictions;
  * 
  */
 public class Question {
-	private int id;
+	private String id;
 	private String answer;
 	private long timestamp;
 	
@@ -17,9 +17,9 @@ public class Question {
 	 * @param answer
 	 * The answer given by the user.
 	 * @param timestamp
-	 * The time in seconds since the start of the observation.
+	 * The epoch timestamp of the moment this question was answered.
 	 */
-	public Question(int id, String answer, long timestamp) {
+	public Question(String id, String answer, long timestamp) {
 		this.id = id;
 		this.answer = answer;
 		this.timestamp = timestamp;
@@ -29,7 +29,7 @@ public class Question {
 	 * Return an id that identifies the question on a specific form.
 	 * @return
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	/**

@@ -33,10 +33,12 @@ public class TestFrame {
 			Map<Integer, Error> errors = testFold(p, f);
 			
 			for(Integer key : errors.keySet()) {
-				if(!pathSizeToError.containsKey(key))
-					pathSizeToError.put(key, new Error());
+				Error error = errors.get(key);
 				
-				pathSizeToError.get(key).add(errors.get(key));
+				if(!pathSizeToError.containsKey(key))
+					pathSizeToError.put(key, new Error(error.getUnit()));
+				
+				pathSizeToError.get(key).add(error);
 			}
 		}	
 		
@@ -50,19 +52,31 @@ public class TestFrame {
 		
 		for(Observation actual : f.getTestSet()) {
 			for(Observation o : actual.getSubObservations()) {
-				if(!pathSizeToError.containsKey(o.getNoQuestions()))
-					pathSizeToError.put((Integer)o.getNoQuestions(), new Error());
-				
 				Prediction predicted = p.predict(o);
+				PredictionUnit unit = predicted.getUnit();
+				int correctValue = actual.getLearnValue(unit);
 				
-				Question lastQuestion = actual.getLastAsked();
-				long timeError = predicted.getEstimatedTimeLeft().getDifference(lastQuestion.getTimestamp());				
-				int stepsError = predicted.getEstimatedStepsLeft().getDifference(actual.getNoQuestions());
-				pathSizeToError.get((Integer)o.getNoQuestions()).add(stepsError, timeError);
+				if(!pathSizeToError.containsKey(o.getNoQuestions()))
+					pathSizeToError.put((Integer)o.getNoQuestions(), new Error(unit));
+				
+				int error = getError(predicted, correctValue);
+				
+				pathSizeToError.get((Integer)o.getNoQuestions()).add(error);
 			}
 		}
 		
 		return pathSizeToError;
+	}
+
+	private int getError(Prediction predicted, int correctValue) {
+		int lower = predicted.getLowerBound();
+		int upper = predicted.getUpperBound();
+		if(correctValue >= lower && correctValue <= upper)
+			return 0;
+		else if(correctValue < lower)
+			return (lower - correctValue)^2;
+		else
+			return (correctValue - upper)^2;
 	}
 }
 
