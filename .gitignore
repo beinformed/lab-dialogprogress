@@ -11,3 +11,5 @@ va specific
 *.DS_Store
 *.swp
 *.out
+*.csv
+*.class
