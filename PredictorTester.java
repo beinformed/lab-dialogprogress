@@ -17,6 +17,7 @@ public class PredictorTester {
 		List<Observation> data = new Reader(dataLoc).getData();
 		
 		Iterable<TestResult> result = frame.testAll(data);
+		WriteCSV.write(result);
 		
 		for (TestResult r : result) {
 			System.out.println(r.toString());
