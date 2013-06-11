@@ -6,22 +6,29 @@ package org.uva.predictions;
  */
 public class Prediction {
 	private double confidence;
-	private LongRange duration;
-	private Range steps;
+	private int lower;
+
+
+	private int upper;
+	private PredictionUnit unit;
 	
-	public Prediction(double confidence, LongRange duration, Range steps) {
+	public Prediction(double confidence, int lower, int upper, PredictionUnit unit) {
 		this.confidence = confidence;
-		this.duration = duration;
-		this.steps = steps;
+		this.lower = lower;
+		this.upper = upper;
+		this.unit = unit;
 	}
 	
 	public double getConfidence() {
 		return confidence;
 	}
-	public LongRange getEstimatedTimeLeft() {
-		return duration;
+	public int getLowerBound() {
+		return lower;
 	}
-	public Range getEstimatedStepsLeft() {
-		return steps;
+	public int getUpperBound() {
+		return upper;
+	}
+	public PredictionUnit getUnit() {
+		return unit;
 	}
 }

@@ -5,17 +5,16 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import com.sun.tools.javac.code.Attribute.Array;
-
 /**
  * Represents a (potentially incomplete) observation of a user filling a form.
  *
  */
 public class Observation {
 	private boolean finished;
-	private Form form;
-	private List<Question> questions;
-	private Question newest;
+	private String form;
+	private Iterable<Question> questions;
+	private Question last;
+	private Question first;
 	private int noQuestions;
 	
 	/**
@@ -28,14 +27,19 @@ public class Observation {
 	 * List of the questions the user has already answered. The iterator is expected to return the questions
 	 * in order, sorted by {@link Question#getTimestamp() timestamp} from early to late.
 	 */
-	public Observation(boolean isFinished, Form form, Iterable<Question> questions) {
+	public Observation(boolean isFinished, String form, Iterable<Question> questions) {
 		this.finished = isFinished;
 		this.form = form;
+		this.questions = questions;
 		
+		Question first = null;
 		for(Question q : questions) {
-			newest = q;
+			if(first == null)
+				first = q;
+			last = q;
 			noQuestions++;
 		}
+		this.first = first;
 	}
 	
 	/**
@@ -49,7 +53,7 @@ public class Observation {
 	 * The form the user was filling during the observation.
 	 * @return
 	 */
-	public Form getForm() {
+	public String getForm() {
 		return form;
 	}
 	/**
@@ -71,7 +75,17 @@ public class Observation {
 	 * @return
 	 */
 	public Question getLastAsked() {
-		return newest;
+		return last;
+	}
+	public Question getFirstAsked() {
+		return first;
+	}
+	
+	public int getLearnValue(PredictionUnit unit) {
+		if(unit == PredictionUnit.Time)
+			return (int) (last.getTimestamp() - first.getTimestamp());
+		else
+			return noQuestions;
 	}
 	
 	public Iterable<Observation> getSubObservations() {
