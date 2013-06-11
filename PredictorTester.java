@@ -21,6 +21,8 @@ public class PredictorTester {
 		for (TestResult r : result) {
 			System.out.println(r.toString());
 		}
+
+		WriteCSV.write(result);
 		System.out.println(System.currentTimeMillis());
 	}
 }
