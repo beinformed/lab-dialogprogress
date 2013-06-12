@@ -18,9 +18,15 @@ public class PredictorTester {
 		
 		Iterable<TestResult> result = frame.testAll(data);
 		
-		for (TestResult r : result) {
-			System.out.println(r.toString());
+		System.out.println("Writing results to result.csv");
+		
+		try {
+			ResultWriter writer = new ResultWriter("result.csv");
+			writer.write(result);
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-
+		
 	}
 }

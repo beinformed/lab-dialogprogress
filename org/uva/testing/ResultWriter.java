@@ -16,20 +16,20 @@ public class ResultWriter {
 	}
 	
 	public void write(Iterable<TestResult> result) throws IOException{
-    	writer.append("Predictor_name,path_length,error,error_unit\n");
+    	writer.append("Predictor_name,unit,path_length,error\n");
     	
 	    for (TestResult r : result) {
-	    	String predictor = r.getPredictor().toString();
+	    	String predictor = r.getPredictor().getClass().getSimpleName();
 	    	Map<Integer, Error> error = r.getAverageError();
 	    	
 	    	for(Integer key : error.keySet()) {
 		    	writer.append(predictor);
 		    	writer.append(",");
+	    		writer.append(error.get(key).getUnit().toString());
+	    		writer.append(",");
 	    		writer.append(key.toString());
 	    		writer.append(",");
 	    		writer.append(Double.toString(error.get(key).getError()));
-	    		writer.append(",");
-	    		writer.append(error.get(key).getUnit().toString());
 	    		writer.append("\n");
 	    	}
 	    }

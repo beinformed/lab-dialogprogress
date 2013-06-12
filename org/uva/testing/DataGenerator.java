@@ -14,9 +14,9 @@ public class DataGenerator {
 		private Map<Integer, Integer> qmax = new HashMap<Integer, Integer>();
 		
 		public Form() {
-			this.totalq = rand.nextInt(100) + 30;
+			this.totalq = rand.nextInt(maxQuestionsPerForm - minQuestionsPerForm) + minQuestionsPerForm;
 			this.askedmin = rand.nextInt(totalq / 3);
-			this.askedmax = askedmin + rand.nextInt(totalq - askedmin);
+			this.askedmax = askedmin + rand.nextInt(totalq - askedmin) + 1;
 		}
 		
 		public int duration(int q) {
@@ -43,6 +43,8 @@ public class DataGenerator {
 	private FileWriter writer;
 	private Random rand;	
 	private Form[] forms;
+	private int minQuestionsPerForm = 15;
+	private int maxQuestionsPerForm = 50;
 
 	public DataGenerator(String path) throws IOException {
 		this.writer = new FileWriter(path);
