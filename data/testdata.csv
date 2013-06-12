@@ -1,25 +1,1 @@
-observation_id, form_id, question_id, timestamp, answer
-# eerste formulier, eerste trace
-0, voorbeeldformulier, "Wat is uw leeftijd?", 1370615715477, 21
-0, voorbeeldformulier, "Wat is uw schoenmaat?", 1370615793621, 44
-# eerste formulier, tweede trace
-1, voorbeeldformulier, "Wat is uw leeftijd?", 1370615916236, 12
-1, voorbeeldformulier, "Waar gaat u naar school?", 1370615916236, Amsterdam
-# tweede formulier (met metadata: geen timestamp)
-2, anderformulier, "skilllevel",  , advanced
-2, anderformulier, "age", , 39
-2, anderformulier, "Wat is uw naam?", 1370616060736, Jouke van der Maas
-3, voorbeeldformulier, "Wat is uw leeftijd?", 1370810533265, 21
-3, voorbeeldformulier, "Wat is uw schoenmaat?", 1370810584382, 44
-4, voorbeeldformulier, "Wat is uw leeftijd?",1370810629199 , 12
-4, voorbeeldformulier, "Waar gaat u naar school?", , Amsterdam
-5, anderformulier, "skilllevel",  , advanced
-5, anderformulier, "age", , 39
-5, anderformulier, "Wat is uw naam?",1370810658100 , Jouke van der Maas
-6, voorbeeldformulier, "Wat is uw leeftijd?",1370810670395 , 21
-6, voorbeeldformulier, "Wat is uw schoenmaat?",1370810689877 , 44
-7, voorbeeldformulier, "Wat is uw leeftijd?",1370810700021 , 12
-7, voorbeeldformulier, "Waar gaat u naar school?",1370810707482 , Amsterdam
-8, anderformulier, "skilllevel",  , advanced
-8, anderformulier, "age", , 39
-8, anderformulier, "Wat is uw naam?",1370810718038 , Jouke van der Maas
+observation_id, form_id, question_id, timestamp, answer0, voorbeeldformulier,"Wat is uw leeftijd?",1371029090040,210, voorbeeldformulier,"Wat is uw schoenmaat?",1371029090241,441, voorbeeldformulier,"Wat is uw leeftijd?",1371029090443,121, voorbeeldformulier,"Waar gaat u naar school?",1371030986108, Amsterdam2, anderformulier,"skilllevel",  , advanced2, anderformulier,"age", ,392, anderformulier,"Wat is uw naam?",1371030994024, Jouke van der Maas3, voorbeeldformulier,"Wat is uw leeftijd?",1371030998915,213, voorbeeldformulier,"Wat is uw schoenmaat?",1371031007020,444, voorbeeldformulier,"Wat is uw leeftijd?",1371031012582,124, voorbeeldformulier,"Waar gaat u naar school?",1371031015000, Amsterdam5, anderformulier,"skilllevel",  , advanced5, anderformulier,"age", ,395, anderformulier,"Wat is uw naam?",1371031018826, Jouke van der Maas6, voorbeeldformulier,"Wat is uw leeftijd?",1371031022948,216, voorbeeldformulier,"Wat is uw schoenmaat?",1371031029317,447, voorbeeldformulier,"Wat is uw leeftijd?",1371031034631,127, voorbeeldformulier,"Waar gaat u naar school?",1371031035805, Amsterdam8, anderformulier,"skilllevel",  , advanced8, anderformulier,"age", ,398, anderformulier,"Wat is uw naam?",1371031053979, Jouke van der Maas

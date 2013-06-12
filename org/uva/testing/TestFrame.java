@@ -7,6 +7,8 @@ import java.util.Map;
 
 import org.uva.predictions.*;
 
+import com.apple.crypto.provider.Debug;
+
 
 public class TestFrame {
 	
@@ -54,12 +56,14 @@ public class TestFrame {
 			for(Observation o : actual.getSubObservations()) {
 				Prediction predicted = p.predict(o);
 				PredictionUnit unit = predicted.getUnit();
-				int correctValue = actual.getLearnValue(unit);
+				int correctValue = actual.getLearnValue(unit) - o.getLearnValue(unit);
 				
 				if(!pathSizeToError.containsKey(o.getNoQuestions()))
 					pathSizeToError.put((Integer)o.getNoQuestions(), new Error(unit));
 				
 				int error = getError(predicted, correctValue);
+				Debug.print(Integer.toString(o.getNoQuestions()) + ". " + Integer.toString(error) + 
+						" (" + Integer.toString(correctValue) + " vs " + predicted.toString() + ") - " + unit.toString() + "\n");
 				
 				pathSizeToError.get((Integer)o.getNoQuestions()).add(error);
 			}

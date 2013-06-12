@@ -17,12 +17,12 @@ import org.uva.predictions.Question;
  * 
  */
 
-public class Reader {
+public class DataReader {
 
 	BufferedReader dataRdr;
 
 	// string for file location
-	public Reader(String textfile) {
+	public DataReader(String textfile) {
 		try {
 			dataRdr = new BufferedReader(new FileReader(textfile));
 		} catch (IOException e) {

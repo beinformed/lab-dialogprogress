@@ -40,6 +40,10 @@ public class Observation {
 			noQuestions++;
 		}
 		this.first = first;
+		
+		if(finished && getLearnValue(PredictionUnit.Time) < 0) {
+			System.err.println(questions);
+		}
 	}
 	
 	/**

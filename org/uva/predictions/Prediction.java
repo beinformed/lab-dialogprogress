@@ -7,8 +7,6 @@ package org.uva.predictions;
 public class Prediction {
 	private double confidence;
 	private int lower;
-
-
 	private int upper;
 	private PredictionUnit unit;
 	
@@ -30,5 +28,9 @@ public class Prediction {
 	}
 	public PredictionUnit getUnit() {
 		return unit;
+	}
+	
+	public String toString() {
+		return "[" + Integer.toString(lower) + ", " + Integer.toString(upper) + "]";
 	}
 }

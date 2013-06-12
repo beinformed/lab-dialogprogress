@@ -1,5 +1,7 @@
 package org.uva.predictions;
 
+import java.util.Date;
+
 /**
  * Represents an answered question on a form.
  * 
@@ -45,5 +47,9 @@ public class Question {
 	 */
 	public long getTimestamp() {
 		return timestamp;
+	}
+	
+	public String toString() {
+		return (new Date(timestamp)).toString() + id + ": " + answer;
 	}
 }
