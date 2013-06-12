@@ -30,6 +30,6 @@ for unit in graphs:
     for (line, data) in lines:
         ndata = [(int(x), float(y)) for [x,y] in data]
         X, Y = zip(*sorted(ndata, key=lambda x : x[0]))
-        ax.plot(X, Y)
-
+        ax.plot(X, Y, label=line)
+    plt.legend()
 plt.show()
