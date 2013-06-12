@@ -7,9 +7,6 @@ import java.util.Map;
 
 import org.uva.predictions.*;
 
-import com.apple.crypto.provider.Debug;
-
-
 public class TestFrame {
 	
 	private Iterable<Predictor> predictors;
@@ -62,8 +59,6 @@ public class TestFrame {
 					pathSizeToError.put((Integer)o.getNoQuestions(), new Error(unit));
 				
 				int error = getError(predicted, correctValue);
-				Debug.print(Integer.toString(o.getNoQuestions()) + ". " + Integer.toString(error) + 
-						" (" + Integer.toString(correctValue) + " vs " + predicted.toString() + ") - " + unit.toString() + "\n");
 				
 				pathSizeToError.get((Integer)o.getNoQuestions()).add(error);
 			}
