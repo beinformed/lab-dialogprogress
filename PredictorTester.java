@@ -12,6 +12,10 @@ public class PredictorTester {
 		List<Predictor> predictors = new ArrayList<Predictor>();
 		predictors.add(new BaseLinePredictor(PredictionUnit.Time));
 		predictors.add(new BaseLinePredictor(PredictionUnit.Steps));
+		predictors.add(new PerObservationBLPredictor(PredictionUnit.Time));	
+		predictors.add(new PerObservationBLPredictor(PredictionUnit.Steps));	
+		predictors.add(new HighestConfidenceAggregator(PredictionUnit.Time));	
+		predictors.add(new HighestConfidenceAggregator(PredictionUnit.Steps));	
 		
 		TestFrame frame = new TestFrame(predictors);
 		List<Observation> data = new DataReader(dataLoc).getData();
