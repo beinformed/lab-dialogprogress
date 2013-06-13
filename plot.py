@@ -16,7 +16,7 @@ with open('result.csv', 'rb') as csvfile:
         for p, d in itertools.groupby(gdata, key=subgroup):
             graphs[u] += [(p, [x[2:] for x in d],),]
             
-fig = plt.figure()
+fig = plt.figure(figsize=(12,5))
 linedata = []
 linenames = []
 start = 121
@@ -25,11 +25,13 @@ for unit in graphs:
     ax = fig.add_subplot(start)
     plt.title(unit)
     plt.xlabel('Trace Length')
-    plt.ylabel('Squared Error')
+    plt.ylabel('Error')
     start += 1
     for (line, data) in lines:
         ndata = [(int(x), float(y)) for [x,y] in data]
         X, Y = zip(*sorted(ndata, key=lambda x : x[0]))
         ax.plot(X, Y, label=line)
-    plt.legend()
+    plt.savefig('test.pdf', bbox_inches=0)
+plt.legend()
 plt.show()
+plt.savefig('accuracy.pdf', bbox_inches=0)

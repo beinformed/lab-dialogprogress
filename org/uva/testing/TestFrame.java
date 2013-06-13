@@ -16,7 +16,7 @@ public class TestFrame {
 	}
 	
 	public Iterable<TestResult> testAll(List<Observation> data) {
-		Collection<DataFold<Observation>> split = DataFold.allFromList(data, 3);
+		Collection<DataFold<Observation>> split = DataFold.allFromList(data, 5);
 		List<TestResult> results = new ArrayList<TestResult>();
 		
 		for(Predictor p : predictors)
@@ -70,12 +70,14 @@ public class TestFrame {
 	private int getError(Prediction predicted, int correctValue) {
 		int lower = predicted.getLowerBound();
 		int upper = predicted.getUpperBound();
-		if(correctValue >= lower && correctValue <= upper)
-			return 0;
-		else if(correctValue < lower)
-			return (lower - correctValue)^2;
-		else
-			return (correctValue - upper)^2;
+		int result = 0;
+		
+		if(correctValue < lower)
+			result = (lower - correctValue)^2;
+		else if(correctValue > upper)
+			result = (correctValue - upper)^2;
+		
+		return (int) Math.sqrt(result);
 	}
 }
 
