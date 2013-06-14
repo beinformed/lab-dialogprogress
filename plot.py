@@ -6,11 +6,13 @@ import sys
 
 if(len(sys.argv) < 2):
     print("Syntax:\n\
-python plot.py <results>\n\
-<results>: The predictor's output to plot")
+python plot.py <results> [out]\n\
+<results>: The predictor's output to plot\n\
+<out>: name of file to save the image to. If not provided, the graph is shown on the screen.")
     exit()
 
 location = sys.argv[1]
+out = sys.argv[2] if len(sys.argv) >= 3 else ''
 
 graphs = {}
 with open(location, 'rt') as csvfile:
@@ -40,7 +42,9 @@ for unit in graphs:
         ndata = [(int(x), float(y)) for [x,y] in data]
         X, Y = zip(*sorted(ndata, key=lambda x : x[0]))
         ax.plot(X, Y, label=line)
-    plt.savefig('test.pdf', bbox_inches=0)
 plt.legend()
-plt.show()
-plt.savefig('accuracy.pdf', bbox_inches=0)
+
+if out == '':
+    plt.show()
+else:
+    plt.savefig(out, bbox_inches=0)
