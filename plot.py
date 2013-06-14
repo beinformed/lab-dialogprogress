@@ -2,9 +2,18 @@ import pylab as plt
 import csv
 import itertools
 import subprocess
+import sys
+
+if(len(sys.argv) < 2):
+    print("Syntax:\n\
+python plot.py <results>\n\
+<results>: The predictor's output to plot")
+    exit()
+
+location = sys.argv[1]
 
 graphs = {}
-with open('result.csv', 'rb') as csvfile:
+with open(location, 'rt') as csvfile:
     reader = csv.reader(csvfile)
     next(reader, None)
     maingroup = lambda x: x[1]

@@ -9,9 +9,16 @@ public class RandomDataGenerator {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Writing data to data/test2.csv");
+		if(args.length < 1) {
+			System.out.println("Syntax:\njava RandomDataGenerator <location>\n<location>: output file for the data");
+			System.exit(1);
+		}
+		
+		String location = args[0];
+		
+		System.out.println("Writing data to " + location);
 		try {
-			DataGenerator gen = new DataGenerator("data/test2.csv");
+			DataGenerator gen = new DataGenerator(location);
 			gen.generate(10000);
 			gen.close();
 		} catch (IOException e) {
