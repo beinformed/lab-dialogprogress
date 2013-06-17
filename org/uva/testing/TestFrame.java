@@ -26,26 +26,19 @@ public class TestFrame {
 	}
 	
 	private TestResult testPredictor(Predictor p, Collection<DataFold<Observation>> data) {
-		Map<Integer, Error> pathSizeToError = new HashMap<Integer, Error>();
+		List<Error> errors = new ArrayList<Error>();
 		
 		for(DataFold<Observation> f : data) {
-			Map<Integer, Error> errors = testFold(p, f);
+			List<Error> foldErrors = testFold(p, f);
 			
-			for(Integer key : errors.keySet()) {
-				Error error = errors.get(key);
-				
-				if(!pathSizeToError.containsKey(key))
-					pathSizeToError.put(key, new Error(error.getUnit()));
-				
-				pathSizeToError.get(key).add(error);
-			}
+			errors.addAll(foldErrors);
 		}	
 		
-		return new TestResult(p, pathSizeToError);
+		return new TestResult(p, errors);
 	}
 
-	private Map<Integer, Error> testFold(Predictor p, DataFold<Observation> f) {
-		Map<Integer, Error> pathSizeToError = new HashMap<Integer, Error>();
+	private List<Error> testFold(Predictor p, DataFold<Observation> f) {
+		List<Error> errors = new ArrayList<Error>();
 		
 		p.train(f.getTrainingSet());
 		
@@ -55,19 +48,16 @@ public class TestFrame {
 				PredictionUnit unit = predicted.getUnit();
 				int correctValue = actual.getLearnValue(unit) - o.getLearnValue(unit);
 				
-				if(!pathSizeToError.containsKey(o.getNoQuestions()))
-					pathSizeToError.put((Integer)o.getNoQuestions(), new Error(unit));
-				
-				int error = getError(predicted, correctValue);
-				
-				pathSizeToError.get((Integer)o.getNoQuestions()).add(error);
+				Error error = new Error(unit, o.getNoQuestions(), actual.getNoQuestions(),
+						getError(predicted, correctValue), predicted.getConfidence());
+				errors.add(error);
 			}
 		}
-		
-		return pathSizeToError;
+
+		return new TestResult(p, errors);
 	}
 
-	private int getError(Prediction predicted, int correctValue) {
+	private double getError(Prediction predicted, int correctValue) {
 		int lower = predicted.getLowerBound();
 		int upper = predicted.getUpperBound();
 		int result = 0;
@@ -77,7 +67,7 @@ public class TestFrame {
 		else if(correctValue > upper)
 			result = (correctValue - upper)^2;
 		
-		return (int) Math.sqrt(result);
+		return Math.sqrt(result);
 	}
 }
 

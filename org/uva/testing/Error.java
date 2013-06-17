@@ -3,28 +3,33 @@ package org.uva.testing;
 import org.uva.predictions.PredictionUnit;
 
 public class Error {
-	private int total = 0;
-	private int count = 0;
+	private double error;
 	private PredictionUnit unit;
+	private int totalPath;
+	private int pathSoFar;
+	private double confidence;
 	
-	public Error(PredictionUnit unit) {
-				this.unit = unit;
-	}
-	
-	public void add(int error) {
-		this.count++;
-		this.total += error;
-	}
-	public void add(Error e) {
-		this.total += e.total;
-		this.count += e.count;
+	public Error(PredictionUnit unit, int pathSoFar, int totalPath, double error, double confidence) {
+		this.totalPath = totalPath;
+		this.pathSoFar = pathSoFar;
+		this.error = error;
+		this.unit = unit;
+		this.confidence = confidence;
 	}
 	
 	public double getError() {
-		return total / (double)count;
+		return error;
 	}
 	public PredictionUnit getUnit() {
 		return unit;
+	}
+	
+	public int getProgressPercentage() {
+		return (int) (pathSoFar / (double)totalPath * 100);
+	}
+	
+	public double getConfidence() {
+		return confidence;
 	}
 	
 	public String toString() {
