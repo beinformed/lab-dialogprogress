@@ -1,0 +1,7 @@
+Financial-sp-health-sp-check_Households-sp-registration_model_Household_CREATES,6677c069-62c7-4f10-98f4-7f989150550f,1371476071488,'','',DATA_MISSING
+Financial-sp-health-sp-check_Households-sp-registration_model_Household_CREATES,6677c069-62c7-4f10-98f4-7f989150550f,1371476076510,'[DataAnchor [Household[0]|name]]','DataAnchor [Household[0]|name]=Xander',DATA_ERROR
+Financial-sp-health-sp-check_Households-sp-registration_model_Household_CREATES,6677c069-62c7-4f10-98f4-7f989150550f,1371476084031,'[DataAnchor [Household[0]|name]]','DataAnchor [Household[0]|name]=Ronald',DATA_MISSING
+Financial-sp-health-sp-check_Households-sp-registration_model_Household_CREATES,6677c069-62c7-4f10-98f4-7f989150550f,1371476098217,'[DataAnchor [Household_Member[0]|firstName], DataAnchor [Household_Member[0]|cash], DataAnchor [Household_Member[0]|savings]]','DataAnchor [Household_Member[0]|firstName]=Truus, DataAnchor [Household_Member[0]|cash]=10, DataAnchor [Household_Member[0]|savings]=1000',OK
+Financial-sp-health-sp-check_Households-sp-registration_model_Household_CHANGES,3fb8d0f3-8cf9-4868-b2ab-c7f5c508819c,1371476098327,'','',OK
+Financial-sp-health-sp-check_Households-sp-registration_model_Household_CORRECTS,108c25f8-8483-4f41-8ab9-54ad6f3d4397,1371476098329,'','',OK
+Financial-sp-health-sp-check_Households-sp-registration_model_Household_REMOVES,a60d1a26-2205-45c8-bdc7-883f6b3267bb,1371476098330,'','',OK
