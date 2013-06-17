@@ -45,13 +45,13 @@ public class TestResult {
 				stepsProgress.put(progress, stepsProgress.get(progress) + e.getError());
 				stepsCount++;
 			}
-			
-			for(int p : timeProgress.keySet()) {
-				time.addDataPoint(p, timeProgress.get(p) / timeCount);
-			}
-			for(int p : stepsProgress.keySet()) {
-				time.addDataPoint(p, stepsProgress.get(p) / stepsCount);
-			}
+		}
+		
+		for(int p : timeProgress.keySet()) {
+			time.addDataPoint(p, timeProgress.get(p) / timeCount);
+		}
+		for(int p : stepsProgress.keySet()) {
+			steps.addDataPoint(p, stepsProgress.get(p) / stepsCount);
 		}
 		
 		List<Graph> result = new ArrayList<Graph>();

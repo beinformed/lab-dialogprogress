@@ -54,7 +54,7 @@ public class TestFrame {
 			}
 		}
 
-		return new TestResult(p, errors);
+		return errors;
 	}
 
 	private double getError(Prediction predicted, int correctValue) {

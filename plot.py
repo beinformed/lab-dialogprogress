@@ -32,7 +32,7 @@ with open(location, 'rt') as csvfile:
 fig = plt.figure(figsize=(12,12))
 linedata = []
 linenames = []
-start = 221
+start = 111
 for unit in graphs:
     lines = graphs[unit]
     ax = fig.add_subplot(start)
@@ -43,8 +43,13 @@ for unit in graphs:
     for (line, data) in lines:
         ndata = [(float(x), float(y)) for [x,y] in data]
         X, Y = zip(*sorted(ndata, key=lambda x : x[0]))
-        S = [1,]*len(X)
-        ax.scatter(X, Y,s=S, label=line)
+        S = [.1,]*len(X)
+        if(graphlabels[unit][0] == 'Confidence'):
+            ax.scatter(X, Y, s=S, label=line)
+        else:
+            ax.plot(X, Y, label=line)
+        break
+    break
 plt.legend()
 
 if out == '':
