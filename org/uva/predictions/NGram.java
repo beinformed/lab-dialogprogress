@@ -4,7 +4,7 @@ package org.uva.predictions;
 public class NGram{
 	String[] ngram;
 
-	public NGram( Iterable<String> g, int n  ){
+	public NGram( Iterable<String> g, int n, ValueType type  ){
 		ngram = new String[n];
 		int i = 0;
 		for ( String gram : g)
