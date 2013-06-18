@@ -19,21 +19,19 @@ public class PredictorTester {
 		predictors.add(new BaseLinePredictor(PredictionUnit.Time));
 		predictors.add(new BaseLinePredictor(PredictionUnit.Steps));
 		predictors.add(new PerObservationBLPredictor(PredictionUnit.Time));	
-		predictors.add(new PerObservationBLPredictor(PredictionUnit.Steps));	
-		predictors.add(new HighestConfidenceAggregator(PredictionUnit.Time));	
-		predictors.add(new HighestConfidenceAggregator(PredictionUnit.Steps));	
+		predictors.add(new PerObservationBLPredictor(PredictionUnit.Steps));
 		
 		TestFrame frame = new TestFrame(predictors);
 		List<Observation> data = new DataReader(dataLoc).getData();
 		
 		Iterable<TestResult> result = frame.testAll(data);
 		
-		System.out.println("Writing results to " + outputLoc);
-		
 		try {
 			ResultWriter writer = new ResultWriter(outputLoc);
 			writer.write(result);
 			writer.close();
+			System.out.println("Written results to " + outputLoc);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
