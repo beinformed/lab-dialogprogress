@@ -7,7 +7,13 @@ import org.uva.testing.*;
 
 public class PredictorTester {
 	public static void main(String[] args) throws InterruptedException 	{
-		String dataLoc = "data/test2.csv";	
+		if(args.length < 2) {
+			System.out.println("Syntax:\njava PredictorTester <in> <out>\n<in>: input file containing data\n<out>: results of the predictors");
+			System.exit(1);
+		}
+		
+		String dataLoc = args[0];
+		String outputLoc = args[1];
 		
 		List<Predictor> predictors = new ArrayList<Predictor>();
 		predictors.add(new BaseLinePredictor(PredictionUnit.Time));
@@ -22,10 +28,10 @@ public class PredictorTester {
 		
 		Iterable<TestResult> result = frame.testAll(data);
 		
-		System.out.println("Writing results to result.csv");
+		System.out.println("Writing results to " + outputLoc);
 		
 		try {
-			ResultWriter writer = new ResultWriter("result.csv");
+			ResultWriter writer = new ResultWriter(outputLoc);
 			writer.write(result);
 			writer.close();
 		} catch (IOException e) {
