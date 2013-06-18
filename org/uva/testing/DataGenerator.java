@@ -51,9 +51,6 @@ public class DataGenerator {
 		writer.write("observation_id, form_id, question_id, timestamp, answer\n");
 		this.rand = new Random();
 		this.forms = new Form[] { 
-				new Form(),
-				new Form(),
-				new Form(),
 				new Form()
 			};
 	}

@@ -3,28 +3,29 @@ package org.uva.predictions;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.ArrayDeque;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
 
 public class NGrams{
 	
-	ValueType type;
-	int n;
+	private EnumSet<ValueType> type;
+	private int n;
 	
-	Map<NGram,Integer> nGramCounts;
-	Map<NGram,Integer> nM1GramCounts;
-	Map<NGram,Double> nGramSmoothedCounts;
-	Map<NGram,Double> nM1GramSmoothedCounts;
+	private Map<NGram,Integer> nGramCounts;
+	private Map<NGram,Integer> nM1GramCounts;
+	private Map<NGram,Double> nGramSmoothedCounts;
+	private Map<NGram,Double> nM1GramSmoothedCounts;
 	
-	Map<NGram, Double> nGramProbs;
-	Map<NGram, Double> nGramProbsSmthd;
+	private Map<NGram, Double> nGramProbs;
+	private Map<NGram, Double> nGramProbsSmthd;
 		
 	/**
 	 *
 	 * assumes only 1 form is present
 	 */
-	public NGrams( Iterable<Observation> data, ValueType type, int n ){
+	public NGrams( Iterable<Observation> data, EnumSet<ValueType> type, int n ){
 		buildModel(data, n, type);
 		this.type = type;
 		this.n = n;
@@ -34,15 +35,15 @@ public class NGrams{
 //		} 
 	}
 
-	private void buildModel( Iterable<Observation> data, int n, ValueType type ){
-		nGramCounts = setGramCounts(data, n );
-		nM1GramCounts = setGramCounts(data, n-1 );
+	private void buildModel( Iterable<Observation> data, int n, EnumSet<ValueType> type ){
+		nGramCounts = findGramCounts(data, n );
+		nM1GramCounts = findGramCounts(data, n-1 );
 		nGramSmoothedCounts = gTsmoothe(nGramCounts);
 		nM1GramSmoothedCounts = gTsmoothe(nM1GramCounts);
 		nGramProbs = calcProbabilities(n);
 	}
 
-	private Map<NGram, Integer> setGramCounts( Iterable<Observation> data, int n ){
+	private Map<NGram, Integer> findGramCounts( Iterable<Observation> data, int n ){
 	
 		Map<NGram, Integer> counts = new HashMap<NGram, Integer>();
 		for (Observation obs : data){

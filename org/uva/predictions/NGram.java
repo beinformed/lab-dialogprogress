@@ -1,57 +1,46 @@
 package org.uva.predictions;
 
+import java.util.EnumSet;
+
 
 public class NGram{
-	String ngram;
+	private String ngram;
 	
-	public NGram( String g, int n, ValueType type  ){
-		ngram = g;
+	public NGram(Iterable<Question> questions, EnumSet<ValueType> type) {
+		String ngram = "";
+		long first = -1;
+		
+		for(Question q : questions) {
+			if(first == -1)
+				first = q.getTimestamp();
+			ngram += getString(q, type, first) + ",";
+		}
+		this.ngram = ngram.substring(0, ngram.length() - 1);
 	}
 	
+	private String getString(Question q, EnumSet<ValueType> type, long first) {
+		String result = "";
+		
+		if(type.contains(ValueType.TimeStamp))
+			result += q.getTimestamp() - first;
+		if(type.contains(ValueType.Question))
+			result += q.getId();
+		if(type.contains(ValueType.Answer))
+			result += q.getAnswer();
+		if(type.contains(ValueType.Status))
+			result += ""; // TODO: add timestamp
+		
+		return result;
+	}
 
-	public NGram( Iterable<String> g, int n, ValueType type  ){
-		ngram = "";
-		int i = 0;
-		for ( String gram : g){
-			ngram += gram;
-			if( ++i < n )
-				ngram += ",";
-		}
-	}
-	
-	public NGram( String[] g  ){
-		ngram = "";
-		int i = 0;
-		for ( String gram : g){
-			ngram += gram;
-			if( ++i < g.length )
-				ngram += ",";
-		}
-	}
-	public NGram( String g){
-		ngram = g;
-	}	
-	public String[] getGramArray(){
-		return ngram.split(",");
-	}
-	
 	@Override
 	public boolean equals( Object  o ){
-		NGram n = (NGram) o;
-//		System.out.printf(" --- using equals on \n%s\n  %s\n\n", n.getGramArray(), getGramArray() );
-		boolean ret = false;
-		if ( this == n || n.toString().equals( toString())){
-			ret = true;
-//			System.out.printf( "TRUE \n" );
-		}
-		return ret;
+		return ngram.equals(o);
 	}
 
 	@Override
 	public int hashCode(){
-		int hash = toString().hashCode();	
-//		System.out.printf("---- using hashcode: %d \n", hash );
-		return hash;
+		return ngram.hashCode();
 	}
 	
 	@Override		
