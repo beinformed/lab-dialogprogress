@@ -1,7 +1,10 @@
 package org.uva.testing;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import org.uva.predictions.Observation;
@@ -20,64 +23,172 @@ import org.uva.predictions.Question;
 public class DataReader {
 
 	BufferedReader dataRdr;
-
-	// string for file location
-	public DataReader(String textfile) {
-		try {
-			dataRdr = new BufferedReader(new FileReader(textfile));
-		} catch (IOException e) {
-			e.printStackTrace();
+	private List<Observation> observations;
+	
+	private class DataLine {
+		public final String form;
+		public final String obsid;
+		public final long timestamp;
+		public final String question;
+		public final String answer;
+		public final String type;
+		
+		public DataLine(String form, String obsid, long timestamp,
+				String question, String answer, String type) {
+			this.form = form;
+			this.obsid = obsid;
+			this.timestamp = timestamp;
+			this.question = question;
+			this.answer = answer;
+			this.type = type;
 		}
 	}
 
+	// string for file location
+	public DataReader(String textfile) throws FileNotFoundException {
+		dataRdr = new BufferedReader(new FileReader(textfile));
+	}
+
+	public List<Observation> getObservations() {
+		return observations;
+	}
+
+	public void close() throws IOException {
+		dataRdr.close();
+	}
+	
 	/**
 	 * Method getData() - reads data from buffered readers and makes sure every
 	 * observation has the correct form_id
+	 * @throws IOException 
 	 */
-	public List<Observation> getData() {
-		Map<Integer, List<Question>> questions = new HashMap<Integer, List<Question>>();
-		Map<Integer, String> form = new HashMap<Integer, String>();
-		List<Observation> data = new ArrayList<Observation>();
-
-		/* Read forms and save in map: forms */
-		try {
-			/*
-			 * read data file and makes sure every observation has correct form
-			 * associated
-			 */
-			String line = dataRdr.readLine();
-			// skip header
-			line = dataRdr.readLine();
-			while (line != null) {
-				StringTokenizer tokenizer = new StringTokenizer(line, ",\n\t");
-				while (tokenizer.hasMoreTokens() && !line.startsWith("#")) {
-					int observationId = Integer.parseInt(tokenizer.nextToken());
-					String formId = tokenizer.nextToken().trim();
-
-					form.put(observationId, formId);
-					if (!questions.containsKey(observationId)) {
-						questions.put(observationId, new ArrayList<Question>());
-					}
-					String questionId = tokenizer.nextToken().trim();
-					String rawTime = tokenizer.nextToken().trim();
-					if (rawTime.isEmpty())
-						rawTime = "0";
-					long timestamp = Long.parseLong(rawTime);
-					String answer = tokenizer.nextToken().trim();
-					questions.get(observationId).add(
-							new Question(questionId, answer, timestamp));
-				}
-				line = dataRdr.readLine();
+	public void read() throws IOException {
+		Map<String, List<DataLine>> lines = getLines();
+		List<Observation> observations = new ArrayList<Observation>();
+		
+		for(String obsid : lines.keySet()) {
+			String form = null;
+			List<Question> questions = new ArrayList<Question>();
+			
+			for(DataLine line : lines.get(obsid)) {
+				form = line.form;
+				questions.addAll(parseQuestion(line));
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
+			
+			observations.add(new Observation(true, form, questions));
 		}
+		this.observations = observations;
+	}
 
-		List<Question> ob = new ArrayList<Question>();
-		for (Integer obId : questions.keySet()) {
-			ob = questions.get(obId);
-			data.add(new Observation(true, form.get(obId), ob));
+	private List<Question> parseQuestion(DataLine line) {
+		List<Question> result = new ArrayList<Question>();
+		String[] encodedQA = line.answer.split("DataAnchor ");
+		
+		for(String s : encodedQA) {
+			String encodedQuestion = s.endsWith(",") ? s.substring(0, s.length() - 1) : s;
+			result.add(buildQuestion(encodedQuestion, line.timestamp, line.type));
 		}
-		return data;
+		
+		return result;
+	}
+
+	private Question buildQuestion(String encodedQuestion, long timestamp,
+			String type) {
+		String[] parts = encodedQuestion.split("=");
+		if(parts.length < 2)
+			return new Question(encodedQuestion, "", timestamp, type);
+		
+		String question = parts[0];
+		String answer = parts[1];
+		
+		return new Question(cleanQuestion(question), answer, timestamp, type);
+	}
+
+	private String cleanQuestion(String question) {
+		// Questions look like this: [object[index]|key]
+		// We want them to look like this: object|key
+		
+		// remove outer [ and ]
+		String real = question.substring(1, question.length() - 1);
+		// remove index
+		real = real.replaceAll("\\[.*?\\]", "");
+		
+		return real;
+	}
+
+	private Map<String, List<DataLine>> getLines() throws IOException {
+		Map<String, List<DataLine>> lines = new HashMap<String, List<DataLine>>();
+		
+		String line = dataRdr.readLine();
+		while(line != null) {
+			DataLine dataLine = readLine(line);
+			
+			if(!lines.containsKey(dataLine.obsid))
+				lines.put(dataLine.obsid, new ArrayList<DataLine>());
+			lines.get(dataLine.obsid).add(dataLine);
+			line = dataRdr.readLine();
+		}
+		
+		return lines;
+	}
+	
+	private DataLine readLine(String line) {
+		String[] parts = splitLine(line);
+		
+		return new DataLine(parts[0], parts[1], Long.parseLong(parts[2]), parts[3], parts[4], parts[5]);
+	}
+	
+	private String[] splitLine(String line) {
+		String[] parts = line.split("'");
+		List<String> result = new ArrayList<String>();
+		
+		for(int i = 0; i < parts.length; i++) {
+			if(i % 2 == 0) {				
+				String[] split = trimCommas(parts[i]).split(",");
+				for(String s : split)
+					result.add(s);
+			} else {
+				result.add(parts[i]);
+			}
+		}
+		return result.toArray(new String[0]);
+	}
+	
+	private String trimCommas(String part) {
+		String result = part;
+		if(part.startsWith(",")) {
+			result = part.substring(1);
+			if(result.isEmpty())
+				return part;
+		}
+		return result;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

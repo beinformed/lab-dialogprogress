@@ -1,5 +1,6 @@
 package org.uva.predictions;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -9,6 +10,7 @@ import java.util.Date;
 public class Question {
 	private String id;
 	private String answer;
+	private String type;
 	private long timestamp;
 	
 	/**
@@ -21,10 +23,11 @@ public class Question {
 	 * @param timestamp
 	 * The epoch timestamp of the moment this question was answered.
 	 */
-	public Question(String id, String answer, long timestamp) {
+	public Question(String id, String answer, long timestamp, String type) {
 		this.id = id;
 		this.answer = answer;
 		this.timestamp = timestamp;
+		this.type = type;
 	}
 	
 	/**
@@ -50,6 +53,19 @@ public class Question {
 	}
 	
 	public String toString() {
-		return (new Date(timestamp)).toString() + id + ": " + answer;
+		String date = SimpleDateFormat.getDateTimeInstance().format(new Date(timestamp));
+		return  date + ": " + id + "=" + answer + "-" + type;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

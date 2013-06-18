@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,22 @@ public class PredictorTester {
 		predictors.add(new PerObservationBLPredictor(PredictionUnit.Steps));
 		
 		TestFrame frame = new TestFrame(predictors);
-		List<Observation> data = new DataReader(dataLoc).getData();
+		
+		DataReader reader = null;
+		try {
+			reader = new DataReader(dataLoc);
+			reader.read();
+			reader.close();
+		} catch (FileNotFoundException e1) {
+			System.err.println("File " + dataLoc + " was not found.");
+			System.exit(1);
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+
+		
+		List<Observation> data = reader.getObservations();
 		
 		Iterable<TestResult> result = frame.testAll(data);
 		

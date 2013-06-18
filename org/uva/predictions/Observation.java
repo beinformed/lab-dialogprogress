@@ -109,6 +109,10 @@ public class Observation {
 		all = original.toArray(all); // guaranteed to return a new array, not the internal one
 		return Arrays.asList(all);
 	}
+	
+	public String toString() {
+		return questions.toString();
+	}
 }
 
 

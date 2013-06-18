@@ -15,7 +15,6 @@ public class TestResult {
 	private List<Error> errors;
 	private Predictor predictor;
 	private String lineLabel;
-	private PredictionUnit unit;
 	
 	public TestResult(Predictor predictor, List<Error> errors) {
 		this.errors = errors;

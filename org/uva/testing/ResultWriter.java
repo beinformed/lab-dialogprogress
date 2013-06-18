@@ -1,6 +1,5 @@
 package org.uva.testing;
 
-import java.util.*;
 import java.io.FileWriter;
 import java.io.IOException;
 
