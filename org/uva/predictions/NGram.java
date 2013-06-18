@@ -1,21 +1,24 @@
 package org.uva.predictions;
 
+import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.List;
 
 
 public class NGram{
-	private String ngram;
+	private String[] words;
+	private String string;
 	
 	public NGram(Iterable<Question> questions, EnumSet<ValueType> type) {
-		String ngram = "";
+		List<String> ngram = new ArrayList<String>();
 		long first = -1;
 		
 		for(Question q : questions) {
 			if(first == -1)
 				first = q.getTimestamp();
-			ngram += getString(q, type, first) + ",";
+			ngram.add(getString(q, type, first));
 		}
-		this.ngram = ngram.substring(0, ngram.length() - 1);
+		this.words = ngram.toArray(new String[0]);
 	}
 	
 	private String getString(Question q, EnumSet<ValueType> type, long first) {
@@ -28,23 +31,30 @@ public class NGram{
 		if(type.contains(ValueType.Answer))
 			result += q.getAnswer();
 		if(type.contains(ValueType.Status))
-			result += ""; // TODO: add timestamp
+			result += ""; // TODO: add status
 		
 		return result;
 	}
 
 	@Override
 	public boolean equals( Object  o ){
-		return ngram.equals(o);
+		return toString().equals(o.toString());
 	}
 
 	@Override
 	public int hashCode(){
-		return ngram.hashCode();
+		return toString().hashCode();
 	}
 	
 	@Override		
 	public String toString(){
-		return ngram;
+		if(string != null)
+			return string;
+		
+		String result = words[0];
+		for(int i = 1; i < words.length; i++)
+			result += "," + words[i];
+		string = result;
+		return result;
 	}
 }
