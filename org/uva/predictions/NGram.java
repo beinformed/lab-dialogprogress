@@ -2,20 +2,37 @@ package org.uva.predictions;
 
 
 public class NGram{
-	String[] ngram;
-
-	public NGram( Iterable<String> g, int n, ValueType type  ){
-		ngram = new String[n];
-		int i = 0;
-		for ( String gram : g)
-			ngram[i++] = gram;
+	String ngram;
+	
+	public NGram( String g, int n, ValueType type  ){
+		ngram = g;
 	}
 	
-	public NGram( String[] g){
+
+	public NGram( Iterable<String> g, int n, ValueType type  ){
+		ngram = "";
+		int i = 0;
+		for ( String gram : g){
+			ngram += gram;
+			if( ++i < n )
+				ngram += ",";
+		}
+	}
+	
+	public NGram( String[] g  ){
+		ngram = "";
+		int i = 0;
+		for ( String gram : g){
+			ngram += gram;
+			if( ++i < g.length )
+				ngram += ",";
+		}
+	}
+	public NGram( String g){
 		ngram = g;
 	}	
 	public String[] getGramArray(){
-		return ngram;
+		return ngram.split(",");
 	}
 	
 	@Override
@@ -39,9 +56,6 @@ public class NGram{
 	
 	@Override		
 	public String toString(){
-		String ret = "";
-		for ( String s : ngram )
-			ret += s;
-		return ret;
+		return ngram;
 	}
 }

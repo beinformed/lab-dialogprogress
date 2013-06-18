@@ -17,6 +17,9 @@ public class NGramsTester{
 		Map<NGram, Double> probs = model.getProbabilities();
 		Map<NGram, Integer> ngrams = model.getNGramCounts();
 		Map<NGram, Integer> nM1grams = model.getNM1GramCounts();
+		Map<NGram, Double> ngramsSmthd = model.getNGramSmoothedCounts();
+		Map<NGram, Double> nM1gramsSmthd = model.getNM1GramSmoothedCounts();
+		Map<NGram, Double> probsSmthd = model.getProbabilitiesSMTHD();
 
 		System.out.printf("\n NGRAMS: \n");
 		for ( NGram key : ngrams.keySet()){
@@ -32,6 +35,22 @@ public class NGramsTester{
 		for ( NGram key : probs.keySet()){
 			System.out.printf(" %s : %f  \n", key.toString(), probs.get(key) );
 		}
+		
+		System.out.printf("\n SMOOTHED NGRAMS: \n");
+		for ( NGram key : ngramsSmthd.keySet()){
+			System.out.printf(" %s : %f  \n", key.toString(), ngramsSmthd.get(key) );
+		}
+
+		System.out.printf("\n SMOOTHED N MIN 1 GRAMS: \n");
+		for ( NGram key : nM1gramsSmthd.keySet()){
+			System.out.printf(" %s : %f  \n", key.toString(), nM1gramsSmthd.get(key) );
+		}
+
+		System.out.printf("\n SMOOTHED FREQUENCIES: \n");
+		for ( NGram key : probsSmthd.keySet()){
+			System.out.printf(" %s : %f  \n", key.toString(), probsSmthd.get(key) );
+		}
+
 	}
 }
 

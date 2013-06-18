@@ -9,18 +9,25 @@ import java.util.Iterator;
 
 public class NGrams{
 	
+	ValueType type;
+	int n;
 	
 	Map<NGram,Integer> nGramCounts;
 	Map<NGram,Integer> nM1GramCounts;
+	Map<NGram,Double> nGramSmoothedCounts;
+	Map<NGram,Double> nM1GramSmoothedCounts;
+	
 	Map<NGram, Double> nGramProbs;
+	Map<NGram, Double> nGramProbsSmthd;
 		
 	/**
 	 *
 	 * assumes only 1 form is present
 	 */
 	public NGrams( Iterable<Observation> data, ValueType type, int n ){
-		buildModel(data, n);
-
+		buildModel(data, n, type);
+		this.type = type;
+		this.n = n;
 //		switch (type) {
 //			case Question : nGramCounts = setStringGrams(data, n);
 //			case TimeStamp : setLongGrams(data, n);
@@ -29,7 +36,9 @@ public class NGrams{
 
 	private void buildModel( Iterable<Observation> data, int n, ValueType type ){
 		nGramCounts = setGramCounts(data, n, type );
-		nM1GramCounts = setGramCountss(data, n-1, type );
+		nM1GramCounts = setGramCounts(data, n-1, type );
+		nGramSmoothedCounts = gTsmoothe(nGramCounts);
+		nM1GramSmoothedCounts = gTsmoothe(nM1GramCounts);
 		nGramProbs = calcProbabilities(n);
 	}
 
@@ -68,8 +77,43 @@ public class NGrams{
 		return probs;
 	}	
 
+	private Map<NGram,Double> gTsmoothe( Map<NGram, Integer> counts ){
+		int totalN = 0;
+		int maxCount = 0;
+		Map<Integer, Integer> countCounts = new HashMap<Integer, Integer>();
+		for(Integer cnt : counts.values()){
+			if( !countCounts.containsKey(cnt) )
+				countCounts.put( cnt, 0 );
+			countCounts.put(cnt, countCounts.get(cnt)+1);
+			totalN += cnt;
+			maxCount = (maxCount < cnt ? cnt : maxCount);
+		}	
+			System.out.printf( " max count = %d \n", maxCount);
 
-	private  Map<NGram, Integer> count( Deque<String> valueQ, Map<NGram, Integer> counts, int n, ValueType type ){
+		Map<NGram, Double> smoothedCounts = new HashMap<NGram, Double>();
+		for (NGram gram : counts.keySet()){
+			int cnt = counts.get(gram);
+			int i = 1;
+			double newCnt = -1;
+			if ( cnt == maxCount ){
+				newCnt = (double) countCounts.get(cnt);
+			} else {
+				while (!countCounts.containsKey(cnt+i))
+					i++;
+				newCnt = (cnt+1) * ( (double) countCounts.get(cnt+i)
+													/ (double) countCounts.get(cnt));
+			}
+			smoothedCounts.put( gram, newCnt); 
+		}
+		int i = 1;
+		while (!countCounts.containsKey(i))
+			i++;
+		smoothedCounts.put(new NGram("unseen", n, type), (double) countCounts.get(i)/(double) totalN);
+		
+		return smoothedCounts;
+	}
+	
+	private  Map<NGram, Integer> count( Deque<String> valueQ, Map<NGram, Integer> counts ){
 		
 		NGram gram = new NGram(valueQ, n, type);
 		if ( counts.containsKey(gram)){
@@ -92,6 +136,19 @@ public class NGrams{
 	public Map<NGram,Double> getProbabilities( ){
 		return nGramProbs;
 	}
+
+	public Map<NGram,Double> getNGramSmoothedCounts( ){
+		return nGramSmoothedCounts;
+	}
+	
+	public Map<NGram,Double> getNM1GramSmoothedCounts( ){
+		return nM1GramSmoothedCounts;
+	}
+
+	public Map<NGram,Double> getProbabilitiesSMTHD( ){
+		return nGramProbsSmthd;
+	}
+
 
 }
 
