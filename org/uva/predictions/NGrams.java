@@ -95,7 +95,7 @@ public class NGrams{
 			int cnt = counts.get(gram);
 			int i = 1;
 			double newCnt = -1;
-			if ( cnt == maxCount ){
+			if ( cnt < 6  ){
 				newCnt = (double) countCounts.get(cnt);
 			} else {
 				while (!countCounts.containsKey(cnt+i))
