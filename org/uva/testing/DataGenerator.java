@@ -48,7 +48,6 @@ public class DataGenerator {
 
 	public DataGenerator(String path) throws IOException {
 		this.writer = new FileWriter(path);
-		writer.write("observation_id, form_id, question_id, timestamp, answer\n");
 		this.rand = new Random();
 		this.forms = new Form[] { 
 				new Form(),
@@ -80,7 +79,7 @@ public class DataGenerator {
 		String obs = Integer.toString(observation);
 		
 		for(Long l : questions) {
-			writer.write(obs + "," + form + "," + "q," + l.toString() + ",a\n");
+			writer.write(form + "," + obs + "," + l.toString() + ",[DataAnchor [q]],DataAnchor [q]=a,OK\n");
 		}
 	}
 
