@@ -35,14 +35,14 @@ public class NGrams{
 	}
 
 	private void buildModel( Iterable<Observation> data, int n, ValueType type ){
-		nGramCounts = setGramCounts(data, n, type );
-		nM1GramCounts = setGramCounts(data, n-1, type );
+		nGramCounts = setGramCounts(data, n );
+		nM1GramCounts = setGramCounts(data, n-1 );
 		nGramSmoothedCounts = gTsmoothe(nGramCounts);
 		nM1GramSmoothedCounts = gTsmoothe(nM1GramCounts);
 		nGramProbs = calcProbabilities(n);
 	}
 
-	private Map<NGram, Integer> setGramCounts( Iterable<Observation> data, int n, ValueType type ){
+	private Map<NGram, Integer> setGramCounts( Iterable<Observation> data, int n ){
 	
 		Map<NGram, Integer> counts = new HashMap<NGram, Integer>();
 		for (Observation obs : data){
@@ -52,12 +52,12 @@ public class NGrams{
 			for ( Question q : obs.getQuestions()  ){
 				valueQ.offerLast( q.getId() );
 				if (++i >= n){
-					counts = count(valueQ, counts, n, type);
+					counts = count(valueQ, counts, n);
 					String s = valueQ.pollFirst();
 				}
 			}
 			valueQ.offerLast("/e");
-			counts = count(valueQ, counts, n, type);
+			counts = count(valueQ, counts, n);
 		}
 		return counts;
 	}
@@ -113,7 +113,7 @@ public class NGrams{
 		return smoothedCounts;
 	}
 	
-	private  Map<NGram, Integer> count( Deque<String> valueQ, Map<NGram, Integer> counts ){
+	private  Map<NGram, Integer> count( Deque<String> valueQ, Map<NGram, Integer> counts, int n ){
 		
 		NGram gram = new NGram(valueQ, n, type);
 		if ( counts.containsKey(gram)){
