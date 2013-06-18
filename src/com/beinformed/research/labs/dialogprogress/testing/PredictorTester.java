@@ -1,9 +1,11 @@
+package com.beinformed.research.labs.dialogprogress.testing;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.uva.predictions.*;
-import org.uva.testing.*;
+
+import com.beinformed.research.labs.dialogprogress.*;
+import com.beinformed.research.labs.dialogprogress.testing.*;
 
 
 public class PredictorTester {

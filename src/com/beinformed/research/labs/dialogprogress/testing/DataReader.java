@@ -1,4 +1,4 @@
-package org.uva.testing;
+package com.beinformed.research.labs.dialogprogress.testing;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -7,8 +7,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import org.uva.predictions.Observation;
-import org.uva.predictions.Question;
+
+import com.beinformed.research.labs.dialogprogress.Observation;
+import com.beinformed.research.labs.dialogprogress.Question;
 
 /**
  * 

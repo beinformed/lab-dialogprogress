@@ -1,6 +1,6 @@
-package org.uva.testing;
+package com.beinformed.research.labs.dialogprogress.testing;
 
-import org.uva.predictions.PredictionUnit;
+import com.beinformed.research.labs.dialogprogress.PredictionUnit;
 
 public class Error {
 	private double error;

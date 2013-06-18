@@ -1,4 +1,4 @@
-package org.uva.predictions;
+package com.beinformed.research.labs.dialogprogress;
 
 import java.util.ArrayList;
 import java.util.Arrays;

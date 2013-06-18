@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-va specific
 *.class
 
 #eclipse ignore personal stuff 
@@ -12,21 +10,4 @@ va specific
 *.DS_Store
 *.swp
 *.out
-*.csv
 *.class
-=======
-#va specific
-*.class
-
-#eclipse ignore personal stuff 
-.metadata
-
-
-## generic files to ignore
-*~
-*.lock
-*.DS_Store
-*.swp
-*.out
-.*
->>>>>>> a1b92fc71650ae6138fd769e20d574bc9e4eea90

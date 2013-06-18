@@ -1,9 +1,9 @@
-package org.uva.testing;
+package com.beinformed.research.labs.dialogprogress.testing;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.uva.predictions.*;
+import com.beinformed.research.labs.dialogprogress.*;
 
 public class TestFrame {
 	
