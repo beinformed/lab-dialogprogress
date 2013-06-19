@@ -12,10 +12,7 @@ import java.util.List;
 public class Observation {
 	private boolean finished;
 	private String form;
-	private Iterable<Question> questions;
-	private Question last;
-	private Question first;
-	private int noQuestions;
+	private List<Question> questions;
 	
 	/**
 	 * 
@@ -30,20 +27,16 @@ public class Observation {
 	public Observation(boolean isFinished, String form, Iterable<Question> questions) {
 		this.finished = isFinished;
 		this.form = form;
-		this.questions = questions;
+		this.questions = new ArrayList<Question>();
 		
-		Question first = null;
 		for(Question q : questions) {
-			if(first == null)
-				first = q;
-			last = q;
-			noQuestions++;
+			this.questions.add(q);
 		}
-		this.first = first;
-		
-		if(finished && getLearnValue(PredictionUnit.Time) < 0) {
-			System.err.println(questions);
-		}
+	}
+	private Observation(boolean isFinished, String form, List<Question> questions) {
+		this.finished = isFinished;
+		this.form = form;
+		this.questions = questions;
 	}
 	
 	/**
@@ -72,42 +65,38 @@ public class Observation {
 	 * @return
 	 */
 	public int getNoQuestions() {
-		return noQuestions;
+		return questions.size();
 	}
 	/**
 	 * Returns the last question the user answered.
 	 * @return
 	 */
 	public Question getLastAsked() {
-		return last;
+		return questions.get(questions.size() - 1);
 	}
 	public Question getFirstAsked() {
-		return first;
+		return questions.get(0);
 	}
 	
 	public int getLearnValue(PredictionUnit unit) {
 		if(unit == PredictionUnit.Time)
-			return (int) (last.getTimestamp() - first.getTimestamp());
+			return (int) (getLastAsked().getTimestamp() - getFirstAsked().getTimestamp());
 		else
-			return noQuestions;
+			return getNoQuestions();
 	}
 	
 	public Iterable<Observation> getSubObservations() {
 		// This is O(n*log n)
 		List<Observation> observations = new ArrayList<Observation>();
-		List<Question> part = new ArrayList<Question>();
-		for(Question q : questions) {
-			part.add(q);
-			observations.add(new Observation(false, form, copy(part)));
-		}
 		
+		for(int i = 1; i < questions.size(); i++) {
+			Observation sub = new Observation(false, form, questions.subList(0, i));
+			observations.add(sub);
+		}
 		return observations;
 	}
-	
-	private Iterable<Question> copy(Collection<Question> original) {
-		Question[] all = new Question[original.size()];
-		all = original.toArray(all); // guaranteed to return a new array, not the internal one
-		return Arrays.asList(all);
+	public Observation getParent() {
+		return new Observation(false, form, questions.subList(0, questions.size() - 1));
 	}
 	
 	public String toString() {
