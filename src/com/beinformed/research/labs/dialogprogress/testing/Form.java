@@ -20,7 +20,7 @@ class Form {
 		}
 		
 		public String toString() {
-			return "'[DataAnchor [" + question +"]]', 'DataAnchor [" + question + "=" + answer + "]'";
+			return "'[DataAnchor [" + question +"]]','DataAnchor [" + question + "=" + answer + "]'";
 		}
 		public int getDuration() {
 			return (int) (avg + rnd.nextGaussian()*std);

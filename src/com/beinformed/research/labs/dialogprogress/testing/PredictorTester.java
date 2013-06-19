@@ -20,8 +20,8 @@ public class PredictorTester {
 		List<Predictor> predictors = new ArrayList<Predictor>();
 		predictors.add(new AverageTreePredictor(PredictionUnit.Time, false));
 		predictors.add(new AverageTreePredictor(PredictionUnit.Steps, false));
-		//predictors.add(new PerObservationBLPredictor(PredictionUnit.Time));
-		//predictors.add(new PerObservationBLPredictor(PredictionUnit.Steps));
+		predictors.add(new PerObservationBLPredictor(PredictionUnit.Time));
+		predictors.add(new PerObservationBLPredictor(PredictionUnit.Steps));
 
 		TestFrame frame = new TestFrame(predictors);
 

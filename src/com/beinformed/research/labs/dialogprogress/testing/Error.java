@@ -27,6 +27,9 @@ public class Error {
 	public int getProgressPercentage() {
 		return (int) (pathSoFar / (double)totalPath * 100);
 	}
+	public int getAbsolutePathLength() {
+		return pathSoFar;
+	}
 	
 	public double getConfidence() {
 		return confidence;
