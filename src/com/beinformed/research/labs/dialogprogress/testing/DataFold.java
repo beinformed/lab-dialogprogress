@@ -1,4 +1,4 @@
-package org.uva.testing;
+package com.beinformed.research.labs.dialogprogress.testing;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;

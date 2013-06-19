@@ -3,8 +3,9 @@ import java.util.List;
 import java.util.ArrayDeque;
 import java.util.Map;
 import java.util.HashMap;
-import org.uva.predictions.*;
-import org.uva.testing.*;
+
+import com.beinformed.research.labs.dialogprogress.*;
+import com.beinformed.research.labs.dialogprogress.testing.*;
 
 public class NGramsTester{
 	

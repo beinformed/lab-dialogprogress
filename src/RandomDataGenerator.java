@@ -1,6 +1,6 @@
 import java.io.IOException;
 
-import org.uva.testing.DataGenerator;
+import com.beinformed.research.labs.dialogprogress.testing.DataGenerator;
 
 
 public class RandomDataGenerator {

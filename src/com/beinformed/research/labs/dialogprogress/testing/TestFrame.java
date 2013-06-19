@@ -1,11 +1,11 @@
-package org.uva.testing;
+package com.beinformed.research.labs.dialogprogress.testing;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.uva.predictions.*;
+import com.beinformed.research.labs.dialogprogress.*;
 
 public class TestFrame {
 	

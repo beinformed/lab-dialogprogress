@@ -1,4 +1,4 @@
-package org.uva.predictions;
+package com.beinformed.research.labs.dialogprogress;
 
 /**
  * A predictor for the amount of time and number of steps left on a form.

@@ -1,7 +1,7 @@
-package org.uva.predictions;
+package com.beinformed.research.labs.dialogprogress;
 
 /**
- * Represents a prediction by an implementation of the {@link org.uva.predictions.Predictor Predictor} interface.
+ * Represents a prediction by an implementation of the {@link com.beinformed.research.labs.dialogprogress.Predictor Predictor} interface.
  * 
  */
 public class Prediction {
