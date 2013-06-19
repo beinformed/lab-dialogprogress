@@ -72,7 +72,10 @@ public class Observation {
 	 * @return
 	 */
 	public Question getLastAsked() {
-		return questions.get(questions.size() - 1);
+		if(questions.size() > 1)
+			return questions.get(questions.size() - 1);
+		else
+			return questions.get(0);
 	}
 	public Question getFirstAsked() {
 		return questions.get(0);
@@ -96,7 +99,10 @@ public class Observation {
 		return observations;
 	}
 	public Observation getParent() {
-		return new Observation(false, form, questions.subList(0, questions.size() - 1));
+		if(questions.size() > 1)
+			return new Observation(false, form, questions.subList(0, questions.size() - 1));
+		else
+			return this;
 	}
 	
 	public String toString() {

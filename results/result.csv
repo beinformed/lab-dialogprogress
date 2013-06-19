@@ -1,69 +1,41 @@
 title,xlabel,ylabel,linename,xvalue,yvalue
-Time Error,Progress (%),Error (s),BaseLinePredictor,0.0,38.238194399260315
-Time Error,Progress (%),Error (s),BaseLinePredictor,50.0,36.84293476481721
-Time Error,Progress (%),Error (s),BaseLinePredictor,100.0,33.53616943118708
-Time Error,Progress (%),Error (s),BaseLinePredictor,70.0,37.2304593498264
-Time Error,Progress (%),Error (s),BaseLinePredictor,80.0,37.09946228450231
-Time Error,Progress (%),Error (s),BaseLinePredictor,20.0,37.2304593498264
-Time Error,Progress (%),Error (s),BaseLinePredictor,40.0,38.108289349903764
-Time Error,Progress (%),Error (s),BaseLinePredictor,10.0,37.09946228450231
-Time Error,Progress (%),Error (s),BaseLinePredictor,90.0,38.108289349903764
-Time Error,Progress (%),Error (s),BaseLinePredictor,60.0,37.09946228450231
-Time Error,Progress (%),Error (s),BaseLinePredictor,30.0,37.09946228450231
-Time Confidence,Confidence,Error (s),BaseLinePredictor,0.5,0.18259051985705615
-Steps Error,Progress (%),Error (steps),BaseLinePredictor,0.0,3.389705691774413
-Steps Error,Progress (%),Error (steps),BaseLinePredictor,50.0,3.2264731889286873
-Steps Error,Progress (%),Error (steps),BaseLinePredictor,100.0,2.839612157184246
-Steps Error,Progress (%),Error (steps),BaseLinePredictor,70.0,3.2714549328280613
-Steps Error,Progress (%),Error (steps),BaseLinePredictor,80.0,3.2555229494071476
-Steps Error,Progress (%),Error (steps),BaseLinePredictor,20.0,3.2714549328280613
-Steps Error,Progress (%),Error (steps),BaseLinePredictor,40.0,3.3718031557010537
-Steps Error,Progress (%),Error (steps),BaseLinePredictor,10.0,3.2555229494071476
-Steps Error,Progress (%),Error (steps),BaseLinePredictor,90.0,3.3718031557010537
-Steps Error,Progress (%),Error (steps),BaseLinePredictor,60.0,3.2555229494071476
-Steps Error,Progress (%),Error (steps),BaseLinePredictor,30.0,3.2555229494071476
-Steps Confidence,Confidence,Error (steps),BaseLinePredictor,0.5,0.07511293911401794
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,0.0,57.23367915447511
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,50.0,39.346512081663946
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,100.0,39.39337439660962
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,70.0,40.46029641411959
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,80.0,39.88750959291584
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,20.0,38.142390179371155
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,40.0,39.314438882441266
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,10.0,41.31390556392451
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,90.0,40.997597191710994
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,60.0,39.8594697109951
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,30.0,38.98590768483555
-Time Confidence,Confidence,Error (s),PerObservationBLPredictor,0.0,0.062183325656379546
-Time Confidence,Confidence,Error (s),PerObservationBLPredictor,0.1,0.09380032206119163
-Time Confidence,Confidence,Error (s),PerObservationBLPredictor,0.8,0.49765990639625585
-Time Confidence,Confidence,Error (s),PerObservationBLPredictor,1.0,1.0
-Time Confidence,Confidence,Error (s),PerObservationBLPredictor,0.9,0.7304526748971193
-Time Confidence,Confidence,Error (s),PerObservationBLPredictor,0.7,0.336038961038961
-Time Confidence,Confidence,Error (s),PerObservationBLPredictor,0.6,0.25215889464594127
-Time Confidence,Confidence,Error (s),PerObservationBLPredictor,0.5,0.22100365569956795
-Time Confidence,Confidence,Error (s),PerObservationBLPredictor,0.4,0.18178646196789952
-Time Confidence,Confidence,Error (s),PerObservationBLPredictor,0.2,0.11741337453100861
-Time Confidence,Confidence,Error (s),PerObservationBLPredictor,0.3,0.1546128290314337
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,0.0,3.468861057614542
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,50.0,3.5392815620566016
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,100.0,3.7061781575842563
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,70.0,3.567242142528881
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,80.0,3.4760612012985885
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,20.0,3.567242142528881
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,40.0,3.5518953204452584
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,10.0,3.4760612012985885
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,90.0,3.5518953204452584
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,60.0,3.4760612012985885
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,30.0,3.4760612012985885
-Steps Confidence,Confidence,Error (steps),PerObservationBLPredictor,0.0,0.11584523261169968
-Steps Confidence,Confidence,Error (steps),PerObservationBLPredictor,0.1,0.13969404186795492
-Steps Confidence,Confidence,Error (steps),PerObservationBLPredictor,0.8,0.5413416536661466
-Steps Confidence,Confidence,Error (steps),PerObservationBLPredictor,1.0,1.0
-Steps Confidence,Confidence,Error (steps),PerObservationBLPredictor,0.9,0.7839506172839507
-Steps Confidence,Confidence,Error (steps),PerObservationBLPredictor,0.7,0.37987012987012986
-Steps Confidence,Confidence,Error (steps),PerObservationBLPredictor,0.6,0.29965457685664937
-Steps Confidence,Confidence,Error (steps),PerObservationBLPredictor,0.5,0.24127617148554337
-Steps Confidence,Confidence,Error (steps),PerObservationBLPredictor,0.4,0.17550593161200279
-Steps Confidence,Confidence,Error (steps),PerObservationBLPredictor,0.2,0.1549326859412933
-Steps Confidence,Confidence,Error (steps),PerObservationBLPredictor,0.3,0.1773575261947355
+Time Error,Progress (%),Error (s),AverageTreePredictor,0.0,45.48013316331245
+Time Error,Progress (%),Error (s),AverageTreePredictor,50.0,44.18054532286666
+Time Error,Progress (%),Error (s),AverageTreePredictor,70.0,48.77169893234803
+Time Error,Progress (%),Error (s),AverageTreePredictor,80.0,51.68705489401275
+Time Error,Progress (%),Error (s),AverageTreePredictor,20.0,49.35474094634055
+Time Error,Progress (%),Error (s),AverageTreePredictor,40.0,43.47353201324096
+Time Error,Progress (%),Error (s),AverageTreePredictor,10.0,50.104143684914256
+Time Error,Progress (%),Error (s),AverageTreePredictor,90.0,51.60530492453885
+Time Error,Progress (%),Error (s),AverageTreePredictor,60.0,46.30769982983303
+Time Error,Progress (%),Error (s),AverageTreePredictor,30.0,46.65075372460447
+Time Confidence,Confidence,Error (s),AverageTreePredictor,0.0,0.036804186773601574
+Time Confidence,Confidence,Error (s),AverageTreePredictor,0.1,0.04999058810874768
+Time Confidence,Confidence,Error (s),AverageTreePredictor,0.8,0.17676143386897405
+Time Confidence,Confidence,Error (s),AverageTreePredictor,0.9,0.4450354609929078
+Time Confidence,Confidence,Error (s),AverageTreePredictor,0.7,0.10660486674391657
+Time Confidence,Confidence,Error (s),AverageTreePredictor,0.6,0.1639115250291036
+Time Confidence,Confidence,Error (s),AverageTreePredictor,0.5,0.11578654033718824
+Time Confidence,Confidence,Error (s),AverageTreePredictor,0.4,0.08665329129645552
+Time Confidence,Confidence,Error (s),AverageTreePredictor,0.2,0.07064450638312515
+Time Confidence,Confidence,Error (s),AverageTreePredictor,0.3,0.08283898305084746
+Steps Error,Progress (%),Error (steps),AverageTreePredictor,0.0,2.9249927963838056
+Steps Error,Progress (%),Error (steps),AverageTreePredictor,50.0,2.67799476161642
+Steps Error,Progress (%),Error (steps),AverageTreePredictor,70.0,2.9780292778690054
+Steps Error,Progress (%),Error (steps),AverageTreePredictor,80.0,3.21420829087621
+Steps Error,Progress (%),Error (steps),AverageTreePredictor,20.0,3.115472214847879
+Steps Error,Progress (%),Error (steps),AverageTreePredictor,40.0,2.6715241267642265
+Steps Error,Progress (%),Error (steps),AverageTreePredictor,10.0,3.178803896555732
+Steps Error,Progress (%),Error (steps),AverageTreePredictor,90.0,3.2132245357309834
+Steps Error,Progress (%),Error (steps),AverageTreePredictor,60.0,2.840613004598896
+Steps Error,Progress (%),Error (steps),AverageTreePredictor,30.0,2.9040484469101426
+Steps Confidence,Confidence,Error (steps),AverageTreePredictor,0.0,0.031060966492217765
+Steps Confidence,Confidence,Error (steps),AverageTreePredictor,0.1,0.04770484309032726
+Steps Confidence,Confidence,Error (steps),AverageTreePredictor,0.8,0.3009888751545117
+Steps Confidence,Confidence,Error (steps),AverageTreePredictor,0.9,0.5230496453900709
+Steps Confidence,Confidence,Error (steps),AverageTreePredictor,0.7,0.1556585554268057
+Steps Confidence,Confidence,Error (steps),AverageTreePredictor,0.6,0.1820721769499418
+Steps Confidence,Confidence,Error (steps),AverageTreePredictor,0.5,0.11007384701128606
+Steps Confidence,Confidence,Error (steps),AverageTreePredictor,0.4,0.06821438807681283
+Steps Confidence,Confidence,Error (steps),AverageTreePredictor,0.2,0.0689583978527924
+Steps Confidence,Confidence,Error (steps),AverageTreePredictor,0.3,0.08347457627118644

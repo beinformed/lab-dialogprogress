@@ -18,10 +18,10 @@ public class PredictorTester {
 		String outputLoc = args[1];
 
 		List<Predictor> predictors = new ArrayList<Predictor>();
-		predictors.add(new BaseLinePredictor(PredictionUnit.Time));
-		predictors.add(new BaseLinePredictor(PredictionUnit.Steps));
-		predictors.add(new PerObservationBLPredictor(PredictionUnit.Time));
-		predictors.add(new PerObservationBLPredictor(PredictionUnit.Steps));
+		predictors.add(new AverageTreePredictor(PredictionUnit.Time, false));
+		predictors.add(new AverageTreePredictor(PredictionUnit.Steps, false));
+		//predictors.add(new PerObservationBLPredictor(PredictionUnit.Time));
+		//predictors.add(new PerObservationBLPredictor(PredictionUnit.Steps));
 
 		TestFrame frame = new TestFrame(predictors);
 
@@ -46,7 +46,8 @@ public class PredictorTester {
 			ResultWriter writer = new ResultWriter(outputLoc);
 			writer.write(result);
 			writer.close();
-			System.out.println("Written results to " + outputLoc);
+			System.out.println("Written results to " + outputLoc + ". Generating graph...");
+			
 			Process python = new ProcessBuilder("python", "src/plot.py", outputLoc, "results/graph.png")
 					.start();
 
@@ -58,6 +59,7 @@ public class PredictorTester {
 				System.out.println(line);
 			}
 			input.close();
+			System.out.println("Graph created");
 
 		} catch (IOException e) {
 			e.printStackTrace();

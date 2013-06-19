@@ -1,7 +1,5 @@
 package com.beinformed.research.labs.dialogprogress;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -11,13 +9,15 @@ public class PathInfo {
 	private long total;
 	private PredictionUnit unit;
 	private Set<Path> children;
+	private Path path;
 	
-	public PathInfo(PredictionUnit unit) { 
+	public PathInfo(PredictionUnit unit, Path path) { 
 		this.unit = unit;
+		this.path = path;
 		this.children = new TreeSet<Path>();
 	}
-	public PathInfo(PredictionUnit unit, Observation obs, Observation complete) {
-		this(unit);
+	public PathInfo(PredictionUnit unit, Path path, Observation obs, Observation complete) {
+		this(unit, path);
 		add(obs, complete);
 	}
 	
@@ -26,7 +26,8 @@ public class PathInfo {
 		total += complete.getLearnValue(unit) - obs.getLearnValue(unit);
 	}
 	public void addChild(Path path) {
-		this.children.add(path);
+		if(!path.equals(this.path))
+			children.add(path);
 	}
 	
 	public int getFrequency() {

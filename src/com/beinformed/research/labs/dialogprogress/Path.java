@@ -1,6 +1,6 @@
 package com.beinformed.research.labs.dialogprogress;
 
-class Path {
+class Path implements Comparable<Path>{
 	private String lookup;
 	private String[] path;
 	
@@ -19,12 +19,15 @@ class Path {
 	}
 	private void createLookup() {
 		String result = path[0];
-		for(int i = 0; i < path.length; i++)
+		for(int i = 1; i < path.length; i++)
 			result += "-" + path[i];
 		lookup = result;
 	}
 
 	public Path getParent() {
+		if(path.length < 2)
+			return this;
+		
 		Path parent = new Path();
 		parent.path = new String[path.length - 1];
 		
@@ -45,5 +48,9 @@ class Path {
 	@Override
 	public int hashCode() {
 		return lookup.hashCode();
+	}
+	@Override
+	public int compareTo(Path other) {
+		return lookup.compareTo(other.lookup);
 	}
 }

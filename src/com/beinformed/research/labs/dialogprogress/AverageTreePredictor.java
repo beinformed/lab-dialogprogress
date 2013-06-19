@@ -37,7 +37,7 @@ public class AverageTreePredictor implements Predictor {
 		if(paths.containsKey(path))
 			paths.get(path).add(part, complete);
 		else
-			paths.put(path, new PathInfo(unit, part, complete));
+			paths.put(path, new PathInfo(unit, path, part, complete));
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class AverageTreePredictor implements Predictor {
 		double weight = info.getFrequency() / (double) totalFrequency;
 		
 		int actualPrediction = (int) ((parentPrediction + prediction) / (parentWeight / weight));
-		double confidence = getProportion(parentInfo, info) * weight * (data.getNoQuestions() / (double)maxLength);
+		double confidence = getProportion(parentInfo, info) * (data.getNoQuestions() / (double)maxLength);
 		
 		return new Prediction(confidence, actualPrediction, actualPrediction, unit);
 	}
