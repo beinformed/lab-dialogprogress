@@ -1,3 +1,4 @@
+package com.beinformed.research.labs.dialogprogress.testing;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

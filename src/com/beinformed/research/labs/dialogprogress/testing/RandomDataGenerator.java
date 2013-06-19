@@ -1,6 +1,6 @@
+package com.beinformed.research.labs.dialogprogress.testing;
 import java.io.IOException;
 
-import com.beinformed.research.labs.dialogprogress.testing.DataGenerator;
 
 
 public class RandomDataGenerator {
