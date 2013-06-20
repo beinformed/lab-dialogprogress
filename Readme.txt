@@ -13,13 +13,8 @@ java RandomDataGenerator <location>
 where <location> is the name of the file to write the data to.
 
 * To get the predictor's results, run:
-java PredictorTester <in> <out>
+python src/plot.py <data> [out]
 
-where <in> is the location of the file containing the data, and <out>
-is the location of the file to write the results to.
-
-* To display a graph of the results, run:
-python plot.py <results>
-
-where <results> is the location of the file containing the predictor's results.
-
+where <data> is the location of the datafile and [out] is the target location
+for an image file containing the graph. If [out] is not specified, a window
+is opened and the graph is shown that way.
