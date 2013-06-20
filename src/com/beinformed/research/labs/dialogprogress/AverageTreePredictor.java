@@ -11,11 +11,15 @@ public class AverageTreePredictor implements Predictor {
 	private Map<Path, PathInfo> pathsWithAnswers;
 	private int totalFrequency;
 	private int maxLength;
+	private double aWeight, noaWeight, pWeight;
 	
-	public AverageTreePredictor(PredictionUnit unit) {
+	public AverageTreePredictor(PredictionUnit unit, double aWeight, double noaWeight, double pWeight) {
 		this.unit = unit;
 		this.paths = new HashMap<Path, PathInfo>();
 		this.pathsWithAnswers = new HashMap<Path, PathInfo>();
+		this.aWeight = aWeight;
+		this.noaWeight = noaWeight;
+		this.pWeight = pWeight;
 	}
 	
 	@Override
@@ -50,9 +54,9 @@ public class AverageTreePredictor implements Predictor {
 		PathInfo infoWithAnswers = paths.get(new Path(data, true));
 		PathInfo infoParent = paths.get(infoNoAnswers.getParentPath());
 		
-		double weightNoAnswers = getWeight(infoNoAnswers) * .3;
-		double weightWithAnswers = getWeight(infoWithAnswers) * .6;
-		double weightParent = getWeight(infoParent) * .1;
+		double weightNoAnswers = getWeight(infoNoAnswers) * noaWeight;
+		double weightWithAnswers = getWeight(infoWithAnswers) * aWeight;
+		double weightParent = getWeight(infoParent) * pWeight;
 		
 		double prediction = (
 				(getPrediction(infoNoAnswers) * weightNoAnswers) +
@@ -84,7 +88,7 @@ public class AverageTreePredictor implements Predictor {
 	}
 
 	public String toString() {
-		return "Average Tree";
+		return "Average Tree [" + aWeight + "|" + noaWeight + "|" + pWeight + "]";
 	}
 
 }

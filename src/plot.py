@@ -6,17 +6,25 @@ import sys
 
 if(len(sys.argv) < 2):
     print("Syntax:\n\
-python plot.py <results> [out]\n\
-<results>: The predictor's output to plot\n\
-<out>: name of file to save the image to. If not provided, the graph is shown on the screen.")
+python plot.py <data> [out]\n\
+<data>: the data to parse, train on and plot.\n\
+[out]: name of file to save the image to. If not provided, the graph is shown on the screen.")
     exit()
 
 location = sys.argv[1]
+result_location = 'results/result.csv'
 out = sys.argv[2] if len(sys.argv) >= 3 else ''
+
+print('Running java to generate results...')
+
+subprocess.call(['java', '-Xmx1g', '-cp', 'bin', 'com.beinformed.research.labs.dialogprogress.testing.PredictorTester',
+                location, result_location])
+
+print('Generating graph...')
 
 graphs = {}
 graphlabels = {}
-with open(location, 'rt') as csvfile:
+with open(result_location, 'rt') as csvfile:
     reader = csv.reader(csvfile)
     next(reader, None)
     maingroup = lambda x: x[0:3]
@@ -33,6 +41,7 @@ fig = plt.figure(figsize=(10,10))
 linedata = []
 linenames = []
 start = 221
+plots = []
 for unit in graphs:
     lines = graphs[unit]
     ax = fig.add_subplot(start)
@@ -44,9 +53,11 @@ for unit in graphs:
         ndata = [(float(x), float(y)) for [x,y] in data]
         X, Y = zip(*sorted(ndata, key=lambda x : x[0]))
         ax.plot(X, Y, label=line)
-plt.legend()
+
+plt.legend(bbox_to_anchor=(0, 0, 1, 1), bbox_transform=plt.gcf().transFigure)
 
 if out == '':
     plt.show()
 else:
     plt.savefig(out, bbox_inches=0)
+    print('Graph saved to ' + out)

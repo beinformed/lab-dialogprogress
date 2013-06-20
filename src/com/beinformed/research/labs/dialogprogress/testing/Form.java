@@ -32,62 +32,197 @@ class Form {
 
 	FormQuestion age = new FormQuestion("person|age", 10, 5) {
 		public FormQuestion getNext() {
-			return Integer.parseInt(answer) > 65 ? job : null;
+			int value = Integer.parseInt(answer);
+			if(value > 65)
+				return yworked;
+			if(value > 30)
+				return job_a;
+			return study;
 		}
 		public void genAnswer() {
 			answer = Integer.toString((int) (50 + rnd.nextGaussian()*30));
 		}
 	};
-	FormQuestion job = new FormQuestion("job|worktime", 300, 30) {
+	FormQuestion study = new FormQuestion("person|study", 300, 20) {
+		@Override
 		public FormQuestion getNext() {
-			return Integer.parseInt(answer) > 35 ? null : ill;
+			if(Boolean.parseBoolean(answer))
+				return study_time;
+			else
+				return job_b;
 		}
+		@Override
 		public void genAnswer() {
-			answer = Integer.toString((int) (30 + rnd.nextGaussian()*5));
-		}
+			answer = Boolean.toString(rnd.nextBoolean());
+		}		
 	};
-	FormQuestion ill = new FormQuestion("person|ill", 30, 10) {
+	FormQuestion job_a = new FormQuestion("person|job", 60, 5) {
+		@Override
 		public FormQuestion getNext() {
-			return answer.equals("true") ? home : children;
+			if(Boolean.parseBoolean(answer))
+				return salary_a;
+			else
+				return null;
 		}
+		@Override
 		public void genAnswer() {
 			answer = Boolean.toString(rnd.nextBoolean());
 		}
 	};
-	FormQuestion home = new FormQuestion("person|home", 10, 5) {
+	FormQuestion job_b = new FormQuestion("person|job", 60, 5) {
+		@Override
 		public FormQuestion getNext() {
-			return answer.equals("solo") ? help : null;
+			return have_degree;
 		}
-		public void genAnswer() {
-			answer = rnd.nextBoolean() ? "solo" : "group";
-		}
-	};
-	FormQuestion children = new FormQuestion("person|children", 30, 10) {
-		public FormQuestion getNext() {
-			return null;
-		}
+		@Override
 		public void genAnswer() {
 			answer = Boolean.toString(rnd.nextBoolean());
 		}
 	};
-	FormQuestion help = new FormQuestion("person|help", 70, 5) {
+	FormQuestion study_time = new FormQuestion("person|study_time", 10, 1) {
+
+		@Override
 		public FormQuestion getNext() {
-			return answer.equals("professional") ? helpfreq : null;
+			return have_degree;
 		}
+
+		@Override
 		public void genAnswer() {
-			answer = rnd.nextBoolean() ? "professional" : "none";
+			answer = Boolean.toString(rnd.nextBoolean());
 		}
+		
 	};
-	FormQuestion helpfreq = new FormQuestion("person|helpfreq", 120, 10) {
+	FormQuestion have_degree = new FormQuestion("person|have_degree", 30, 2) {
+
+		@Override
 		public FormQuestion getNext() {
 			return null;
 		}
+
+		@Override
 		public void genAnswer() {
-			answer = Integer.toString((int) (3 + rnd.nextGaussian()));
+			answer = Boolean.toString(rnd.nextBoolean());
 		}
+		
 	};
-	
-	
+	FormQuestion yworked = new FormQuestion("person|years_worked", 60, 10) {
+
+		@Override
+		public FormQuestion getNext() {
+			int value = Integer.parseInt(answer);
+			if(value > 40)
+				return salary_b;
+			else
+				return working;
+		}
+
+		@Override
+		public void genAnswer() {
+			answer = Integer.toString( (int) (30 + rnd.nextGaussian()*5));
+		}
+		
+	};
+	FormQuestion salary_a = new FormQuestion("person|salary", 120, 20) {
+
+		@Override
+		public FormQuestion getNext() {
+			int value = Integer.parseInt(answer);
+			if(value > 20000)
+				return null;
+			else
+				return no_jobs;
+		}
+
+		@Override
+		public void genAnswer() {
+			answer = Integer.toString((int) (15000 + rnd.nextGaussian()*2000));
+		}};
+	FormQuestion salary_b = new FormQuestion("person|salary", 180, 20) {
+
+		@Override
+		public FormQuestion getNext() {
+			return other_country;
+		}
+
+		@Override
+		public void genAnswer() {
+			answer = Integer.toString((int) (15000 + rnd.nextGaussian()*2000));			
+		} };
+	FormQuestion no_jobs = new FormQuestion("person|no_jobs", 60, 10) {
+
+		@Override
+		public FormQuestion getNext() {
+			return null;
+		}
+
+		@Override
+		public void genAnswer() {
+			answer = Integer.toString(1 + rnd.nextInt(10));
+		} };
+	FormQuestion other_country = new FormQuestion("person|other_country", 10, 1) {
+
+		@Override
+		public FormQuestion getNext() {
+			if(Boolean.parseBoolean(answer))
+				return time_other_country;
+			else
+				return null;
+		}
+
+		@Override
+		public void genAnswer() {
+			answer = Boolean.toString(rnd.nextBoolean());
+		} };
+	FormQuestion time_other_country = new FormQuestion("person|time_other_country", 60, 2) {
+
+		@Override
+		public FormQuestion getNext() {
+			return null;
+		}
+
+		@Override
+		public void genAnswer() {
+			answer = Integer.toString(rnd.nextInt(5));
+		} };
+	FormQuestion working = new FormQuestion("person|working", 10, 1) {
+
+		@Override
+		public FormQuestion getNext() {
+			return have_children;
+		}
+
+		@Override
+		public void genAnswer() {
+			answer = Boolean.toString(rnd.nextBoolean());
+		}
+		
+	};
+	FormQuestion have_children = new FormQuestion("person|have_children", 5, 1) {
+
+		@Override
+		public FormQuestion getNext() {
+			if(Boolean.parseBoolean(answer))
+				return null;
+			else
+				return live_alone;
+		}
+
+		@Override
+		public void genAnswer() {
+			answer = Boolean.toString(rnd.nextBoolean());
+		} };
+	FormQuestion live_alone = new FormQuestion("person|live_alone", 5, 1) {
+
+		@Override
+		public FormQuestion getNext() {
+			return null;
+		}
+
+		@Override
+		public void genAnswer() {
+			answer = Boolean.toString(rnd.nextBoolean());			
+		} };	
+		
 	public String generateObservation() {
 		FormQuestion next = age;
 		long time = System.currentTimeMillis();

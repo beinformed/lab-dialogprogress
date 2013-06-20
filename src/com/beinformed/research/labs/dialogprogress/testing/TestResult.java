@@ -9,7 +9,7 @@ import com.beinformed.research.labs.dialogprogress.Predictor;
 
 
 public class TestResult {
-	final int timeThreshold = 70;
+	final int timeThreshold = 150;
 	final int stepsThreshold = 1;
 	
 	private List<Error> errors;
@@ -28,10 +28,10 @@ public class TestResult {
 		Map<Integer, Double> stepsProgress = new HashMap<Integer, Double>();
 		Map<Integer, Integer> stepsCount = new HashMap<Integer, Integer>();
 		
-		Graph time = new Graph("Time Error", "Progress (steps)", "Error (s)", lineLabel);
+		Graph time = new Graph("Time Error", "Progress (%)", "Error (s)", lineLabel);
 		Graph steps = new Graph("Steps Error", "Progress (steps)", "Error (steps)", lineLabel);
 		for (Error e : errors) {
-			int progress = e.getAbsolutePathLength();//e.getProgressPercentage() / 10 * 10;
+			int progress = e.getUnit() == PredictionUnit.Time ? e.getProgressPercentage() / 10 * 10 : e.getAbsolutePathLength();
 			
 			if(e.getUnit() == PredictionUnit.Time) {
 				if(!timeProgress.containsKey(progress)) {
