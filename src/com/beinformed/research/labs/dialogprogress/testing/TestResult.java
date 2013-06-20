@@ -32,6 +32,7 @@ public class TestResult {
 		Graph steps = new Graph("Steps Error", "Progress (steps)", "Error (steps)", lineLabel);
 		for (Error e : errors) {
 			int progress = e.getUnit() == PredictionUnit.Time ? e.getProgressPercentage() / 10 * 10 : e.getAbsolutePathLength();
+			progress = e.getAbsolutePathLength();
 			
 			if(e.getUnit() == PredictionUnit.Time) {
 				if(!timeProgress.containsKey(progress)) {
