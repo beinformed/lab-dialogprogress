@@ -53,4 +53,8 @@ class Path implements Comparable<Path>{
 	public int compareTo(Path other) {
 		return lookup.compareTo(other.lookup);
 	}
+	@Override
+	public String toString() {
+		return lookup;
+	}
 }

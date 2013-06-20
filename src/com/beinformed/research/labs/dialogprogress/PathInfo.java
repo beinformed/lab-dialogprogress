@@ -39,5 +39,11 @@ public class PathInfo {
 	public Iterable<Path> getChildren() {
 		return children;
 	}
+	public Path getParentPath() {
+		return path.getParent();
+	}
+	public Path getPath() {
+		return path;
+	}
 
 }

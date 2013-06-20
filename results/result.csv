@@ -1,41 +1,41 @@
 title,xlabel,ylabel,linename,xvalue,yvalue
-Time Error,Progress (%),Error (s),AverageTreePredictor,1.0,17.320304117906918
-Time Error,Progress (%),Error (s),AverageTreePredictor,2.0,15.49941080987862
-Time Error,Progress (%),Error (s),AverageTreePredictor,3.0,25.2493610169954
-Time Error,Progress (%),Error (s),AverageTreePredictor,4.0,5.624560721353731
-Time Error,Progress (%),Error (s),AverageTreePredictor,5.0,3.1436406797002765
-Time Confidence,Confidence,Probability correct,AverageTreePredictor,0.1,0.8848586810228802
-Time Confidence,Confidence,Probability correct,AverageTreePredictor,0.8,1.0
-Time Confidence,Confidence,Probability correct,AverageTreePredictor,0.6,1.0
-Time Confidence,Confidence,Probability correct,AverageTreePredictor,0.5,0.0
-Time Confidence,Confidence,Probability correct,AverageTreePredictor,0.3,1.0
-Steps Error,Progress (%),Error (steps),AverageTreePredictor,1.0,1.156785455459723
-Steps Error,Progress (%),Error (steps),AverageTreePredictor,2.0,0.963099300395784
-Steps Error,Progress (%),Error (steps),AverageTreePredictor,3.0,0.963099300395784
-Steps Error,Progress (%),Error (steps),AverageTreePredictor,4.0,0.8826952501162668
-Steps Error,Progress (%),Error (steps),AverageTreePredictor,5.0,0.0
-Steps Confidence,Confidence,Probability correct,AverageTreePredictor,0.1,0.110464333781965
-Steps Confidence,Confidence,Probability correct,AverageTreePredictor,0.8,1.0
-Steps Confidence,Confidence,Probability correct,AverageTreePredictor,0.6,0.4903756597330022
-Steps Confidence,Confidence,Probability correct,AverageTreePredictor,0.5,0.12483364386478574
-Steps Confidence,Confidence,Probability correct,AverageTreePredictor,0.3,0.12483364386478574
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,1.0,16.837045175654403
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,2.0,17.88773338899589
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,3.0,16.310515434236052
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,4.0,11.03096942570746
-Time Error,Progress (%),Error (s),PerObservationBLPredictor,5.0,2.241992421058318
-Time Confidence,Confidence,Probability correct,PerObservationBLPredictor,0.1,0.9001682368775236
-Time Confidence,Confidence,Probability correct,PerObservationBLPredictor,0.8,1.0
-Time Confidence,Confidence,Probability correct,PerObservationBLPredictor,0.6,1.0
-Time Confidence,Confidence,Probability correct,PerObservationBLPredictor,0.5,0.999923951481045
-Time Confidence,Confidence,Probability correct,PerObservationBLPredictor,0.3,0.9494277348948629
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,1.0,0.4732848994383837
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,2.0,0.21621821366778168
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,3.0,0.21621821366778168
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,4.0,0.8826952501162668
-Steps Error,Progress (%),Error (steps),PerObservationBLPredictor,5.0,0.0
-Steps Confidence,Confidence,Probability correct,PerObservationBLPredictor,0.1,0.7744279946164199
-Steps Confidence,Confidence,Probability correct,PerObservationBLPredictor,0.8,1.0
-Steps Confidence,Confidence,Probability correct,PerObservationBLPredictor,0.6,0.4903756597330022
-Steps Confidence,Confidence,Probability correct,PerObservationBLPredictor,0.5,0.8751663561352143
-Steps Confidence,Confidence,Probability correct,PerObservationBLPredictor,0.3,0.8751663561352143
+Time Error,Progress (steps),Error (s),Average Tree,1.0,227.34798627524603
+Time Error,Progress (steps),Error (s),Average Tree,2.0,160.67115302683277
+Time Error,Progress (steps),Error (s),Average Tree,3.0,385.6217495699455
+Time Error,Progress (steps),Error (s),Average Tree,4.0,184.08189446303635
+Time Error,Progress (steps),Error (s),Average Tree,5.0,86.30530918998508
+Time Confidence,Confidence,Probability correct,Average Tree,0.1,0.06070713809206137
+Time Confidence,Confidence,Probability correct,Average Tree,0.8,0.284789644012945
+Time Confidence,Confidence,Probability correct,Average Tree,0.6,0.008771929824561403
+Time Confidence,Confidence,Probability correct,Average Tree,0.5,0.0
+Time Confidence,Confidence,Probability correct,Average Tree,0.3,0.09962686567164179
+Steps Error,Progress (steps),Error (steps),Average Tree,1.0,0.2166507848026445
+Steps Error,Progress (steps),Error (steps),Average Tree,2.0,0.24235785553668962
+Steps Error,Progress (steps),Error (steps),Average Tree,3.0,0.24235785553668962
+Steps Error,Progress (steps),Error (steps),Average Tree,4.0,0.7824615490333111
+Steps Error,Progress (steps),Error (steps),Average Tree,5.0,0.0
+Steps Confidence,Confidence,Probability correct,Average Tree,0.1,0.8749166110740494
+Steps Confidence,Confidence,Probability correct,Average Tree,0.8,1.0
+Steps Confidence,Confidence,Probability correct,Average Tree,0.6,0.5482456140350878
+Steps Confidence,Confidence,Probability correct,Average Tree,0.5,0.8600746268656716
+Steps Confidence,Confidence,Probability correct,Average Tree,0.3,0.8600746268656716
+Time Error,Progress (steps),Error (s),Baseline,1.0,537.8390233528977
+Time Error,Progress (steps),Error (s),Baseline,2.0,565.9192776796099
+Time Error,Progress (steps),Error (s),Baseline,3.0,517.8254491778481
+Time Error,Progress (steps),Error (s),Baseline,4.0,355.2031598123491
+Time Error,Progress (steps),Error (s),Baseline,5.0,74.53341715907607
+Time Confidence,Confidence,Probability correct,Baseline,0.1,0.018679119412941963
+Time Confidence,Confidence,Probability correct,Baseline,0.8,0.44983818770226536
+Time Confidence,Confidence,Probability correct,Baseline,0.6,0.0
+Time Confidence,Confidence,Probability correct,Baseline,0.5,0.0
+Time Confidence,Confidence,Probability correct,Baseline,0.3,0.0
+Steps Error,Progress (steps),Error (steps),Baseline,1.0,0.47646991028798436
+Steps Error,Progress (steps),Error (steps),Baseline,2.0,0.24235785553668962
+Steps Error,Progress (steps),Error (steps),Baseline,3.0,0.24235785553668962
+Steps Error,Progress (steps),Error (steps),Baseline,4.0,0.9495892585355675
+Steps Error,Progress (steps),Error (steps),Baseline,5.0,0.0
+Steps Confidence,Confidence,Probability correct,Baseline,0.1,0.7688458972648432
+Steps Confidence,Confidence,Probability correct,Baseline,0.8,1.0
+Steps Confidence,Confidence,Probability correct,Baseline,0.6,0.4517543859649123
+Steps Confidence,Confidence,Probability correct,Baseline,0.5,0.8600746268656716
+Steps Confidence,Confidence,Probability correct,Baseline,0.3,0.8600746268656716

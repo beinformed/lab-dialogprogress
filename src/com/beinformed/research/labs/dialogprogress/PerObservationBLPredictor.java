@@ -41,6 +41,9 @@ public class PerObservationBLPredictor implements Predictor {
 		}
 	}
 	
+	public String toString() {
+		return "Baseline";
+	}
 }
 
 

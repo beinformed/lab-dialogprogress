@@ -19,7 +19,7 @@ public class RandomDataGenerator {
 		System.out.println("Writing data to " + location);
 		try {
 			DataGenerator gen = new DataGenerator(location);
-			gen.generate(100000);
+			gen.generate(10000);
 			gen.close();
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -18,8 +18,8 @@ public class PredictorTester {
 		String outputLoc = args[1];
 
 		List<Predictor> predictors = new ArrayList<Predictor>();
-		predictors.add(new AverageTreePredictor(PredictionUnit.Time, false));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Steps, false));
+		predictors.add(new AverageTreePredictor(PredictionUnit.Time));
+		predictors.add(new AverageTreePredictor(PredictionUnit.Steps));
 		predictors.add(new PerObservationBLPredictor(PredictionUnit.Time));
 		predictors.add(new PerObservationBLPredictor(PredictionUnit.Steps));
 

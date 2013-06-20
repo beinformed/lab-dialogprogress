@@ -20,10 +20,10 @@ class Form {
 		}
 		
 		public String toString() {
-			return "'[DataAnchor [" + question +"]]','DataAnchor [" + question + "=" + answer + "]'";
+			return "'[DataAnchor [" + question +"]]','DataAnchor [" + question + "]=" + answer + "'";
 		}
 		public int getDuration() {
-			return (int) (avg + rnd.nextGaussian()*std);
+			return (int) (avg + rnd.nextGaussian()*std) * 1000;
 		}
 		
 		public abstract FormQuestion getNext();
@@ -67,7 +67,7 @@ class Form {
 			return null;
 		}
 		public void genAnswer() {
-			answer = rnd.nextBoolean() ? "professional" : "none";
+			answer = Boolean.toString(rnd.nextBoolean());
 		}
 	};
 	FormQuestion help = new FormQuestion("person|help", 70, 5) {

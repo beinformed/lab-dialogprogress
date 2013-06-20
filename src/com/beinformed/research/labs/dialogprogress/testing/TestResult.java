@@ -9,7 +9,7 @@ import com.beinformed.research.labs.dialogprogress.Predictor;
 
 
 public class TestResult {
-	final int timeThreshold = 20;
+	final int timeThreshold = 70;
 	final int stepsThreshold = 1;
 	
 	private List<Error> errors;
@@ -19,7 +19,7 @@ public class TestResult {
 	public TestResult(Predictor predictor, List<Error> errors) {
 		this.errors = errors;
 		this.predictor = predictor;
-		this.lineLabel = predictor.getClass().getSimpleName();
+		this.lineLabel = predictor.toString();
 	}
 	
 	public List<Graph> getErrorToProgressGraph() {
@@ -28,8 +28,8 @@ public class TestResult {
 		Map<Integer, Double> stepsProgress = new HashMap<Integer, Double>();
 		Map<Integer, Integer> stepsCount = new HashMap<Integer, Integer>();
 		
-		Graph time = new Graph("Time Error", "Progress (%)", "Error (s)", lineLabel);
-		Graph steps = new Graph("Steps Error", "Progress (%)", "Error (steps)", lineLabel);
+		Graph time = new Graph("Time Error", "Progress (steps)", "Error (s)", lineLabel);
+		Graph steps = new Graph("Steps Error", "Progress (steps)", "Error (steps)", lineLabel);
 		for (Error e : errors) {
 			int progress = e.getAbsolutePathLength();//e.getProgressPercentage() / 10 * 10;
 			
@@ -109,8 +109,8 @@ public class TestResult {
 		}
 		
 		List<Graph> result = new ArrayList<Graph>();
-		result.add(time);
 		result.add(steps);
+		result.add(time);
 		return result;
 	}
 	
