@@ -19,18 +19,12 @@ public class PredictorTester {
 
 		List<Predictor> predictors = new ArrayList<Predictor>();
 		predictors.add(new PerObservationBLPredictor(PredictionUnit.Time));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Time, .5, .4, .1));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Time, .6, .3, .1));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Time, .8, .1, .1));
 		predictors.add(new AverageTreePredictor(PredictionUnit.Time, .8, .2, .0));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Time, .15, .8, .05));
+		predictors.add(new NeuralNetworkPredictor(5, PredictionUnit.Time));
 		
 		predictors.add(new PerObservationBLPredictor(PredictionUnit.Steps));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Steps, .5, .4, .1));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Steps, .6, .3, .1));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Steps, .8, .1, .1));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Steps, .8, .2, .0));
 		predictors.add(new AverageTreePredictor(PredictionUnit.Steps, .15, .8, .05));
+		predictors.add(new NeuralNetworkPredictor(5, PredictionUnit.Steps));
 
 		TestFrame frame = new TestFrame(predictors);
 
