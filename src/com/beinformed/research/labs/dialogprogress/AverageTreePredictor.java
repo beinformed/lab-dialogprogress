@@ -50,9 +50,13 @@ public class AverageTreePredictor implements Predictor {
 
 	@Override
 	public Prediction predict(Observation data) {
-		PathInfo infoNoAnswers = paths.get(new Path(data, false));
-		PathInfo infoWithAnswers = paths.get(new Path(data, true));
-		PathInfo infoParent = paths.get(infoNoAnswers.getParentPath());
+		Path noAnswers = new Path(data, false);
+		Path withAnswers = new Path(data, true);
+		Path parent = noAnswers.getParent();
+		
+		PathInfo infoNoAnswers = paths.get(noAnswers);
+		PathInfo infoWithAnswers = paths.get(withAnswers);
+		PathInfo infoParent = paths.get(parent);
 		
 		double weightNoAnswers = getWeight(infoNoAnswers) * noaWeight;
 		double weightWithAnswers = getWeight(infoWithAnswers) * aWeight;

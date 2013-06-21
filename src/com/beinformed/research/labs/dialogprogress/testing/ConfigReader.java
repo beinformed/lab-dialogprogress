@@ -29,13 +29,15 @@ public class ConfigReader {
 		List<PredictorFactory> factories = new ArrayList<PredictorFactory>();
 		String line = reader.readLine();
 		
-		while(line != null && !line.startsWith("#")) {
-			String[] parts = line.split("=");
-			String pred = parts[0];
-			String args = parts.length > 1 ? parts[1] : "";
-			
-			factories.add(getFactory(PredictionUnit.Time, pred, args));
-			factories.add(getFactory(PredictionUnit.Steps, pred, args));
+		while(line != null) {
+			if(!line.startsWith("#")) {
+				String[] parts = line.split("=");
+				String pred = parts[0];
+				String args = parts.length > 1 ? parts[1] : "";
+				
+				factories.add(getFactory(PredictionUnit.Time, pred, args));
+				factories.add(getFactory(PredictionUnit.Steps, pred, args));
+			}
 			line = reader.readLine();
 		}
 		
@@ -83,7 +85,7 @@ public class ConfigReader {
 	}
 	
 	private double[] splitArgs(String args) {
-		String[] parts = args.split("|");
+		String[] parts = args.split("\\|");
 		double[] values = new double[parts.length];
 		for(int i = 0; i < parts.length; i++)
 			values[i] = Double.parseDouble(parts[i]);

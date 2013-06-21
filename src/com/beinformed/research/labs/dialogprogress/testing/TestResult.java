@@ -28,7 +28,7 @@ public class TestResult {
 		Map<Integer, Double> stepsProgress = new HashMap<Integer, Double>();
 		Map<Integer, Integer> stepsCount = new HashMap<Integer, Integer>();
 		
-		Graph time = new Graph("Time Error", "Progress (%)", "Error (s)", lineLabel);
+		Graph time = new Graph("Time Error", "Progress (steps)", "Error (s)", lineLabel);
 		Graph steps = new Graph("Steps Error", "Progress (steps)", "Error (steps)", lineLabel);
 		for (Error e : errors) {
 			int progress = e.getUnit() == PredictionUnit.Time ? e.getProgressPercentage() / 10 * 10 : e.getAbsolutePathLength();

@@ -3,7 +3,7 @@ import csv
 import itertools
 import sys
 
-if(len(sys.argv) < 3):
+if(len(sys.argv) < 2):
     print("Syntax:\n\
 python plot.py <results> [out]\n\
 <results> location of the file containing the predictor's results.\n\
@@ -11,7 +11,7 @@ python plot.py <results> [out]\n\
     exit()
 
 location = sys.argv[1]
-out = sys.argv[3] if len(sys.argv) >= 4 else ''
+out = sys.argv[2] if len(sys.argv) >= 3 else ''
 
 print('Generating graph...')
 
