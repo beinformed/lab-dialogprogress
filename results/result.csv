@@ -1,9 +1,17 @@
 title,xlabel,ylabel,linename,xvalue,yvalue
-Time Error,Progress (%),Error (s),Neural Network,1.0,346.8991431845356
-Time Error,Progress (%),Error (s),Neural Network,2.0,268.70077071493915
-Time Error,Progress (%),Error (s),Neural Network,3.0,416.6167546009481
-Time Confidence,Confidence,Probability correct,Neural Network,-2.147483648E8,0.09090909090909091
-Steps Error,Progress (steps),Error (steps),Neural Network,1.0,0.9797958971132712
-Steps Error,Progress (steps),Error (steps),Neural Network,2.0,1.0
-Steps Error,Progress (steps),Error (steps),Neural Network,3.0,2.4494897427831783
-Steps Confidence,Confidence,Probability correct,Neural Network,-2.147483648E8,0.2727272727272727
+Time Error,Progress (%),Error (s),Baseline,1.0,342.62690823671767
+Time Error,Progress (%),Error (s),Baseline,2.0,390.49076707689795
+Time Error,Progress (%),Error (s),Baseline,3.0,282.45268113986845
+Time Error,Progress (%),Error (s),Baseline,4.0,122.35425437639805
+Time Confidence,Confidence,Probability correct,Baseline,0.8,0.9931972789115646
+Time Confidence,Confidence,Probability correct,Baseline,0.6,0.02513227513227513
+Time Confidence,Confidence,Probability correct,Baseline,0.4,0.0026455026455026454
+Time Confidence,Confidence,Probability correct,Baseline,0.2,0.243
+Steps Error,Progress (steps),Error (steps),Baseline,1.0,1.2988189418094345
+Steps Error,Progress (steps),Error (steps),Baseline,2.0,1.395263150541583
+Steps Error,Progress (steps),Error (steps),Baseline,3.0,1.395263150541583
+Steps Error,Progress (steps),Error (steps),Baseline,4.0,0.0
+Steps Confidence,Confidence,Probability correct,Baseline,0.8,1.0
+Steps Confidence,Confidence,Probability correct,Baseline,0.6,0.19444444444444445
+Steps Confidence,Confidence,Probability correct,Baseline,0.4,0.19444444444444445
+Steps Confidence,Confidence,Probability correct,Baseline,0.2,0.147

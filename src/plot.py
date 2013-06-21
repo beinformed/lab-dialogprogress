@@ -1,30 +1,23 @@
 import pylab as plt
 import csv
 import itertools
-import subprocess
 import sys
 
-if(len(sys.argv) < 2):
+if(len(sys.argv) < 3):
     print("Syntax:\n\
-python plot.py <data> [out]\n\
-<data>: the data to parse, train on and plot.\n\
+python plot.py <results> [out]\n\
+<results> location of the file containing the predictor's results.\n\
 [out]: name of file to save the image to. If not provided, the graph is shown on the screen.")
     exit()
 
 location = sys.argv[1]
-result_location = 'results/result.csv'
-out = sys.argv[2] if len(sys.argv) >= 3 else ''
-
-print('Running java to generate results...')
-
-subprocess.call(['java', '-Xmx1g', '-cp', 'bin:neuroph-core-2.7.jar', 'com.beinformed.research.labs.dialogprogress.testing.PredictorTester',
-                location, result_location])
+out = sys.argv[3] if len(sys.argv) >= 4 else ''
 
 print('Generating graph...')
 
 graphs = {}
 graphlabels = {}
-with open(result_location, 'rt') as csvfile:
+with open(location, 'rt') as csvfile:
     reader = csv.reader(csvfile)
     next(reader, None)
     maingroup = lambda x: x[0:3]

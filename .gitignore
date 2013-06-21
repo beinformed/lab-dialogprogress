@@ -2,7 +2,7 @@
 
 #eclipse ignore personal stuff 
 .metadata
-
+bin
 
 ## generic files to ignore
 *~

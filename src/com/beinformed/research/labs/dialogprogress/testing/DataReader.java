@@ -19,7 +19,7 @@ import com.beinformed.research.labs.dialogprogress.Question;
  * 
  */
 
-public class DataReader {
+class DataReader {
 
 	BufferedReader dataRdr;
 	private List<Observation> observations;

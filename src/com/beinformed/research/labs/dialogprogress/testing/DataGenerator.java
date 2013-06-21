@@ -2,7 +2,6 @@ package com.beinformed.research.labs.dialogprogress.testing;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
 
 public class DataGenerator {
 	

@@ -7,9 +7,9 @@ import com.beinformed.research.labs.dialogprogress.*;
 
 public class TestFrame {
 	
-	private Iterable<Predictor> predictors;
+	private Iterable<PredictorFactory> predictors;
 	
-	public TestFrame(Iterable<Predictor> predictors) {
+	public TestFrame(List<PredictorFactory> predictors) {
 		this.predictors = predictors;
 	}
 	
@@ -17,22 +17,22 @@ public class TestFrame {
 		Collection<DataFold<Observation>> split = DataFold.allFromList(data, 5);
 		List<TestResult> results = new ArrayList<TestResult>();
 		
-		for(Predictor p : predictors)
+		for(PredictorFactory p : predictors)
 			results.add(testPredictor(p, split));
 		
 		return results;
 	}
 	
-	private TestResult testPredictor(Predictor p, Collection<DataFold<Observation>> data) {
+	private TestResult testPredictor(PredictorFactory p, Collection<DataFold<Observation>> data) {
 		List<Error> errors = new ArrayList<Error>();
 		
 		for(DataFold<Observation> f : data) {
-			List<Error> foldErrors = testFold(p, f);
+			List<Error> foldErrors = testFold(p.getPredictor(), f);
 			
 			errors.addAll(foldErrors);
 		}	
 		
-		return new TestResult(p, errors);
+		return new TestResult(p.getPredictor(), errors);
 	}
 
 	private List<Error> testFold(Predictor p, DataFold<Observation> f) {
