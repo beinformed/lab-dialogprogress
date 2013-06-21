@@ -17,7 +17,7 @@ out = sys.argv[2] if len(sys.argv) >= 3 else ''
 
 print('Running java to generate results...')
 
-subprocess.call(['java', '-Xmx1g', '-cp', 'bin', 'com.beinformed.research.labs.dialogprogress.testing.PredictorTester',
+subprocess.call(['java', '-Xmx1g', '-cp', 'bin:neuroph-core-2.7.jar', 'com.beinformed.research.labs.dialogprogress.testing.PredictorTester',
                 location, result_location])
 
 print('Generating graph...')

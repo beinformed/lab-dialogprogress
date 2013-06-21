@@ -18,19 +18,13 @@ public class PredictorTester {
 		String outputLoc = args[1];
 
 		List<Predictor> predictors = new ArrayList<Predictor>();
-		predictors.add(new PerObservationBLPredictor(PredictionUnit.Time));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Time, .5, .4, .1));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Time, .6, .3, .1));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Time, .8, .1, .1));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Time, .8, .2, .0));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Time, .15, .8, .05));
+		//predictors.add(new PerObservationBLPredictor(PredictionUnit.Time));
+		predictors.add(new NeuralNetworkPredictor(PredictionUnit.Time, 5, 5));
+		//predictors.add(new AverageTreePredictor(PredictionUnit.Time, .8, .2, .0));
 		
-		predictors.add(new PerObservationBLPredictor(PredictionUnit.Steps));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Steps, .5, .4, .1));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Steps, .6, .3, .1));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Steps, .8, .1, .1));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Steps, .8, .2, .0));
-		predictors.add(new AverageTreePredictor(PredictionUnit.Steps, .15, .8, .05));
+		//predictors.add(new PerObservationBLPredictor(PredictionUnit.Steps));
+		predictors.add(new NeuralNetworkPredictor(PredictionUnit.Steps, 5, 5));
+		//predictors.add(new AverageTreePredictor(PredictionUnit.Steps, .8, .2, .0));
 
 		TestFrame frame = new TestFrame(predictors);
 

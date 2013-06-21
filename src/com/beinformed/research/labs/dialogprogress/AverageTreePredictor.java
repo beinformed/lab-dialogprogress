@@ -84,7 +84,7 @@ public class AverageTreePredictor implements Predictor {
 	}
 	
 	private double getConfidence(Observation data) {
-		return (1 - (1 / totalFrequency)) * (data.getNoQuestions() / (double)maxLength);
+		return (1 - (1 / ((double)totalFrequency / 1000))) * (data.getNoQuestions() / (double)maxLength);
 	}
 
 	public String toString() {
