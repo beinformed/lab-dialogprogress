@@ -44,9 +44,12 @@ class BucketManager {
 	
 	public double[] getBucketVector(Observation obs) {
 		int value = obs.getLearnValue(unit);
+		return getBucketVector(value);
+	}
+	public double[] getBucketVector(int learnValue) {
 		double[] result = new double[buckets.length];
 		for(int i = 0; i < buckets.length; i++) {
-			if(value >= buckets[i].lower && value <= buckets[i].upper)
+			if(learnValue >= buckets[i].lower && learnValue <= buckets[i].upper)
 				result[i] = 1;
 		}
 		return result;

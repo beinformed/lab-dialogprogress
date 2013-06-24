@@ -13,12 +13,23 @@ public class TestFrame {
 		this.predictors = predictors;
 	}
 	
-	public Iterable<TestResult> testAll(List<Observation> data) {
-		Collection<DataFold<Observation>> split = DataFold.allFromList(data, 5);
+	public Iterable<TestResult> testAllFolds(List<Observation> data, int folds) {
+		Collection<DataFold<Observation>> split = DataFold.allFromList(data, folds);
 		List<TestResult> results = new ArrayList<TestResult>();
 		
 		for(PredictorFactory p : predictors)
 			results.add(testPredictor(p, split));
+		
+		return results;
+	}
+	public Iterable<TestResult> testAll(List<Observation> train, List<Observation> test) {
+		DataFold<Observation> fold = new DataFold<Observation>(test, train);
+		List<DataFold<Observation>> wrap = new ArrayList<DataFold<Observation>>();
+		wrap.add(fold);
+		
+		List<TestResult> results = new ArrayList<TestResult>();
+		for(PredictorFactory p : predictors) 
+			results.add(testPredictor(p, wrap));
 		
 		return results;
 	}
@@ -36,6 +47,7 @@ public class TestFrame {
 	}
 
 	private List<Error> testFold(Predictor p, DataFold<Observation> f) {
+		System.out.println("Now testing " + p.toString());
 		List<Error> errors = new ArrayList<Error>();
 		
 		p.train(f.getTrainingSet());

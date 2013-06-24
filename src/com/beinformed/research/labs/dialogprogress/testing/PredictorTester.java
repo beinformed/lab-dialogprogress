@@ -6,18 +6,52 @@ import java.util.List;
 import com.beinformed.research.labs.dialogprogress.*;
 
 public class PredictorTester {
+	static List<Observation> test;
+	static List<Observation> train;
+	static boolean folds;
+	static List<PredictorFactory> predictors;
+	static String output;
+	
 	public static void main(String[] args) throws InterruptedException {
-		if (args.length < 3) {
-			System.out.println("Syntax:\njava PredictorTester <in> <out>\n<in>: " + 
-					"input file containing data\n<out>: results of the predictors" + 
-					"<config>: definition of what predictors to run");
-			System.exit(1);
+
+		parseArgs(args);
+		TestFrame frame = new TestFrame(predictors);
+
+		Iterable<TestResult> result;
+		if(folds)
+			result = frame.testAllFolds(train, 4);
+		else
+			result = frame.testAll(train, test);
+
+		try {
+			ResultWriter writer = new ResultWriter(output);
+			writer.write(result);
+			writer.close();
+			System.out.println("Written results to " + output);
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
-		String dataLoc = args[0];
-		String outputLoc = args[1];
-		String configLoc = args[2];
+	}
 
+	static void parseArgs(String[] args) {
+		if (args.length < 4)
+			errorExit();
+		
+		if(args[0].equals("-f")) {
+			folds = true;
+			train = readDataFile(args[1]);
+		} else {
+			train = readDataFile(args[0]);
+			test = readDataFile(args[1]);
+		}
+		
+		output = args[2];
+		predictors = readConfig(args[3]);
+	}
+	
+	private static List<PredictorFactory> readConfig(String configLoc) {
 		List<PredictorFactory> predictors = null;
 		ConfigReader configReader;
 		try {
@@ -28,9 +62,10 @@ public class PredictorTester {
 			e.printStackTrace();
 			System.exit(1);
 		}
+		return predictors;
+	}
 
-		TestFrame frame = new TestFrame(predictors);
-
+	private static List<Observation> readDataFile(String dataLoc) {
 		DataReader reader = null;
 		try {
 			reader = new DataReader(dataLoc);
@@ -44,19 +79,13 @@ public class PredictorTester {
 			System.exit(1);
 		}
 
-		List<Observation> data = reader.getObservations();
+		return reader.getObservations();
+	}
 
-		Iterable<TestResult> result = frame.testAll(data);
-
-		try {
-			ResultWriter writer = new ResultWriter(outputLoc);
-			writer.write(result);
-			writer.close();
-			System.out.println("Written results to " + outputLoc);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+	static void errorExit() {
+		System.out.println("Syntax:\njava PredictorTester <train> <test> <out> <config>\n<train>: " + 
+				"trainingset\n<test>:testset\n<out>: results of the predictors\n" + 
+				"<config>: definition of what predictors to run");
+		System.exit(1);
 	}
 }

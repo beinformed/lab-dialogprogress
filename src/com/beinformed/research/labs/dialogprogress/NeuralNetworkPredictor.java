@@ -1,8 +1,13 @@
 package com.beinformed.research.labs.dialogprogress;
 
-import org.neuroph.core.learning.DataSet;
-import org.neuroph.nnet.MultiLayerPerceptron;
-import org.neuroph.util.TransferFunctionType;
+import org.encog.engine.network.activation.ActivationSigmoid;
+import org.encog.ml.data.MLData;
+import org.encog.ml.data.MLDataSet;
+import org.encog.ml.data.basic.BasicMLData;
+import org.encog.ml.data.basic.BasicMLDataSet;
+import org.encog.neural.networks.BasicNetwork;
+import org.encog.neural.networks.layers.BasicLayer;
+import org.encog.neural.networks.training.propagation.resilient.ResilientPropagation;
 
 public class NeuralNetworkPredictor implements Predictor {
 
@@ -10,13 +15,14 @@ public class NeuralNetworkPredictor implements Predictor {
 	private PredictionUnit unit;
 	private ObservationVectorizer vectorizer;
 	private BucketManager bmanager;
-	private MultiLayerPerceptron network;
+	private BasicNetwork network;
 	private int[] layers;
 
 	public NeuralNetworkPredictor(PredictionUnit unit, int buckets, int... layers) {
 		this.unit = unit;
 		this.buckets = buckets;
 		this.layers = layers;
+		network = new BasicNetwork();
 	}
 	
 	@Override
@@ -25,40 +31,44 @@ public class NeuralNetworkPredictor implements Predictor {
 			vectorizer = new ObservationVectorizer(data);
 			bmanager = new BucketManager(buckets, data, unit);
 			
-			int[] layers = new int[this.layers.length + 2];
-			layers[0] = vectorizer.getVectorSize();
-			for(int i = 0; i < this.layers.length; i++)
-				layers[i+1] = this.layers[i];
-			layers[this.layers.length + 1] = buckets;
-			network = new MultiLayerPerceptron(TransferFunctionType.TANH, layers);
+			network.addLayer(new BasicLayer(vectorizer.getVectorSize()));
+			for(int i = 0; i < layers.length; i++)
+				network.addLayer(new BasicLayer(new ActivationSigmoid(), true, layers[i]));
+			network.addLayer(new BasicLayer(new ActivationSigmoid(), false, buckets));
+			network.getStructure().finalizeStructure();
+			network.reset();
 		}
 		
-		DataSet set = new DataSet(vectorizer.getVectorSize(), buckets);
+		MLDataSet set = new BasicMLDataSet();
 		for(Observation ob : data) {
 			for(Observation sub : ob.getSubObservations()) {
-				double[] inputVector = vectorizer.getVector(sub);
-				double[] bucketVector = bmanager.getBucketVector(ob);
-				set.addRow(inputVector, bucketVector);
+				MLData input = new BasicMLData(vectorizer.getVector(sub));
+				MLData output = new BasicMLData(bmanager.getBucketVector(ob.getLearnValue(unit) - sub.getLearnValue(unit)));
+				set.add(input, output);
 			}
 		}
 		
-		network.learn(set);
+		final ResilientPropagation train = new ResilientPropagation(network, set);
+		
+		do {
+			train.iteration();	
+		} while(train.getError() > .05);
+		train.finishTraining();
 	}
 
 	@Override
-	public Prediction predict(Observation data) {
-		double[] inputVector = vectorizer.getVector(data);
+	public Prediction predict(Observation data) {		
+		MLData obs = new BasicMLData(vectorizer.getVector(data));
 		
-		network.setInput(inputVector);
-		network.calculate();
-		
-		double[] out = network.getOutput();
+		double[] out = network.compute(obs).getData();
 		double max = Double.NEGATIVE_INFINITY;
 		int index = -1;
 		
 		for(int i = 0; i < out.length; i++) {
-			if(out[i] > max)
+			if(out[i] > max) {
 				index = i;
+				max = out[i];
+			}
 		}
 		
 		Bucket b = bmanager.fromVectorIndex(index);
@@ -67,8 +77,8 @@ public class NeuralNetworkPredictor implements Predictor {
 	}
 	
 	public String toString() {
-		String layerString = "[" + layers[0];
-		for(int i = 1; i < layers.length; i++)
+		String layerString = "[" + buckets;
+		for(int i = 0; i < layers.length; i++)
 			layerString += "|" + layers[i];
 		
 		return "Neural Network " + layerString + "]";
