@@ -79,7 +79,6 @@ class Form {
 		for(int i = 0; i < size; i++)
 			if(questions.get(i).forked() == fork || i <= forkPos)
 				toAsk.add(questions.get(i));
-		System.out.println(toAsk.size());
 		return getString(fork, toAsk);
 	}
 	
