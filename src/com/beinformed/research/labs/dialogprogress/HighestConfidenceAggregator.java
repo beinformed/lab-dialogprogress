@@ -14,7 +14,6 @@ public class HighestConfidenceAggregator implements Predictor {
 	public HighestConfidenceAggregator( PredictionUnit unit ){
 		this.unit = unit;
 		predictors = new ArrayList<Predictor>();
-		predictors.add(new BaseLinePredictor(unit));
 		predictors.add(new PerObservationBLPredictor(unit));	
 		
 	}

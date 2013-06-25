@@ -2,6 +2,7 @@ package com.beinformed.research.labs.dialogprogress.testing;
 
 import java.io.*;
 import java.util.List;
+import java.util.Random;
 
 import com.beinformed.research.labs.dialogprogress.*;
 
@@ -19,24 +20,22 @@ public class PredictorTester {
 
 		Iterable<TestResult> result;
 		
-		List<Observation> testSet = train.subList(400, 507);
-		List<Observation> trainSet = train.subList(0, 399);
+		//List<Observation> testSet = train.subList(400, 507);
+		//List<Observation> trainSet = train.subList(0, 399);
 		
 		if(folds)
 			result = frame.testAllFolds(train, 4);
 		else
-			result = frame.testAll(trainSet, testSet);
+			result = frame.testAll(train, test);
 
 		try {
 			ResultWriter writer = new ResultWriter(output);
 			writer.write(result);
 			writer.close();
 			System.out.println("Written results to " + output);
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	static void parseArgs(String[] args) {

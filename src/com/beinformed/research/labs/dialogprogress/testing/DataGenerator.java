@@ -3,18 +3,21 @@ package com.beinformed.research.labs.dialogprogress.testing;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import com.beinformed.research.labs.dialogprogress.testing.Form.ForkType;
+
 public class DataGenerator {
 	
 	private FileWriter writer;
+	private Form form;
 	
-	public DataGenerator(String path) throws IOException {
+	public DataGenerator(String path, Form form) throws IOException {
 		this.writer = new FileWriter(path);
+		this.form = form;
 	}
 
 	public void generate(int n) throws IOException {
-		Form form = new Form();
 		for(int i = 0; i < n; i++) {
-			writer.write(form.generateObservation());
+			writer.write(form.getObservation());
 		}
 	}
 

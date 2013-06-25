@@ -1,0 +1,136 @@
+title,xlabel,ylabel,linename,xvalue,yvalue
+Time Error,Progress (steps),Error (s),Neural Network [10|5],1.0,260.7461145258835
+Time Error,Progress (steps),Error (s),Neural Network [10|5],2.0,17.88113861896028
+Time Error,Progress (steps),Error (s),Neural Network [10|5],3.0,5.890563374546385
+Time Error,Progress (steps),Error (s),Neural Network [10|5],4.0,0.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|5],0.8,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|5],0.7,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|5],0.6,0.9090909090909091
+Time Confidence,Confidence,Probability correct,Neural Network [10|5],0.5,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|5],0.9,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|5],0.4,0.8
+Time Confidence,Confidence,Probability correct,Neural Network [10|5],0.2,0.325
+Time Confidence,Confidence,Probability correct,Neural Network [10|5],0.3,0.9375
+Steps Error,Progress (steps),Error (steps),Neural Network [10|5],1.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|5],2.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|5],3.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|5],4.0,0.0
+Steps Confidence,Confidence,Probability correct,Neural Network [10|5],0.9,1.0
+Time Error,Progress (steps),Error (s),Neural Network [10|5|5],1.0,288.9405525213382
+Time Error,Progress (steps),Error (s),Neural Network [10|5|5],2.0,127.18301002252424
+Time Error,Progress (steps),Error (s),Neural Network [10|5|5],3.0,5.890563374546385
+Time Error,Progress (steps),Error (s),Neural Network [10|5|5],4.0,0.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|5|5],0.8,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|5|5],0.6,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|5|5],0.5,0.9545454545454546
+Time Confidence,Confidence,Probability correct,Neural Network [10|5|5],0.9,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|5|5],0.7,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|5|5],0.4,0.8
+Time Confidence,Confidence,Probability correct,Neural Network [10|5|5],0.2,0.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|5|5],0.3,0.2
+Steps Error,Progress (steps),Error (steps),Neural Network [10|5|5],1.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|5|5],2.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|5|5],3.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|5|5],4.0,0.0
+Steps Confidence,Confidence,Probability correct,Neural Network [10|5|5],0.9,1.0
+Time Error,Progress (steps),Error (s),Neural Network [10|10],1.0,216.7503238024888
+Time Error,Progress (steps),Error (s),Neural Network [10|10],2.0,17.88113861896028
+Time Error,Progress (steps),Error (s),Neural Network [10|10],3.0,5.890563374546385
+Time Error,Progress (steps),Error (s),Neural Network [10|10],4.0,0.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|10],0.8,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|10],0.5,0.875
+Time Confidence,Confidence,Probability correct,Neural Network [10|10],0.6,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|10],0.9,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|10],0.4,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|10],0.2,0.47619047619047616
+Time Confidence,Confidence,Probability correct,Neural Network [10|10],0.3,1.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|10],1.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|10],2.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|10],3.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|10],4.0,0.0
+Steps Confidence,Confidence,Probability correct,Neural Network [10|10],0.9,1.0
+Time Error,Progress (steps),Error (s),Neural Network [10|10|10],1.0,241.79207871169467
+Time Error,Progress (steps),Error (s),Neural Network [10|10|10],2.0,17.88113861896028
+Time Error,Progress (steps),Error (s),Neural Network [10|10|10],3.0,37.78108771154293
+Time Error,Progress (steps),Error (s),Neural Network [10|10|10],4.0,0.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|10|10],0.8,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|10|10],0.7,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|10|10],0.6,0.5294117647058824
+Time Confidence,Confidence,Probability correct,Neural Network [10|10|10],0.9,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|10|10],0.5,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|10|10],0.4,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|10|10],0.2,0.34146341463414637
+Time Confidence,Confidence,Probability correct,Neural Network [10|10|10],0.3,0.9090909090909091
+Steps Error,Progress (steps),Error (steps),Neural Network [10|10|10],1.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|10|10],2.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|10|10],3.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|10|10],4.0,0.0
+Steps Confidence,Confidence,Probability correct,Neural Network [10|10|10],0.9,1.0
+Time Error,Progress (steps),Error (s),Neural Network [10|15],1.0,319.5661266465306
+Time Error,Progress (steps),Error (s),Neural Network [10|15],2.0,17.88113861896028
+Time Error,Progress (steps),Error (s),Neural Network [10|15],3.0,5.890563374546385
+Time Error,Progress (steps),Error (s),Neural Network [10|15],4.0,0.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|15],0.8,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|15],0.5,0.875
+Time Confidence,Confidence,Probability correct,Neural Network [10|15],0.6,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|15],0.9,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|15],0.4,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|15],0.2,0.19148936170212766
+Time Confidence,Confidence,Probability correct,Neural Network [10|15],0.3,1.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|15],1.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|15],2.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|15],3.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|15],4.0,0.0
+Steps Confidence,Confidence,Probability correct,Neural Network [10|15],0.9,1.0
+Time Error,Progress (steps),Error (s),Neural Network [10|15|15],1.0,192.49797118317568
+Time Error,Progress (steps),Error (s),Neural Network [10|15|15],2.0,243.6722595100484
+Time Error,Progress (steps),Error (s),Neural Network [10|15|15],3.0,26.690026390169663
+Time Error,Progress (steps),Error (s),Neural Network [10|15|15],4.0,0.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|15|15],0.1,0.5
+Time Confidence,Confidence,Probability correct,Neural Network [10|15|15],0.8,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|15|15],1.0,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|15|15],0.5,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|15|15],0.7,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|15|15],0.6,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|15|15],0.9,0.40476190476190477
+Time Confidence,Confidence,Probability correct,Neural Network [10|15|15],0.4,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|15|15],0.2,0.2962962962962963
+Time Confidence,Confidence,Probability correct,Neural Network [10|15|15],0.3,0.4
+Steps Error,Progress (steps),Error (steps),Neural Network [10|15|15],1.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|15|15],2.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|15|15],3.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|15|15],4.0,0.0
+Steps Confidence,Confidence,Probability correct,Neural Network [10|15|15],0.9,1.0
+Time Error,Progress (steps),Error (s),Neural Network [10|20],1.0,256.51386006770826
+Time Error,Progress (steps),Error (s),Neural Network [10|20],2.0,17.88113861896028
+Time Error,Progress (steps),Error (s),Neural Network [10|20],3.0,5.890563374546385
+Time Error,Progress (steps),Error (s),Neural Network [10|20],4.0,0.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|20],0.8,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|20],0.5,0.875
+Time Confidence,Confidence,Probability correct,Neural Network [10|20],0.6,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|20],0.9,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|20],0.4,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|20],0.2,0.2777777777777778
+Time Confidence,Confidence,Probability correct,Neural Network [10|20],0.3,1.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|20],1.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|20],2.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|20],3.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|20],4.0,0.0
+Steps Confidence,Confidence,Probability correct,Neural Network [10|20],0.9,1.0
+Time Error,Progress (steps),Error (s),Neural Network [10|20|20],1.0,258.81181611827293
+Time Error,Progress (steps),Error (s),Neural Network [10|20|20],2.0,41.9260441096399
+Time Error,Progress (steps),Error (s),Neural Network [10|20|20],3.0,5.890563374546385
+Time Error,Progress (steps),Error (s),Neural Network [10|20|20],4.0,0.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|20|20],0.1,0.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|20|20],0.8,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|20|20],1.0,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|20|20],0.9,1.0
+Time Confidence,Confidence,Probability correct,Neural Network [10|20|20],0.5,0.9230769230769231
+Time Confidence,Confidence,Probability correct,Neural Network [10|20|20],0.4,0.95
+Time Confidence,Confidence,Probability correct,Neural Network [10|20|20],0.2,0.3611111111111111
+Time Confidence,Confidence,Probability correct,Neural Network [10|20|20],0.3,0.6428571428571429
+Steps Error,Progress (steps),Error (steps),Neural Network [10|20|20],1.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|20|20],2.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|20|20],3.0,0.0
+Steps Error,Progress (steps),Error (steps),Neural Network [10|20|20],4.0,0.0
+Steps Confidence,Confidence,Probability correct,Neural Network [10|20|20],0.9,1.0

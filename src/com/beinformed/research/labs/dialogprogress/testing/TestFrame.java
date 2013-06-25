@@ -73,7 +73,7 @@ public class TestFrame {
 		double prediction = lower + (upper - lower) / 2.0;
 		double result = (prediction - correctValue) * (prediction - correctValue);
 		
-		return Math.sqrt(result);
+		return Math.sqrt(result) / 1000;
 	}
 }
 

@@ -1,243 +1,165 @@
 package com.beinformed.research.labs.dialogprogress.testing;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
 
 class Form {
-	Random rnd = new Random();
+	public enum ForkType {
+		Steps, Time;
+	}
 	
-	private abstract class FormQuestion {
-		String question;
-		String answer;
-		private int std;
-		private int avg;
+	public class RandomString
+	{
+	  private final char[] buf;
+
+	  public RandomString(int length)
+	  {
+	    if (length < 1)
+	      throw new IllegalArgumentException("length < 1: " + length);
+	    buf = new char[length];
+	  }
+
+	  public String nextString()
+	  {
+	    for (int idx = 0; idx < buf.length; ++idx) 
+	      buf[idx] = (char) ('a' + rnd.nextInt('z' - 'a'));
+	    return new String(buf);
+	  }
+
+	}
+	
+	private class FormQuestion {
+		private int max;
+		private int min;
+		private boolean forked;
+		private String question;
 		
-		public FormQuestion(String question, int avg, int std) {
-			this.question = question;
-			this.avg = avg;
-			this.std = std;
+		public FormQuestion(int min, int max, boolean forked) {
+			this.max = max;
+			this.min = min;
+			this.forked = forked;
+			this.question = questionGen.nextString();
 		}
-		
-		public String toString() {
-			return "'[DataAnchor [" + question +"]]','DataAnchor [" + question + "]=" + answer + "'";
+		public int duration() {
+			return (rnd.nextInt(max-min + 1) + min) * 1000;
 		}
-		public int getDuration() {
-			return (int) (avg + rnd.nextGaussian()*std) * 1000;
+		public boolean forked() {
+			return forked;
 		}
-		
-		public abstract FormQuestion getNext();
-		public abstract void genAnswer();
+		public String question() {
+			return question;
+		}
 	}
 
-	FormQuestion age = new FormQuestion("person|age", 10, 5) {
-		public FormQuestion getNext() {
-			int value = Integer.parseInt(answer);
-			if(value > 65)
-				return yworked;
-			if(value > 30)
-				return job_a;
-			return study;
-		}
-		public void genAnswer() {
-			answer = Integer.toString((int) (50 + rnd.nextGaussian()*30));
-		}
-	};
-	FormQuestion study = new FormQuestion("person|study", 300, 20) {
-		@Override
-		public FormQuestion getNext() {
-			if(Boolean.parseBoolean(answer))
-				return study_time;
-			else
-				return job_b;
-		}
-		@Override
-		public void genAnswer() {
-			answer = Boolean.toString(rnd.nextBoolean());
-		}		
-	};
-	FormQuestion job_a = new FormQuestion("person|job", 60, 5) {
-		@Override
-		public FormQuestion getNext() {
-			if(Boolean.parseBoolean(answer))
-				return salary_a;
-			else
-				return null;
-		}
-		@Override
-		public void genAnswer() {
-			answer = Boolean.toString(rnd.nextBoolean());
-		}
-	};
-	FormQuestion job_b = new FormQuestion("person|job", 60, 5) {
-		@Override
-		public FormQuestion getNext() {
-			return have_degree;
-		}
-		@Override
-		public void genAnswer() {
-			answer = Boolean.toString(rnd.nextBoolean());
-		}
-	};
-	FormQuestion study_time = new FormQuestion("person|study_time", 10, 1) {
-
-		@Override
-		public FormQuestion getNext() {
-			return have_degree;
-		}
-
-		@Override
-		public void genAnswer() {
-			answer = Boolean.toString(rnd.nextBoolean());
-		}
+	private List<FormQuestion> questions;
+	RandomString questionGen = new RandomString(10);
+	private Random rnd = new Random();
+	private int size, forkPos, importantQuestionPos;
+	private ForkType type;
+	private String form;
+	
+	public Form(int size, int forkPos, int importantQuestionPos, ForkType type) {
+		this.size = size;
+		this.forkPos = forkPos;
+		this.importantQuestionPos = importantQuestionPos;
+		this.type = type;
+		this.questions = new ArrayList<FormQuestion>();
+		this.form = questionGen.nextString();
+		generateQuestions();
+	}
+	
+	public String getObservation() {
+		boolean fork = rnd.nextInt(100) > 80;
+		List<FormQuestion> toAsk = new ArrayList<FormQuestion>();
 		
-	};
-	FormQuestion have_degree = new FormQuestion("person|have_degree", 30, 2) {
-
-		@Override
-		public FormQuestion getNext() {
-			return null;
-		}
-
-		@Override
-		public void genAnswer() {
-			answer = Boolean.toString(rnd.nextBoolean());
-		}
-		
-	};
-	FormQuestion yworked = new FormQuestion("person|years_worked", 60, 10) {
-
-		@Override
-		public FormQuestion getNext() {
-			int value = Integer.parseInt(answer);
-			if(value > 40)
-				return salary_b;
-			else
-				return working;
-		}
-
-		@Override
-		public void genAnswer() {
-			answer = Integer.toString( (int) (30 + rnd.nextGaussian()*5));
-		}
-		
-	};
-	FormQuestion salary_a = new FormQuestion("person|salary", 120, 20) {
-
-		@Override
-		public FormQuestion getNext() {
-			int value = Integer.parseInt(answer);
-			if(value > 20000)
-				return null;
-			else
-				return no_jobs;
-		}
-
-		@Override
-		public void genAnswer() {
-			answer = Integer.toString((int) (15000 + rnd.nextGaussian()*2000));
-		}};
-	FormQuestion salary_b = new FormQuestion("person|salary", 180, 20) {
-
-		@Override
-		public FormQuestion getNext() {
-			return other_country;
-		}
-
-		@Override
-		public void genAnswer() {
-			answer = Integer.toString((int) (15000 + rnd.nextGaussian()*2000));			
-		} };
-	FormQuestion no_jobs = new FormQuestion("person|no_jobs", 60, 10) {
-
-		@Override
-		public FormQuestion getNext() {
-			return null;
-		}
-
-		@Override
-		public void genAnswer() {
-			answer = Integer.toString(1 + rnd.nextInt(10));
-		} };
-	FormQuestion other_country = new FormQuestion("person|other_country", 10, 1) {
-
-		@Override
-		public FormQuestion getNext() {
-			if(Boolean.parseBoolean(answer))
-				return time_other_country;
-			else
-				return null;
-		}
-
-		@Override
-		public void genAnswer() {
-			answer = Boolean.toString(rnd.nextBoolean());
-		} };
-	FormQuestion time_other_country = new FormQuestion("person|time_other_country", 60, 2) {
-
-		@Override
-		public FormQuestion getNext() {
-			return null;
-		}
-
-		@Override
-		public void genAnswer() {
-			answer = Integer.toString(rnd.nextInt(5));
-		} };
-	FormQuestion working = new FormQuestion("person|working", 10, 1) {
-
-		@Override
-		public FormQuestion getNext() {
-			return have_children;
-		}
-
-		@Override
-		public void genAnswer() {
-			answer = Boolean.toString(rnd.nextBoolean());
-		}
-		
-	};
-	FormQuestion have_children = new FormQuestion("person|have_children", 5, 1) {
-
-		@Override
-		public FormQuestion getNext() {
-			if(Boolean.parseBoolean(answer))
-				return null;
-			else
-				return live_alone;
-		}
-
-		@Override
-		public void genAnswer() {
-			answer = Boolean.toString(rnd.nextBoolean());
-		} };
-	FormQuestion live_alone = new FormQuestion("person|live_alone", 5, 1) {
-
-		@Override
-		public FormQuestion getNext() {
-			return null;
-		}
-
-		@Override
-		public void genAnswer() {
-			answer = Boolean.toString(rnd.nextBoolean());			
-		} };	
-		
-	public String generateObservation() {
-		FormQuestion next = age;
-		long time = System.currentTimeMillis();
-		UUID guid = UUID.randomUUID();
+		for(int i = 0; i < size; i++)
+			if(questions.get(i).forked() == fork || i <= forkPos)
+				toAsk.add(questions.get(i));
+		System.out.println(toAsk.size());
+		return getString(fork, toAsk);
+	}
+	
+	private String getString(boolean fork, List<FormQuestion> toAsk) {
+		long start = System.currentTimeMillis();
+		String obsId = UUID.randomUUID().toString();
 		String result = "";
 		
-		while(next != null) {
-			next.genAnswer();
-			result += "TESTFORM," + guid.toString() + "," + time + "," + next.toString() + ",OK\n";
-			time += next.getDuration();
-			next = next.getNext();
+		for(FormQuestion q : toAsk) {
+			int time = q.duration();
+			String question = q.question();
+			String answer;
+			
+			if(q.equals(questions.get(importantQuestionPos)) && fork)
+				answer = "true";
+			else
+				answer = Boolean.toString(rnd.nextBoolean());
+			
+			if(this.type == ForkType.Time && fork)
+				time *= 2;
+			
+			String line = this.form + "," + obsId + "," + (start + time) + ",'[DataAnchor [" + 
+					question + "]]','DataAnchor [" + question + "]=" + answer + "',DATA_MISSING\n";
+			result += line;
+			start += time;
 		}
 		
 		return result;
 	}
-	
+
+	private void generateQuestions() {
+		if(type == ForkType.Steps)
+			generateStepsQuestions();
+		else
+			generateTimeQuestions();
+	}
+
+	private void generateStepsQuestions() {
+		int split = ((int) ((size - forkPos) * .90)) + forkPos;
+		
+		for(int i = 0; i < size; i++) {
+			int min = rnd.nextInt(75);
+			int max = rnd.nextInt(30) + min;
+			questions.add(new FormQuestion(min,  max, i >= split));
+		}
+	}
+
+	private void generateTimeQuestions() {
+		for(int i = 0; i < size; i++) {
+			int min = rnd.nextInt(75);
+			int max = rnd.nextInt(30) + min;
+			questions.add(new FormQuestion(min, max, i > forkPos));
+		}
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
