@@ -82,7 +82,7 @@ class DataReader {
 	private List<Question> parseQuestion(DataLine line) {
 		List<Question> result = new ArrayList<Question>();
 		String[] encodedQA = line.answer.split(", DataAnchor ");
-		if(encodedQA.length >= 1)
+		if(encodedQA[0].startsWith("DataAnchor "))
 			encodedQA[0] = encodedQA[0].substring("DataAnchor ".length());
 		
 		for(String s : encodedQA) {

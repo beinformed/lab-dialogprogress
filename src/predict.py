@@ -16,5 +16,5 @@ result_location = sys.argv[4]
 
 print('Running java to generate results...')
 
-subprocess.call(['java', '-Xmx1g', '-cp', 'bin:neuroph-core-2.7.jar', 'com.beinformed.research.labs.dialogprogress.testing.PredictorTester',
+subprocess.call(['java', '-Xmx1g', '-cp', 'bin:encog.jar', 'com.beinformed.research.labs.dialogprogress.testing.PredictorTester',
                 train_location, test_location, result_location, config_location])

@@ -52,7 +52,7 @@ public class NeuralNetworkPredictor implements Predictor {
 		
 		do {
 			train.iteration();	
-		} while(train.getError() > .05);
+		} while(train.getError() > .1);
 		train.finishTraining();
 	}
 
@@ -62,9 +62,11 @@ public class NeuralNetworkPredictor implements Predictor {
 		
 		double[] out = network.compute(obs).getData();
 		double max = Double.NEGATIVE_INFINITY;
+		double total = 0;
 		int index = -1;
 		
 		for(int i = 0; i < out.length; i++) {
+			total += out[i];
 			if(out[i] > max) {
 				index = i;
 				max = out[i];
@@ -73,7 +75,7 @@ public class NeuralNetworkPredictor implements Predictor {
 		
 		Bucket b = bmanager.fromVectorIndex(index);
 		
-		return new Prediction(max, b.lower, b.upper, unit);
+		return new Prediction(max/total, b.lower, b.upper, unit);
 	}
 	
 	public String toString() {

@@ -70,12 +70,8 @@ public class TestFrame {
 	private double getError(Prediction predicted, int correctValue) {
 		int lower = predicted.getLowerBound();
 		int upper = predicted.getUpperBound();
-		int result = 0;
-		
-		if(correctValue < lower)
-			result = (lower - correctValue)^2;
-		else if(correctValue > upper)
-			result = (correctValue - upper)^2;
+		double prediction = lower + (upper - lower) / 2.0;
+		double result = (prediction - correctValue) * (prediction - correctValue);
 		
 		return Math.sqrt(result);
 	}

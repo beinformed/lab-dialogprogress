@@ -18,10 +18,14 @@ public class PredictorTester {
 		TestFrame frame = new TestFrame(predictors);
 
 		Iterable<TestResult> result;
+		
+		List<Observation> testSet = train.subList(400, 507);
+		List<Observation> trainSet = train.subList(0, 399);
+		
 		if(folds)
 			result = frame.testAllFolds(train, 4);
 		else
-			result = frame.testAll(train, test);
+			result = frame.testAll(trainSet, testSet);
 
 		try {
 			ResultWriter writer = new ResultWriter(output);

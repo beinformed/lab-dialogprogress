@@ -9,8 +9,8 @@ import com.beinformed.research.labs.dialogprogress.Predictor;
 
 
 public class TestResult {
-	final int timeThreshold = 150;
-	final int stepsThreshold = 1;
+	final int timeThreshold = 750;
+	final int stepsThreshold = 3;
 	
 	private List<Error> errors;
 	private Predictor predictor;
