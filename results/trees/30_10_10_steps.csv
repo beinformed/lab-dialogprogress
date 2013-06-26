@@ -1,0 +1,233 @@
+title,xlabel,ylabel,linename,xvalue,yvalue
+Time Error,Progress (steps),Error (s),Baseline,1.0,688.797
+Time Error,Progress (steps),Error (s),Baseline,2.0,181.294
+Time Error,Progress (steps),Error (s),Baseline,3.0,157.8774699999994
+Time Error,Progress (steps),Error (s),Baseline,4.0,183.4845
+Time Error,Progress (steps),Error (s),Baseline,5.0,181.4942000000002
+Time Error,Progress (steps),Error (s),Baseline,6.0,218.08458000000152
+Time Error,Progress (steps),Error (s),Baseline,7.0,245.6821570000001
+Time Error,Progress (steps),Error (s),Baseline,8.0,268.6215
+Time Error,Progress (steps),Error (s),Baseline,9.0,312.67203799999885
+Time Error,Progress (steps),Error (s),Baseline,10.0,324.2810000000004
+Time Error,Progress (steps),Error (s),Baseline,11.0,320.384015
+Time Error,Progress (steps),Error (s),Baseline,12.0,259.56046000000015
+Time Error,Progress (steps),Error (s),Baseline,13.0,319.9977030000011
+Time Error,Progress (steps),Error (s),Baseline,14.0,376.0498280000018
+Time Error,Progress (steps),Error (s),Baseline,15.0,18.306322274881538
+Time Error,Progress (steps),Error (s),Baseline,17.0,15.555890995260658
+Time Error,Progress (steps),Error (s),Baseline,16.0,51.820284360189504
+Time Error,Progress (steps),Error (s),Baseline,19.0,12.483516587677732
+Time Error,Progress (steps),Error (s),Baseline,18.0,33.26661611374411
+Time Error,Progress (steps),Error (s),Baseline,21.0,41.03876777251184
+Time Error,Progress (steps),Error (s),Baseline,20.0,10.755924170616115
+Time Error,Progress (steps),Error (s),Baseline,23.0,29.078075829383888
+Time Error,Progress (steps),Error (s),Baseline,22.0,33.50388625592419
+Time Error,Progress (steps),Error (s),Baseline,25.0,2.764549763033177
+Time Error,Progress (steps),Error (s),Baseline,24.0,26.12530805687208
+Time Confidence,Confidence,Probability correct,Baseline,0.0,0.123
+Time Confidence,Confidence,Probability correct,Baseline,0.1,0.34
+Time Confidence,Confidence,Probability correct,Baseline,0.8,1.0
+Time Confidence,Confidence,Probability correct,Baseline,0.9,1.0
+Time Confidence,Confidence,Probability correct,Baseline,0.7,1.0
+Time Confidence,Confidence,Probability correct,Baseline,0.6,0.9984202211690363
+Time Confidence,Confidence,Probability correct,Baseline,0.5,0.2541836273179557
+Time Confidence,Confidence,Probability correct,Baseline,0.4,0.1205
+Time Confidence,Confidence,Probability correct,Baseline,0.2,0.002
+Time Confidence,Confidence,Probability correct,Baseline,0.3,0.022333333333333334
+Steps Error,Progress (steps),Error (steps),Baseline,1.0,8.679
+Steps Error,Progress (steps),Error (steps),Baseline,2.0,8.679
+Steps Error,Progress (steps),Error (steps),Baseline,3.0,8.679
+Steps Error,Progress (steps),Error (steps),Baseline,4.0,8.679
+Steps Error,Progress (steps),Error (steps),Baseline,5.0,8.679
+Steps Error,Progress (steps),Error (steps),Baseline,6.0,8.679
+Steps Error,Progress (steps),Error (steps),Baseline,7.0,8.679
+Steps Error,Progress (steps),Error (steps),Baseline,8.0,8.679
+Steps Error,Progress (steps),Error (steps),Baseline,9.0,8.679
+Steps Error,Progress (steps),Error (steps),Baseline,10.0,8.679
+Steps Error,Progress (steps),Error (steps),Baseline,11.0,8.679
+Steps Error,Progress (steps),Error (steps),Baseline,12.0,8.679
+Steps Error,Progress (steps),Error (steps),Baseline,13.0,8.679
+Steps Error,Progress (steps),Error (steps),Baseline,14.0,8.679
+Steps Error,Progress (steps),Error (steps),Baseline,15.0,0.0
+Steps Error,Progress (steps),Error (steps),Baseline,17.0,0.0
+Steps Error,Progress (steps),Error (steps),Baseline,16.0,0.0
+Steps Error,Progress (steps),Error (steps),Baseline,19.0,0.0
+Steps Error,Progress (steps),Error (steps),Baseline,18.0,0.0
+Steps Error,Progress (steps),Error (steps),Baseline,21.0,0.0
+Steps Error,Progress (steps),Error (steps),Baseline,20.0,0.0
+Steps Error,Progress (steps),Error (steps),Baseline,23.0,0.0
+Steps Error,Progress (steps),Error (steps),Baseline,22.0,0.0
+Steps Error,Progress (steps),Error (steps),Baseline,25.0,0.0
+Steps Error,Progress (steps),Error (steps),Baseline,24.0,0.0
+Steps Confidence,Confidence,Probability correct,Baseline,0.0,0.211
+Steps Confidence,Confidence,Probability correct,Baseline,0.1,0.211
+Steps Confidence,Confidence,Probability correct,Baseline,0.8,1.0
+Steps Confidence,Confidence,Probability correct,Baseline,0.9,1.0
+Steps Confidence,Confidence,Probability correct,Baseline,0.7,1.0
+Steps Confidence,Confidence,Probability correct,Baseline,0.6,1.0
+Steps Confidence,Confidence,Probability correct,Baseline,0.5,0.2862957937584803
+Steps Confidence,Confidence,Probability correct,Baseline,0.4,0.211
+Steps Confidence,Confidence,Probability correct,Baseline,0.2,0.211
+Steps Confidence,Confidence,Probability correct,Baseline,0.3,0.211
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],1.0,161.9432060000011
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],2.0,181.30338199999977
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],3.0,164.89063299999995
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],4.0,178.8413749999999
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],5.0,171.7854749999997
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],6.0,177.01974499999992
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],7.0,177.55421
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],8.0,180.21674800000002
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],9.0,191.79619999999989
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],10.0,184.48172900000046
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],11.0,175.02669600000058
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],12.0,67.93467100000012
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],13.0,53.922319000000066
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],14.0,76.18096999999999
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],15.0,43.39623696682462
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],17.0,75.51620379146918
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],16.0,16.99739336492891
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],19.0,55.688336492891025
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],18.0,13.39935071090049
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],21.0,67.43309478672982
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],20.0,46.64267772511841
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],23.0,37.020255924170655
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],22.0,35.25053080568721
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],25.0,18.519327014218014
+Time Error,Progress (steps),Error (s),Average Tree [0.35|0.35|0.3],24.0,37.73047393364923
+Time Confidence,Confidence,Probability correct,Average Tree [0.35|0.35|0.3],0.4,0.9988428604489702
+Time Confidence,Confidence,Probability correct,Average Tree [0.35|0.35|0.3],0.3,0.23816666666666667
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],1.0,3.477
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],2.0,3.477
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],3.0,3.477
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],4.0,3.477
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],5.0,3.457
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],6.0,3.417
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],7.0,3.374
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],8.0,3.388
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],9.0,3.472
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],10.0,3.456
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],11.0,3.35
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],12.0,1.628
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],13.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],14.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],15.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],17.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],16.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],19.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],18.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],21.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],20.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],23.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],22.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],25.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.35|0.35|0.3],24.0,0.0
+Steps Confidence,Confidence,Probability correct,Average Tree [0.35|0.35|0.3],0.4,1.0
+Steps Confidence,Confidence,Probability correct,Average Tree [0.35|0.35|0.3],0.3,0.0
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],1.0,161.93462600000032
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],2.0,162.32343899999935
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],3.0,162.237611
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],4.0,162.12737499999977
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],5.0,162.44090199999982
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],6.0,162.416339
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],7.0,162.67215900000062
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],8.0,163.0024600000014
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],9.0,164.77498199999818
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],10.0,162.25939399999945
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],11.0,155.5430259999984
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],12.0,9.30200900000001
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],13.0,9.19905099999999
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],14.0,6.841725000000005
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],15.0,9.763308056872033
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],17.0,8.931668246445499
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],16.0,9.640824644549767
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],19.0,8.612800947867303
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],18.0,8.871611374407584
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],21.0,8.24541232227488
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],20.0,8.332227488151657
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],23.0,5.769426540284359
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],22.0,6.748947867298576
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],25.0,2.0950426540284366
+Time Error,Progress (steps),Error (s),Average Tree [0.5|0.5|0.0],24.0,5.769426540284359
+Time Confidence,Confidence,Probability correct,Average Tree [0.5|0.5|0.0],0.4,1.0
+Time Confidence,Confidence,Probability correct,Average Tree [0.5|0.5|0.0],0.3,0.491
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],1.0,3.477
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],2.0,3.423
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],3.0,3.338
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],4.0,3.267
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],5.0,3.248
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],6.0,3.25
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],7.0,3.352
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],8.0,3.429
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],9.0,3.515
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],10.0,3.47
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],11.0,3.339
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],12.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],13.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],14.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],15.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],17.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],16.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],19.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],18.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],21.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],20.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],23.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],22.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],25.0,0.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.5|0.5|0.0],24.0,0.0
+Steps Confidence,Confidence,Probability correct,Average Tree [0.5|0.5|0.0],0.4,1.0
+Steps Confidence,Confidence,Probability correct,Average Tree [0.5|0.5|0.0],0.3,0.08333333333333333
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],1.0,161.91050500000074
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],2.0,165.52583299999978
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],3.0,162.5884380000001
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],4.0,164.70347999999996
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],5.0,164.05265799999995
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],6.0,164.67535800000013
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],7.0,167.1127160000002
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],8.0,174.90225600000005
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],9.0,191.29489999999996
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],10.0,184.44873399999895
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],11.0,167.76654200000186
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],12.0,72.51753500000088
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],13.0,57.94684299999877
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],14.0,82.13537499999998
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],15.0,46.94263033175342
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],17.0,81.70871090047407
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],16.0,18.011137440758244
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],19.0,60.261146919431035
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],18.0,14.070189573459738
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],21.0,72.95039336492906
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],20.0,50.45306635071073
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],23.0,40.03799526066348
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],22.0,38.079644549763124
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],25.0,20.034047393364908
+Time Error,Progress (steps),Error (s),Average Tree [0.9|0.05|0.05],24.0,40.80747393364935
+Time Confidence,Confidence,Probability correct,Average Tree [0.9|0.05|0.05],0.4,0.9916685952325851
+Time Confidence,Confidence,Probability correct,Average Tree [0.9|0.05|0.05],0.3,0.36666666666666664
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],1.0,3.477
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],2.0,3.423
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],3.0,3.338
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],4.0,3.274
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],5.0,3.275
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],6.0,3.26
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],7.0,3.318
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],8.0,3.551
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],9.0,3.913
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],10.0,3.958
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],11.0,3.696
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],12.0,2.353
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],13.0,0.777
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],14.0,0.992
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],15.0,1.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],17.0,1.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],16.0,1.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],19.0,1.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],18.0,1.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],21.0,1.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],20.0,1.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],23.0,1.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],22.0,1.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],25.0,1.0
+Steps Error,Progress (steps),Error (steps),Average Tree [0.9|0.05|0.05],24.0,1.0
+Steps Confidence,Confidence,Probability correct,Average Tree [0.9|0.05|0.05],0.4,0.05345984725757926
+Steps Confidence,Confidence,Probability correct,Average Tree [0.9|0.05|0.05],0.3,0.10925

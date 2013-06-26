@@ -12,7 +12,7 @@ class Form {
 		Steps, Time;
 	}
 	
-	public class RandomString
+	private class RandomString
 	{
 	  private final char[] buf;
 
@@ -53,6 +53,7 @@ class Form {
 		public String question() {
 			return question;
 		}
+
 	}
 
 	private List<FormQuestion> questions;
@@ -73,11 +74,11 @@ class Form {
 	}
 	
 	public String getObservation() {
-		boolean fork = rnd.nextInt(100) > 80;
+		boolean fork = rnd.nextInt(100) < 80;
 		List<FormQuestion> toAsk = new ArrayList<FormQuestion>();
 		
 		for(int i = 0; i < size; i++)
-			if(questions.get(i).forked() == fork || i <= forkPos)
+			if(questions.get(i).forked() == fork || i <= forkPos || type == ForkType.Time)
 				toAsk.add(questions.get(i));
 		return getString(fork, toAsk);
 	}
@@ -87,21 +88,26 @@ class Form {
 		String obsId = UUID.randomUUID().toString();
 		String result = "";
 		
-		for(FormQuestion q : toAsk) {
+		for(int i = 0; i < toAsk.size(); i++) {
+			FormQuestion q = toAsk.get(i);
+			String tag = i == toAsk.size() - 1 ? "OK" : "DATA_MISSING";
+		
 			int time = q.duration();
 			String question = q.question();
 			String answer;
 			
-			if(q.equals(questions.get(importantQuestionPos)) && fork)
+			if(i == importantQuestionPos && fork)
 				answer = "true";
+			else if(i == importantQuestionPos && !fork)
+				answer = "false";
 			else
-				answer = Boolean.toString(rnd.nextBoolean());
+				answer = Integer.toString(rnd.nextInt(3));
 			
 			if(this.type == ForkType.Time && fork)
-				time *= 2;
+				time += 30;
 			
 			String line = this.form + "," + obsId + "," + (start + time) + ",'[DataAnchor [" + 
-					question + "]]','DataAnchor [" + question + "]=" + answer + "',DATA_MISSING\n";
+					question + "]]','DataAnchor [" + question + "]=" + answer + "'," + tag + "\n";
 			result += line;
 			start += time;
 		}
@@ -117,7 +123,7 @@ class Form {
 	}
 
 	private void generateStepsQuestions() {
-		int split = ((int) ((size - forkPos) * .90)) + forkPos;
+		int split = ((int) ((size - forkPos) * .80)) + forkPos;
 		
 		for(int i = 0; i < size; i++) {
 			int min = rnd.nextInt(75);
@@ -128,9 +134,10 @@ class Form {
 
 	private void generateTimeQuestions() {
 		for(int i = 0; i < size; i++) {
-			int min = rnd.nextInt(75);
-			int max = rnd.nextInt(30) + min;
-			questions.add(new FormQuestion(min, max, i > forkPos));
+			//int min = rnd.nextInt(75);
+			//int max = rnd.nextInt(30) + min;
+			int min = 5, max = 10;
+			questions.add(new FormQuestion(min, max, true));
 		}
 	}
 	

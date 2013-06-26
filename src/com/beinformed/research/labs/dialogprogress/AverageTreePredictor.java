@@ -8,7 +8,6 @@ public class AverageTreePredictor implements Predictor {
 
 	private PredictionUnit unit;
 	private Map<Path, PathInfo> paths;
-	private Map<Path, PathInfo> pathsWithAnswers;
 	private int totalFrequency;
 	private int maxLength;
 	private double aWeight, noaWeight, pWeight;
@@ -16,7 +15,6 @@ public class AverageTreePredictor implements Predictor {
 	public AverageTreePredictor(PredictionUnit unit, double aWeight, double noaWeight, double pWeight) {
 		this.unit = unit;
 		this.paths = new HashMap<Path, PathInfo>();
-		this.pathsWithAnswers = new HashMap<Path, PathInfo>();
 		this.aWeight = aWeight;
 		this.noaWeight = noaWeight;
 		this.pWeight = pWeight;
@@ -31,9 +29,9 @@ public class AverageTreePredictor implements Predictor {
 				Path pathWithAnswers = new Path(part, true);
 				
 				updateMap(paths, path, complete, part);
-				updateMap(pathsWithAnswers, pathWithAnswers, complete, part);
+				updateMap(paths, pathWithAnswers, complete, part);
 				paths.get(path.getParent()).addChild(path);
-				pathsWithAnswers.get(pathWithAnswers.getParent()).addChild(pathWithAnswers);
+				paths.get(pathWithAnswers.getParent()).addChild(pathWithAnswers);
 				totalFrequency++;
 			}
 			if(complete.getNoQuestions() > maxLength)
@@ -69,16 +67,16 @@ public class AverageTreePredictor implements Predictor {
 				/
 				(weightNoAnswers + weightWithAnswers + weightParent);
 		
-		double confidence = getConfidence(data);
-		
+		double confidence = getConfidence(data, infoNoAnswers != null ? infoNoAnswers.getFrequency() : 0);
 		return new Prediction(confidence, (int)prediction, (int)prediction, unit);
 	}
 	
 	private double getWeight(PathInfo info) {
-		if(info == null)
+		if(info == null) {
 			return 0;
+		}
 		else
-			return info.getFrequency() / (double)totalFrequency;
+			return 1;// - 1.0 / getOrderOfMagnitude(info.getFrequency());
 	}
 	private double getPrediction(PathInfo info) {
 		if(info == null)

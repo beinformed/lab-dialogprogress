@@ -1,5 +1,6 @@
 package com.beinformed.research.labs.dialogprogress;
 
+import org.encog.Encog;
 import org.encog.engine.network.activation.ActivationSigmoid;
 import org.encog.ml.data.MLData;
 import org.encog.ml.data.MLDataSet;
@@ -52,7 +53,7 @@ public class NeuralNetworkPredictor implements Predictor {
 		
 		do {
 			train.iteration();	
-		} while(train.getError() > .1);
+		} while(train.getError() > .09);
 		train.finishTraining();
 	}
 
@@ -74,6 +75,8 @@ public class NeuralNetworkPredictor implements Predictor {
 		}
 		
 		Bucket b = bmanager.fromVectorIndex(index);
+		
+		Encog.getInstance().shutdown();
 		
 		return new Prediction(max/total, b.lower, b.upper, unit);
 	}
