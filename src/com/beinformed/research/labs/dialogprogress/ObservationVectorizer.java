@@ -10,6 +10,7 @@ class ObservationVectorizer {
 		private List<String> values = new ArrayList<String>();
 		private double max = Double.NEGATIVE_INFINITY;
 		private boolean isNumeric = true;
+		private boolean isBoolean = true;
 		
 		public final int index;
 
@@ -30,12 +31,21 @@ class ObservationVectorizer {
 					isNumeric = false;
 				}
 			}
+			if(isBoolean) {
+				try {
+					Boolean.parseBoolean(value);
+				} catch(NumberFormatException ex) {
+					isBoolean = false;
+				}
+			}
 		}
 		public double getNumericValue(String value) {
 			if(isNumeric)
 				return Double.parseDouble(value) / max + 1;
-			else
-				return values.indexOf(value) / (double)values.size() + 1;
+			else if(isBoolean)
+				return Boolean.parseBoolean(value) ? 2 : 1;
+			
+			return values.indexOf(value) / (double)values.size() + 1;
 		}
 	}
 	
