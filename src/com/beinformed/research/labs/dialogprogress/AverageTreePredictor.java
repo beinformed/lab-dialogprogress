@@ -87,14 +87,14 @@ public class AverageTreePredictor implements Predictor {
 			return info.getPrediction();
 	}
 	
-	private double getConfidence(Observation data) {
+	private double getConfidence(Observation data, int nodefreq) {
 		double progress = (data.getNoQuestions() / (double)maxLength);
 		double order = getOrderOfMagnitude(totalFrequency);
 		
-		double dataSize = totalFrequency/order;
-		//double nodeSize = getOrderOfMagnitude(info.getFrequency()) / order;
+		double dataSize = 1/order;
+		double nodeSize = 1.0/getOrderOfMagnitude(nodefreq);
 		
-		return (1 - dataSize) * progress;
+		return .3 * (1 - dataSize) + .2 * progress + .5 * nodeSize;
 	}
 	
 	private int getOrderOfMagnitude(final int value) {
@@ -104,7 +104,7 @@ public class AverageTreePredictor implements Predictor {
 			order *= 10;
 			tmp = tmp / 10;
 		}
-		return order;
+		return order > 1 ? order/10 : order;
 	}
 
 	public String toString() {
