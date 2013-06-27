@@ -10,7 +10,7 @@ import java.util.Date;
 public class Question {
 	private String id;
 	private String answer;
-	private String type;
+	private String status;
 	private long timestamp;
 	
 	/**
@@ -22,12 +22,14 @@ public class Question {
 	 * The answer given by the user.
 	 * @param timestamp
 	 * The epoch timestamp of the moment this question was answered.
+	 * @param status
+	 * The status message associated with this question (OK, DATA_MISSING, etc.)
 	 */
-	public Question(String id, String answer, long timestamp, String type) {
+	public Question(String id, String answer, long timestamp, String status) {
 		this.id = id;
 		this.answer = answer;
 		this.timestamp = timestamp;
-		this.type = type;
+		this.status = status;
 	}
 	
 	/**
@@ -54,7 +56,7 @@ public class Question {
 	
 	public String toString() {
 		String date = SimpleDateFormat.getDateTimeInstance().format(new Date(timestamp));
-		return  date + ": " + id + "=" + answer + "-" + type;
+		return  date + ": " + id + "=" + answer + "-" + status;
 	}
 }
 

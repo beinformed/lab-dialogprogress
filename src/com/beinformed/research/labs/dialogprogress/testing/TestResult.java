@@ -31,10 +31,10 @@ public class TestResult {
 		Graph time = new Graph("Time Error", "Progress (steps)", "Error (s)", lineLabel);
 		Graph steps = new Graph("Steps Error", "Progress (steps)", "Error (steps)", lineLabel);
 		for (Error e : errors) {
-			int progress = e.getUnit() == PredictionUnit.Time ? e.getProgressPercentage() / 10 * 10 : e.getAbsolutePathLength();
+			int progress = e.getUnit() == PredictionUnit.Milliseconds ? e.getProgressPercentage() / 10 * 10 : e.getAbsolutePathLength();
 			progress = e.getAbsolutePathLength();
 			
-			if(e.getUnit() == PredictionUnit.Time) {
+			if(e.getUnit() == PredictionUnit.Milliseconds) {
 				if(!timeProgress.containsKey(progress)) {
 					timeProgress.put(progress, 0.0);
 					timeCount.put(progress, 0);
@@ -78,7 +78,7 @@ public class TestResult {
 		for (Error e : errors) {
 			double conf = (int)(e.getConfidence() * 10) / (double)10;
 			
-			if(e.getUnit() == PredictionUnit.Time) {
+			if(e.getUnit() == PredictionUnit.Milliseconds) {
 				if(!timeMap.containsKey(conf)) {
 					timeMap.put(conf, 0);
 					timeCount.put(conf, 0);

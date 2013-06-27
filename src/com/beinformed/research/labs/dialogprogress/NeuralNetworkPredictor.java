@@ -10,6 +10,22 @@ import org.encog.neural.networks.BasicNetwork;
 import org.encog.neural.networks.layers.BasicLayer;
 import org.encog.neural.networks.training.propagation.resilient.ResilientPropagation;
 
+/**
+ * This predictor uses a neural network using backpropagation to make its predictions.
+ * It requires the Encog library to function.
+ * 
+ * Depending on the parameters, this algorithm can be fast to train, or more
+ * accurate. If the model is trained on unpredictable data, the algorithm will
+ * not converge to a solution and {@link #train(Iterable)} will block forever.
+ * 
+ * The algorithm does not support adding new questions in between training sessions.
+ * It is recommended to always make the first call to {@link #train(Iterable)} contain
+ * a representable dataset, as the first call determines the questions that can be
+ * asked.
+ * 
+ * @see http://www.heatonresearch.com/encog
+ *
+ */
 public class NeuralNetworkPredictor implements Predictor {
 
 	private int buckets;
@@ -19,6 +35,17 @@ public class NeuralNetworkPredictor implements Predictor {
 	private BasicNetwork network;
 	private int[] layers;
 
+	/**
+	 * 
+	 * @param unit
+	 * The unit of the predictions.
+	 * @param buckets
+	 * The number of buckets to distribute the data over. More buckets will lead to
+	 * more fine-grained results, but might lead to smaller precision.
+	 * @param layers
+	 * The number of nodes for each layer. The structure of the final network will
+	 * be [number of questions] - [provided layers] - [number of buckets].
+	 */
 	public NeuralNetworkPredictor(PredictionUnit unit, int buckets, int... layers) {
 		this.unit = unit;
 		this.buckets = buckets;
@@ -53,7 +80,7 @@ public class NeuralNetworkPredictor implements Predictor {
 		
 		do {
 			train.iteration();	
-		} while(train.getError() > .09);
+		} while(train.getError() > .075);
 		train.finishTraining();
 	}
 

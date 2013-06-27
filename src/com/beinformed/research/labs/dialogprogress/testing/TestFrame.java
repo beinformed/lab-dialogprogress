@@ -73,7 +73,7 @@ public class TestFrame {
 		double prediction = lower + (upper - lower) / 2.0;
 		double result = (prediction - correctValue) * (prediction - correctValue);
 		
-		double factor = predicted.getUnit() == PredictionUnit.Time ? 0.001 : 1;
+		double factor = predicted.getUnit() == PredictionUnit.Milliseconds ? 0.001 : 1;
 		
 		return Math.sqrt(result) * factor;
 	}

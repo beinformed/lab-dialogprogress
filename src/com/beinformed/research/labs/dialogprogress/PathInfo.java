@@ -3,7 +3,7 @@ package com.beinformed.research.labs.dialogprogress;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class PathInfo {
+class PathInfo {
 
 	private int freq;
 	private long total;

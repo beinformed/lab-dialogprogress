@@ -1,21 +1,30 @@
 package com.beinformed.research.labs.dialogprogress;
 
-import java.util.ArrayList;
-import java.util.List;
 /**
- * A predictor for the amount of time and number of steps left on a form.
+ * This predictor uses the confidence value used by other predictors to return
+ * the best prediction. The prediction with the highest confidence is always
+ * returned. No scaling is applied to the confidence values to make them more
+ * comparable.
+ * 
+ * Training time can take long, because the {@link #train(Iterable)} method is 
+ * called for each of the internal predictors.
  *
  */
 public class HighestConfidenceAggregator implements Predictor {
 
 	private PredictionUnit unit;
-	private List<Predictor> predictors;
+	private Iterable<Predictor> predictors;
 
-	public HighestConfidenceAggregator( PredictionUnit unit ){
+	/**
+	 * 
+	 * @param unit
+	 * The unit of the predictions.
+	 * @param predictors
+	 * The predictors to use for predictions.
+	 */
+	public HighestConfidenceAggregator( PredictionUnit unit, Iterable<Predictor> predictors ){
 		this.unit = unit;
-		predictors = new ArrayList<Predictor>();
-		predictors.add(new PerObservationBLPredictor(unit));	
-		
+		this.predictors = predictors;		
 	}
 
 	public void train(Iterable<Observation> data){

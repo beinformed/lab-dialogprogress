@@ -79,13 +79,26 @@ public class Observation {
 		return questions.get(0);
 	}
 	
+	/**
+	 * Returns the value predictors can learn on. For {@link PredictionUnit#Milliseconds}, this
+	 * returns the duration in milliseconds of the observation. For {@link PredictionUnit#Steps},
+	 * this returns the same value as {@link #getNoQuestions()}.
+	 * @param unit
+	 * The unit that determines the returned value.
+	 * @return
+	 */
 	public int getLearnValue(PredictionUnit unit) {
-		if(unit == PredictionUnit.Time)
+		if(unit == PredictionUnit.Milliseconds)
 			return (int) (getLastAsked().getTimestamp() - getFirstAsked().getTimestamp());
 		else
 			return getNoQuestions();
 	}
 	
+	/**
+	 * Retuns every subpath through the questions in this observation. E.g. for a
+	 * path a-b-c-d, this would return a, a-b, a-b-c and a-b-c-d.
+	 * @return
+	 */
 	public Iterable<Observation> getSubObservations() {
 		// This is O(n*log n)
 		List<Observation> observations = new ArrayList<Observation>();
@@ -96,6 +109,10 @@ public class Observation {
 		}
 		return observations;
 	}
+	/**
+	 * Returns the same observation, excluding the last question asked.
+	 * @return
+	 */
 	public Observation getParent() {
 		if(questions.size() > 1)
 			return new Observation(false, form, questions.subList(0, questions.size() - 1));

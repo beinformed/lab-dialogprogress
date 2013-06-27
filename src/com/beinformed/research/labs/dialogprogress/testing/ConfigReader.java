@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.beinformed.research.labs.dialogprogress.AverageTreePredictor;
 import com.beinformed.research.labs.dialogprogress.NeuralNetworkPredictor;
-import com.beinformed.research.labs.dialogprogress.PerObservationBLPredictor;
+import com.beinformed.research.labs.dialogprogress.BaselinePredictor;
 import com.beinformed.research.labs.dialogprogress.PredictionUnit;
 import com.beinformed.research.labs.dialogprogress.Predictor;
 
@@ -35,7 +35,7 @@ public class ConfigReader {
 				String pred = parts[0];
 				String args = parts.length > 1 ? parts[1] : "";
 				
-				factories.add(getFactory(PredictionUnit.Time, pred, args));
+				factories.add(getFactory(PredictionUnit.Milliseconds, pred, args));
 				factories.add(getFactory(PredictionUnit.Steps, pred, args));
 			}
 			line = reader.readLine();
@@ -57,7 +57,7 @@ public class ConfigReader {
 		return new PredictorFactory () {
 			@Override
 			public Predictor getPredictor() {
-				return new PerObservationBLPredictor(unit);
+				return new BaselinePredictor(unit);
 			} };
 	}
 	private PredictorFactory getAverageTreeFactory(final PredictionUnit unit, String args) {
