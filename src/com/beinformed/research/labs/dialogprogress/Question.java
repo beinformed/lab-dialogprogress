@@ -58,6 +58,10 @@ public class Question {
 		String date = SimpleDateFormat.getDateTimeInstance().format(new Date(timestamp));
 		return  date + ": " + id + "=" + answer + "-" + status;
 	}
+
+	public ReturnType getStatus() {
+		return ReturnType.valueOf(status);
+	}
 }
 
 
