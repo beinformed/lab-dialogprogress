@@ -1,0 +1,15 @@
+*.class
+*.DS_Store
+*.un~
+
+#eclipse ignore personal stuff 
+.metadata
+bin
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+*.class
