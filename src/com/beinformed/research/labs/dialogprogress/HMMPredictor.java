@@ -10,6 +10,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * This predictor initializes a HMM and trains it with the Baum-Welch algorithm. 
+ * It requires the jahmm library to function. 
+ *
+ * A HMM is initialized with transition probabilities aquired by relative frequencies.
+ * The hidden states use the status the form system returns at recieving data.  
+ *
+ * @see http://www.run.montefiore.ulg.ac.be/~francois/software/jahmm/
+ */ 
+
+
 public class HMMPredictor implements Predictor { 
 
 	double[] pi;
@@ -20,17 +31,19 @@ public class HMMPredictor implements Predictor {
 	BaumWelchLearner trainer;
 	List<List<ObservationDiscrete<ReturnType>>> sequences;
 	private int nb;
-	
+
+	/**
+     * @param	nb the number of iterations Baum-Welch performs
+     */ 		
 	public HMMPredictor(int nb){
 		this.nb = nb;
 	}	
 
-	/**
- 	 * Sets the chance of a state being an initial state
- 	 */ 	
 	private void setPi(Iterable<Observation> data){
 		Map<String,Double> initialStates = new HashMap<String,Double>();
 		double numberOObs = 0;
+		// sets all first questions in table
+		// and sets all possible states since it iterates through the observations
 		for(Observation obs : data){
 			setStates(obs);
 			numberOObs += 1.0;
@@ -52,6 +65,8 @@ public class HMMPredictor implements Predictor {
 			else
 				pi[i] = 0;
 			i++;
+			// opdfs is created here because it needs exact the same number
+			// of arguments as pi
 			opdfs.add( new OpdfDiscrete<ReturnType>( ReturnType.class ));
 		}
 	}
@@ -70,6 +85,9 @@ public class HMMPredictor implements Predictor {
 	private void setTransitionProbs( Iterable<Observation> data ){
 	
 		a = new double[states.size()][states.size()];
+		
+		// build ngram model to set relative frequencies
+		// some extra work has to be done to use n>2-grams
 		NGrams nGramModel = new NGrams(data, 2);
 		Map<String, Double> probs = nGramModel.getProbabilities();
 		int i = 0;
@@ -115,14 +133,6 @@ public class HMMPredictor implements Predictor {
 		int remSteps = res.length - obs.getNoQuestions();
 		
 		Prediction predSteps = new Prediction(.5, remSteps, remSteps, PredictionUnit.Steps );		
-/**		for ( int i : res )
-			System.out.printf(" %d -", i);
-		System.out.println();
-		for (int i = 0 ; i < a.length ; i++ ){
-			for (int j = 0 ; j < a.length ; j++ )
-				System.out.printf("%f ",model.getAij(i,j));
-			System.out.println();
-**/		
 		return predSteps;
 	}
 	
